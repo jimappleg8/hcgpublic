@@ -9,9 +9,9 @@ The system served us well for a number of years, but it was eventually replaced 
 
 ## Framework Features
 
-![Flexible form creation](images/hcgpublic-01.jpg)
-
 The framework uses a loosely connected set of PHP classes as the foundation, providing a solid base for things like connecting to the database (ADODB), building forms (PEAR HTML_QuickForms), and processing templates (Smarty Templates). As other classes were needed, they could easily be added in.
+
+![Flexible form creation](images/hcgpublic-01.jpg)
 
 
 ## Usage
@@ -29,6 +29,10 @@ With that said, usage of the system was pretty simple:
 ## Modules
 
 I developed more than 20 modules for the system including products, FAQs, store locator, webforms, LDAP directory search, htDig search interface, image gallery, and stock quote widget.
+
+Here are some screen shots showing it in action:
+
+---
 
 ![FAQs](images/hcgpublic-02.jpg)
 
