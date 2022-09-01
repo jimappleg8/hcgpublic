@@ -16,7 +16,7 @@ The framework uses a loosely connected set of PHP classes as the foundation, pro
 
 ## Usage
 
-**Disclaimer:** This project is here as a reference for anyone wanting to doo something similar. The database schema no longer exists, so it would need to be recreated before anyone could use this project directly.
+<span style="color: red">**Disclaimer:** This project is here as a reference for anyone wanting to create something similar. The database schema no longer exists, so it would need to be recreated before anyone could use this project directly.</span>
 
 With that said, usage of the system was pretty simple:
 
