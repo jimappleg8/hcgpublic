@@ -1,0 +1,478 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- generated using Randy, the patXMLRenderer -->
+<html>
+<head>
+	<title>patUser Documentation</title>
+	<meta http-equiv="Description" content="">
+	<meta http-equiv="Keywords" content="">
+	<link rel="stylesheet" href="styles/offline.css" type="text/css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#000000" alink="#000000" vlink="#000000" marginwidth="8" marginheight="0" topmargin="0" leftmargin="8" rightmargin="8" bottommargin="0">
+
+	
+	
+	
+		
+		<table border="0" cellpadding="0" cellspacing="0" width="90%"><tr><td>
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Building select conditions</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					Several of patUser's functions, like searchUsers() or getUsers() require a list of
+					conditions for users. This section will explain what's possible in these conditions.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>General structure</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					When defining conditions these conditions are always organized in one array.
+					each entry of the array contains one condition.
+					Each condition has to be an associative array, which contains the following
+					keys:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				<b>field</b>
+
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+						This value defines the name of the field in the mySql table.
+						You may use any field that exists in the specified table.
+					
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				<b>value</b>
+
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+						Here you define the value for the field. How the fieldvalue will be compared
+						to the value given by this parameter will be defined by the third parameter.
+					
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				<b>match</b>
+
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+						This parameter defines the comparison method for condition.
+						Possible values are:
+					
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+					
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>greater (&gt;)</b>
+: the field value has to be greater than the specified value</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>greaterorequal (&gt;=)</b>
+: the field value has to be greater than or equal to the specified value</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>lower (&lt;)</b>
+: the field value has to be lower than the specified value</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>lowerorequal (&lt;=)</b>
+: the field value has to be lower than or equal to the specified value</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>like</b>
+: comparison will be case-insensitive</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>contains</b>
+: the field value has to contain the defined value</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>startswith</b>
+: the field value has to start with the defined value</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>endswith</b>
+: the field value has to end with the defined value</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>between</b>
+: when using this method, the value has to be an array that consists of two values. The field value has to be between these values</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>exact</b>
+ (default): case sensistive comparison is used</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+					<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td></tr></table>
+
+				</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Examples</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					To get all users, whose surname starts with an 'p', use this condition:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">$condition1 = array( &quot;field&quot; =&gt; &quot;surname&quot;,
+                     &quot;value&quot; =&gt; &quot;p&quot;,
+                     &quot;match&quot; =&gt; &quot;startswith&quot; );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					To get all users, who were at least one hour on your site use this
+					(of course only if stats are enabled):
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">$condition2 = array( &quot;field&quot; =&gt; &quot;time_online&quot;,
+                     &quot;value&quot; =&gt; 3600,
+                     &quot;match&quot; =&gt; &quot;greaterorequal&quot; );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					Of course you can combine both conditions:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">$users = $user-&gt;getUsers( array( &quot;uid&quot;, &quot;username&quot; ),
+                          array( $condition1, $condition2 ),
+                          array( &quot;conditions&quot; =&gt; &quot;all&quot;) );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					This will return the ids and names of all users that were at least
+					one hour online and whose name starts with the letter &quot;p&quot;;
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+		
+		<center><table width="90%" border="0" cellpadding="0" cellspacing="0"><tr><td><a href="patUserDocStatistics.html" class="link"><img src="img/offline/footernav_prev.gif" width="48" height="23" alt="" border="0"></a></td>
+<td align="right"><a href="patUserDocFind.html" class="link"><img src="img/offline/footernav_next.gif" width="48" height="23" alt="" border="0"></a></td>
+</tr></table></center><table bgcolor="#608DB7" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td><table border="0" cellpadding="0" cellspacing="0"><tr><td><img src="img/offline/footerbar_start.gif" width="102" height="16" alt="" border="0"></td><td><a href="javascript:window.print();"><img src="img/offline/footerbar_print.gif" width="59" height="16" alt="" border="0"></a></td></tr></table></td><td align="right"><table border="0" cellpadding="0" cellspacing="0"><tr><td nowrap><font face="verdana,arial,tahoma,helvetica" size="-2" class="litewhite" color="#ffffff">Last Updated: 2001-11-03 00:44:14<br></font></td><td><a href="#top"><img src="img/offline/footerbar_end.gif" width="31" height="16" alt="Jump to the top of the page (of course only if you're far enough down...)" border="0"></a></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="30" alt="" border="0"><br></td><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td></tr></table></td><td><img src="img/offline/px.gif" width="15" height="0" alt="" border="0"></td></tr></table>
+	
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+   <title>hcgPublic Documentation</title>
+   <link rel="STYLESHEET" type="text/css" href="docs.css">
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="topHeader">
+   hcgPublic Documentation
+</div>
+
+<div id="docTitle">
+   User Manual
+</div>
+
+<div id="content">
+
+<p class="breadcrumbs"><a href="index.html">User Manual</a> > MailForm Module</p>
+
+<h1>MailForm Module</h1>
+
+<div class="tag">
+<h2>contactus_form</h2>
+<pre>
+&lt;?php get("mailform.contactus_form", $mailtpl1, $mailtpl2); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Displays and processes the standard "Contact Us" form.</p>
+<p>The tag allows for up to two emails to go out, usually one to the user and another to an internal recipient. To disable one or either of these e-mails, simply send an empty string for $mailtpl1 and/or $mailtpl2. If neither e-mail is sent, the data is just saved to the database.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>disclaimer_alert</h2>
+<pre>
+&lt;?php get("mailform.disclaimer_alert"); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Inserts the JavaScript for disclaimer if set to display in the <tt>lib/config.inc.php</tt> file.</p>
+<p>This is a disclaimer we needed to alert people that our consumer relations group was behind on e-mails and that it might take a while to respond. We wanted to be able to turn it on and off easily, thus the tags.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>disclaimer_text</h2>
+<pre>
+&lt;?php get("mailform.disclaimer_text"); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">inserts the HTML copy for disclaimer if set to display in the <tt>lib/config.inc.php</tt> file.</p>
+<p>This is a disclaimer we needed to alert people that our consumer relations group was behind on e-mails and that it might take a while to respond. We wanted to be able to turn it on and off easily, thus the tags.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>webmaster_form</h2>
+<pre>
+&lt;?php get("mailform.webmaster_form", $mailtpl1, $mailtpl2); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Displays and processes the standard "Contact the Webmaster" form.</p>
+<p>The tag allows for up to two emails to go out, usually one to the user and another to an internal recipient. To disable one or either of these e-mails, simply send an empty string for $mailtpl1 and/or $mailtpl2. If neither e-mail is sent, the data is just saved to the database.</p>
+</div> <!-- tag -->
+
+
+</div> <!-- content -->
+
+</div> <!-- container -->
+
+</body>
+</html>

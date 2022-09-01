@@ -1,0 +1,27 @@
+Ein !WikiWort besteht aus mehreren zusammengezogenen Wörtern mit
+großen Anfangsbuchstaben. Als Beispiele:
+
+* MehrereWörterMitGroßenAnfangsbuchstabenZusammenSchreiben
+* DieseSeiteÄndern
+* DiesIstAuchEinWikiWort
+
+während dieses keine sind:
+
+* IBM
+* mehrerewörterohnegroßbuchstaben
+* 123456789
+
+Man kann auch [HyperLink]s in einem WikiWikiWeb erzeugen, die keine
+gültigen !WikiWörter sind, indem man einfach eckige Klammern verwendet:
+
+* [[Dies ist ein Satz in eckigen Klammern, der zu einem Verweis wird]]
+* [[Ich bin auch ein Link]]
+
+Manchmal muß man etwas kreativ sein, um gute und sprechende !WikiWörter
+zu finden, aber das kann mitunter auch ganz lustig sein.
+
+In ErfurtWiki ist die Groß- und Kleinschreibung übrigens egal, so daß 
+z.B. 'ErFurtWiKi' auch zur Strtseite führt.
+
+Lies dir auch die Seiten über FormatierungsRegeln und
+[WieManNeueSeitenErstellt|SeitenErstellen] durch.

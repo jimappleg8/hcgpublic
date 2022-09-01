@@ -1,0 +1,38 @@
+If enabled, you can activate the so called '''mpi''' plugins inside
+of pages using following syntax:
+
+<pre>
+   <?plu''''gin  [PluginName|MpiPlugins]  param1=opt1 cfg2="flg3"  ... ?>
+</pre>
+
+The "..." may be multiple lines of text or more parameters for some plugins
+(~TableEditor, ~SparseTable or ~WikiScript for example). Many plugins use at least
+a parameter of id= (but page= works as alias) to specify a target to operate
+on, others don't need parameters at all.
+
+| __plugin name__ | __description__ | __parameters__ |
+| ~BackLinks   | inserts the list of links pointing to the current page | id= |
+| ~BackTree    | creates a tree of pages linking to the current one | id=, depth=5 |
+| ~LocalSiteMap | summarizes forward links in a tree up to a given depth | id=, depth=2  |
+| ~MultiMedia  | creates an <object>/<embed> tag linking to the given URL | url=, href= or src=; also width=, height=, type= |
+| ~RedirectLinks | will make __all__ [WikiWord]s of the page link to another Wiki  | to=~InterWikiPrefix |
+| ~FallBack    | makes not-existing ~WikiPages link to a foreign wiki  | to=~InterWikiPrefix |
+|  Insert      | inserts the given page into the current, usually with a border (table=), most _config settings can be overriden | id=, table=1, (print_title=0, ...) |
+|  Embed       | like "Insert", but can only be used to insert dynamically generated pages (plugins) | page=, (real=1 to force title) |
+|  [ErfurtWiki:view/MpiPlugins/Survey "Survey"]      | allows for creating polls/surveys, data is stored within a given (data/binary) page, chooseable options are specified as parameters (names don't matter)| data=pseudo/filename |
+|  Syndicate   | loads a remote RSS feed into the current page (cached) | url=http://... |
+| [ErfurtWiki:SparseTable "SparseTable"] | allows to create long tables by specifing content in plugin parameters; use either columns= or rows= to setup field/variable names, then put blocks of assignments (separated by newlines) before the closing ?> to add entries | columns="nam1,nam2,nam3,..." %%% %%%nam1=...%%% nam2=... %%% %%%nam1=...%%% nam3=... |
+| [ErfurtWiki:view/MpiPlugins/SqlQuery "SqlQuery"]    | (disabled in the default distribution) allows to initiate a SQL query against the currently connected database, displays results of a SELECT | (SQL query simply inside of plugin tags) |
+| ~TableEditor | wrap an ordinary Wiki table into the <?plugi''''n...?> tag, because it then can be edited in a pseudo-wysiwyg fashion | (place the table markup inside of the plugin tag) |
+| [MetaWiki:WikiScript "WikiScript"]  | (not yet implemented) allows to use JavaScript-like code to dynamically generate page content and interoperate with the wiki engine through a safe API | (code simply inside of plugin tags) |
+| ~BrainFuck   | executes the given code snippet in the BF programming language | (give code inside of plugin tags) |
+| [ErfurtWiki:view/MpiPlugins/SetTitle "SetTitle"]    | overrides the shown title of the current page (which else is the same as the page name) | title="..." |
+| ~BugReport   | brings up a form as used on ErfurtWiki:BugReports | no parameters |
+
+Some plugins have special innovacation methods attached, which are activated
+by this syntax:
+<pre>
+   <?plu''''gin-link  [PluginName|MpiPlugins] ... ?>    (all plugins)
+   <?plu''''gin-input ...                               (rare)
+   <?plu''''gin-form, plugin-desc, plugin-doc           (rare)
+</pre>

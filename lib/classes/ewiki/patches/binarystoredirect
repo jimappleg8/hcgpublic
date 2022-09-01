@@ -1,0 +1,30 @@
+If you use the plugins/binary_store.php to save binary file outside of the
+SQL or dbff database, and you additonally store those plain files at a
+location which is accessible via your webserver, then you will find it
+useful to let ewiki generate URLs directly to there.
+This means binary stuff like images is kept separate from the database and
+can thus be accessed by the http clients directly. If you however direct
+them directly to the stored files, you will loose some advantages of the
+ewiki ?binary= code, like the Content-Type headers for example (you should
+work around that by telling your webserver to utilize mime_magic for all
+files in that binary_store directory).
+
+
+- edit ewiki.php
+- find the "function ewiki_script_binary("
+- add after the line "$url = ewiki_script(..." following:
+
+      if (!$upload) {
+        $url = "http://www.mywikiserver.net/wiki/files/binary_store/"
+               . rawurlencode($id);
+      }
+
+- fin
+
+The above example assumes, that you directed the "binary_store" plugin to
+save your binary files as is in the "/wiki/files/binary_store/" subdirectory
+(see also your personal EWIKI_DB_STORE_DIRECTORY).
+
+This is an example and will not work if you do copy&paste. The author
+provides no support for this patch.
+

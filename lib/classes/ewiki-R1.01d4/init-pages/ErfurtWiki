@@ -1,0 +1,18 @@
+This site runs »!ErfurtWiki«, which is an implementation of the WikiWikiWeb
+hypertext system. It allows everybody who comes along to edit and create
+new pages very easily.
+
+* read the WikiHowto if you'd like to know what this can be used for
+* learn how to CreatePages
+* just click on [EditThisPage] to change the contents of a page
+* make friends with WikiMarkup
+* visit the [GuestBook|ErfurtWiki:GuestBook] or the SandBox and NotePad to play with it
+* SearchPages or go to the list of NewestPages
+* there are also lists of the MostVisitedPages, MostOftenChangedPages and recently UpdatedPages
+
+ErfurtWiki is implemented in the PHP scripting language and mainly contained
+in one script file. It was implemented more like a library and thus allows
+very quick integration into existing web sites, also because it does not
+enforce a specific page layout or requires you to chose from a few factory
+page themes/skins. See the FeatureList or SoftwareNotes for what it can do.
+

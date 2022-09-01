@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+   <title>hcgPublic Documentation</title>
+   <link rel="STYLESHEET" type="text/css" href="docs.css">
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="topHeader">
+   hcgPublic Documentation
+</div>
+
+<div id="docTitle">
+   User Manual
+</div>
+
+<div id="content">
+
+<p class="breadcrumbs"><a href="index.html">User Manual</a> > StoreLocator Module</p>
+
+<h1>StoreLocator Module</h1>
+
+<div class="tag">
+<h2>all_locator_results</h2>
+<pre>
+&lt;?php get("storelocator.all_locator_results", [$site_id], [$tpl]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Displays stores near a given zip code using our both our local store database and the IRI database.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>iri_locator_results</h2>
+<pre>
+&lt;?php get("storelocator.iri_locator_results", [$site_id], [$tpl]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Displays stores near a given zip code using the IRI store database. This database is accessed remotely via XML.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>local_locator_results</h2>
+<pre>
+&lt;?php get("storelocator.local_locator_results", [$site_id], [$tpl]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Displays stores near a given zip code using our local store database.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>store_locator_form</h2>
+<pre>
+&lt;?php get("storelocator.store_locator_form", [$loc_code], [$site_id], [$tpl]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Displays the store locator form so people can enter their zip code and get a list off stores.</p>
+</div> <!-- tag -->
+
+
+</div> <!-- content -->
+
+</div> <!-- container -->
+
+</body>
+</html>

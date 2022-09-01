@@ -1,0 +1,623 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- generated using Randy, the patXMLRenderer -->
+<html>
+<head>
+	<title>patUser Documentation</title>
+	<meta http-equiv="Description" content="">
+	<meta http-equiv="Keywords" content="">
+	<link rel="stylesheet" href="styles/offline.css" type="text/css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#000000" alink="#000000" vlink="#000000" marginwidth="8" marginheight="0" topmargin="0" leftmargin="8" rightmargin="8" bottommargin="0">
+
+	
+	
+	
+	
+		
+		<table border="0" cellpadding="0" cellspacing="0" width="90%"><tr><td>
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Permission Management made easy</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					patUser helps you managing permissions the make certain parts of your website only accessable
+					to certain users. Of course patUser stores the permissions in a MySQL table. The structure of the table should
+					at least contain these fields:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="3" cellspacing="1" bgcolor="#3F6E99" width="100%">
+
+					<tr>
+
+						<td class="lite" bgcolor="#EFEFEF" valign="top"><b>fieldname</b>
+</td>
+
+						<td class="lite" bgcolor="#EFEFEF" valign="top"><b>fieldtype</b>
+</td>
+
+						<td class="lite" bgcolor="#EFEFEF" valign="top"><b>description</b>
+</td>
+
+					
+</tr>
+
+					<tr>
+
+						<td class="lite" bgcolor="#EFEFEF" valign="top">id</td>
+
+						<td class="lite" bgcolor="#EFEFEF" valign="top">integer field</td>
+
+						<td class="lite" bgcolor="#EFEFEF" valign="top">This field either stores the user or group id for the permission</td>
+
+					
+</tr>
+
+					<tr>
+
+						<td class="lite" bgcolor="#EFEFEF" valign="top">id_type</td>
+
+						<td class="lite" bgcolor="#EFEFEF" valign="top">enum('user','group')</td>
+
+						<td class="lite" bgcolor="#EFEFEF" valign="top">
+							This field defines wether the id stored in the previous field
+							references a user or a group.
+						</td>
+
+					
+</tr>
+
+					<tr>
+
+						<td class="lite" bgcolor="#EFEFEF" valign="top">perms</td>
+
+						<td class="lite" bgcolor="#EFEFEF" valign="top">set('read','delete','modify','add')</td>
+
+						<td class="lite" bgcolor="#EFEFEF" valign="top">
+							This is were the permissions are stored.
+						</td>
+
+					
+</tr>
+
+				
+</table>
+<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><img src="img/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					Of course you may change the name of the fields, but be sure to set the names correctly
+					using patUsers() setPermTable() and setPermFields() functions.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					Using this table structure you are able to tell patUser that for example user with
+					the user id has read access or may add anything. As you see permissions can only be
+					added globally. So you should at at least one field to the table, that stores the
+					part of your website for which the permission is set. You may again use setPermFields()
+					to do this (we advise you to do this in your prepend.php).
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">$user-&gt;setPermFields( array( &quot;id&quot;      =&gt; &quot;id&quot;,
+                             &quot;id_type&quot; =&gt; &quot;id_type&quot;,
+                             &quot;perms&quot;   =&gt; &quot;perms&quot;,
+                             &quot;part&quot;    =&gt; &quot;part&quot; )
+                    );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					This will use the default names for the required fields (id, id_type and perms) and tell
+					patUser that there is an additional field, which stores any detail for the permission.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Adding and deleting permissions</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					For adding and deleting permissions there are two functions:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">addPermission()</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">deletePermission()</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td></tr></table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					To add a permission, you just call addPermission() which accepts only an
+					associative array as the only parameter. A typical function call could look
+					like this:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">$user-&gt;addPermission( array( &quot;id_type&quot; =&gt; &quot;user&quot;,  // adding permission for a user
+                             &quot;id&quot;      =&gt; 5,       // user id is 5
+                             &quot;part&quot;    =&gt; &quot;news&quot;   // part of the site
+                             &quot;perms&quot;   =&gt; array( &quot;read&quot;, &quot;delete&quot; )
+                            )
+                    );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					With this line you would grant the user read and delete permission for the news part of your site.
+					If you want to grant him access to only some of the news, you could possibly add another field
+					to the permFields using setPermFields() an call it topic...
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					Deleting permissions works exactly the same ways and thus we won't explain it here.
+					You could easily remove the 'delete' permission and the 'read' permission would remain
+					in the database.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Deleting all permissions for a user or group in a part</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					The only values required when calling the deletePermission() function are
+					id_type and id. If you leave out the other parameters, all permissions of the user will be deleted.
+					If you call it with array( &quot;id_type&quot; =&gt; &quot;user&quot;, &quot;id&quot; =&gt; 5, &quot;part&quot; =&gt; &quot;news&quot; ) all permission the user
+					5 had in the news part will be deleted.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Getting and checking permissions</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					patUser supplies two more functions that are used in the permission management. One is
+					to get all or certain permissions the other can be used to check wether a user is allowed
+					to do something.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					To get all permissions of a user, you should use this command:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">$perms = $user-&gt;getPermissions( array( &quot;id_type&quot; =&gt; &quot;user&quot;,
+                                       &quot;id&quot;      =&gt; 5 ) );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					To get the permissions the user has in a certain part use:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">$perms = $user-&gt;getPermissions( array( &quot;id_type&quot; =&gt; &quot;user&quot;,
+                                       &quot;id&quot;      =&gt; 5 )
+                                       &quot;part&quot;    =&gt; &quot;news&quot; );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					getPermissions() accepts a second parameter, which enables you to use
+					a feature that is seldomly needed. By default, getPermissions also fetches
+					the permissions of all groups the user has joined and adds them to the user
+					permission. When setting the second parameter to &quot;user&quot;, only the permission
+					directly related to the user will be returned, when using &quot;group&quot; only the
+					permissions of the groups he has joined will be returned.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					To check wether a user has the right to add news, you may use this function:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">$user-&gt;hasPermission( &quot;id_type&quot; =&gt; &quot;user&quot;,
+                      &quot;id&quot;      =&gt; 5,
+                      &quot;part&quot;    =&gt; &quot;news&quot;,
+                      &quot;perms&quot;   =&gt; array( &quot;add&quot; ) );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					If the user has the permission to add news, this function will return true - otherwise
+					it will return false.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td align="center">
+			<table width="80%" border="0" cellpadding="0" cellspacing="0"><tr><td bgcolor="#000000"><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"></td></tr></table>
+			<table width="80%" border="0" cellpadding="2" cellspacing="0">
+			<tr>
+				<td><img src="img/offline/px.gif" width="23" height="1" alt="" border="0"></td>
+				<td valign="top" width="1%"><img src="img/offline/icon_tip.gif" width="43" height="58" alt="" border="0" vspace="3"></td>
+				<td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td>
+				<td>
+					<img src="img/offline/px.gif" width="1" height="6" alt="" border="0"><br>
+			
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+						<b>Using global permissions</b><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+						
+					When setting global permissions (they consist only of id_type, id and perms), they
+					are valid for all parts or action that you have in your application. So the above example
+					will also return true, if you added &quot;add&quot; permission for the user 5 without specifying
+					a part.
+				
+					</font>
+				</td>
+				<td><img src="img/offline/px.gif" width="30" height="1" alt="" border="0"></td>
+			</tr>
+			</table>
+			<table width="80%" border="0" cellpadding="0" cellspacing="0"><tr><td bgcolor="#000000"><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"></td></tr></table>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+		</td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					hasPermission accepts two additional parameters: the second specifies wether the user
+					needs to have all permissions specified or if one permission is sufficient.
+					With the third you may tell patUser, that group permissions of the joined groups should
+					not be fetched....
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>API documentation</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				These functions are those available for the above features:
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>setPermTable</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">set tablename that contains permissions<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>string</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$table<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">name of the table that contains permissions</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>setPermFields</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">set fieldnames that are used in the permissions<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$fields<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">assoc array containing fieldnames of the permission table</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">bool <b>addPermission</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">add permission(s)<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$perm<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">array containing the permission(s) to be added</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Returns:</b></font><br><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>bool</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$success<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"> true if the permission could be added, false otherwise</font></td></tr></table></td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">bool <b>deletePermission</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">delete permission(s)<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$perm<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">array containing the permission(s) to be deleted</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Returns:</b></font><br><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>bool</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$success<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"> true if the permission could be deleted, false otherwise</font></td></tr></table></td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">array <b>getPermissions</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">get all permissions of a user<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$clause = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">params for the permissions (any fields in your permission table)</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>string</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$type = &quot;both&quot;]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">get user or group permissions or both ( both|user|group )</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Returns:</b></font><br><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$perms<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"> permissions of the user</font></td></tr></table></td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">boolean <b>hasPermission</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">check, wether user has a permission<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$perm = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">permission(s) to be checked</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>string</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$mode = &quot;all&quot;]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">all or any permission (all|any)</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>boolean</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$includeGroups = true]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">should group permissions be checked,too?</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Returns:</b></font><br><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>boolean</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$hasPermission<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"> true, if the user has the permission, false otherwise</font></td></tr></table></td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+		
+		<center><table width="90%" border="0" cellpadding="0" cellspacing="0"><tr><td><a href="patUserDocUserGroups.html" class="link"><img src="img/offline/footernav_prev.gif" width="48" height="23" alt="" border="0"></a></td>
+<td align="right"><a href="patUserDocErrors.html" class="link"><img src="img/offline/footernav_next.gif" width="48" height="23" alt="" border="0"></a></td>
+</tr></table></center><table bgcolor="#608DB7" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td><table border="0" cellpadding="0" cellspacing="0"><tr><td><img src="img/offline/footerbar_start.gif" width="102" height="16" alt="" border="0"></td><td><a href="javascript:window.print();"><img src="img/offline/footerbar_print.gif" width="59" height="16" alt="" border="0"></a></td></tr></table></td><td align="right"><table border="0" cellpadding="0" cellspacing="0"><tr><td nowrap><font face="verdana,arial,tahoma,helvetica" size="-2" class="litewhite" color="#ffffff">Last Updated: 2001-11-03 13:31:36<br></font></td><td><a href="#top"><img src="img/offline/footerbar_end.gif" width="31" height="16" alt="Jump to the top of the page (of course only if you're far enough down...)" border="0"></a></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="30" alt="" border="0"><br></td><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td></tr></table></td><td><img src="img/offline/px.gif" width="15" height="0" alt="" border="0"></td></tr></table>
+	
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+   <title>hcgPublic Documentation</title>
+   <link rel="STYLESHEET" type="text/css" href="docs.css">
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="topHeader">
+   hcgPublic Documentation
+</div>
+
+<div id="docTitle">
+   User Manual
+</div>
+
+<div id="content">
+
+<p class="breadcrumbs"><a href="index.html">User Manual</a> > Random Module</p>
+
+<h1>Random Module</h1>
+
+<div class="tag">
+<h2>random_quote</h2>
+<pre>
+&lt;?php [echo] get("random.random_quote", ["site_id"]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Returns a random quote or other line of text from a file: <base dir>inc/quotes.txt". The quote is returned rather than printed directly (echo'd) in case it is to be used in a template and needs to be passed as a variable.</p>
+<p>This tag can return any string from the /inc/quotes.txt file, so it could be used for other purposes such as a random hint of the day.</p>
+<p>The site ID can be overridden so the quote is pulled from another site's quote file. This makes it possible for multiple sites to share a single quote file.</p>
+<h3>Template Variables</h3>
+<p class="first">There is no template for this tag.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>random_image</h2>
+<pre>
+&lt;?php [echo] get("random.random_image", ["site_id"]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Returns a random image filename and the "alt" text for the image from a file: &lt;doc_root&gt;/inc/&lt;site_id&gt;_images.txt". The file must contain filenames, one per line, in the form <code>/path/to/file/filename.jpg|Image alt text</code>.
+<p>The filename is returned rather than printed directly (echo'd) in case it is to be used in a template and needs to be passed as a variable.</p>
+<p>The site ID can be overridden so the filename is pulled from another site's quote file. This makes it possible for multiple sites to share a single image file.</p>
+<h3>Template Variables</h3>
+<p class="first">There is no template for this tag.</p>
+</div> <!-- tag -->
+
+
+</div> <!-- content -->
+
+</div> <!-- container -->
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+
+CREATE TABLE wf_contactus (
+  id int(11) NOT NULL auto_increment,
+  form_id char(32),
+  fname char(25),
+  lname char(25),
+  address1 char(40),
+  address2 char(40),
+  city char(30),
+  state char(2),
+  country char(25),
+  zip char(10),
+  phone char(14),
+  email char(255),
+  comment text,
+  favorites text,
+  site char(10),
+  child1 char(40),
+  childdob1 char(8),
+  childgender1 char(1),
+  child2 char(40),
+  childdob2 char(8),
+  childgender2 char(1),
+  child3 char(40),
+  childdob3 char(8),
+  childgender3 char(1),
+  marketing char(3),
+  release char(3),
+  submit_ts bigint(20) NOT NULL default '0',
+  PRIMARY KEY (id)
+) TYPE=MyISAM;
+   

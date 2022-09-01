@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+   <title>hcgPublic Documentation</title>
+   <link rel="STYLESHEET" type="text/css" href="docs.css">
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="topHeader">
+   hcgPublic Documentation
+</div>
+
+<div id="docTitle">
+   User Manual
+</div>
+
+<div id="content">
+
+<p class="breadcrumbs"><a href="index.html">User Manual</a> > Blocks Module</p>
+
+<h1>Blocks Module</h1>
+
+<div class="tag">
+<h2>block</h2>
+<pre>
+&lt;?php [echo] get("blocks.block", $block_name, [$site_id]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Returns the block text for the given <code>$block_name</code>, <code>$site_id</code> (defaults to current site), and the current <code>$_SESSION['language']</code>. The data is returned (rather than echo'd) in case it needs to be assigned to a variable. To display it directly, you will need to put an <code>echo</code> statement before the <code>get()</code> command.</p>
+<p>This tag provides functionality that is as close to a standard CMS as we have. It allows for blocks of HTML to be written to the database and displayed on a page. The block can contain an entire page, or just a portion of it.</p>
+<p>Blocks can have the same Block Name but different languages so that you can create multi-language pages this way. Block Names must be unique within a site ID.</p>
+<h3>Template Variables</h3>
+<p class="first">This tag does not use a template.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>page</h2>
+<pre>
+&lt;?php get("blocks.page", $page_name, [$site_id]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Returns an array containing the page metadata for the given <code>$page_name</code>, <code>$site_id</code> (defaults to current site), and the current <code>$_SESSION['language']</code>. The data is returned (rather than echo'd) since it will need to be assigned to a variable.</p>
+<p>This tag and it's associated database table are intended to extend the block tag and allow for the block tag to be used to store whole pages. The idea is that you would create a page entry and block entry with the same Page/Block Name and use them to build the whole page. Language strings would be used to change language info in the header and footer.</p>
+<h3>Template Variables</h3>
+<p class="first">This tag does not use a template.</p>
+</div> <!-- tag -->
+
+
+</div> <!-- content -->
+
+</div> <!-- container -->
+
+</body>
+</html>

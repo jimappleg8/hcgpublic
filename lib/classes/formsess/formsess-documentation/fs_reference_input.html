@@ -1,0 +1,96 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>&lt;fs:input /&gt;</title>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.61.3">
+<link rel="home" href="index.html" title="Formsess">
+<link rel="up" href="fs_reference.html" title="Chapter 10. Reference">
+<link rel="previous" href="fs_reference_iferrormessage.html" title="&lt;fs:ifErrormessage /&gt;">
+<link rel="next" href="fs_reference_option.html" title="&lt;fs:option /&gt;">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">&lt;fs:input /&gt;</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="fs_reference_iferrormessage.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 10. Reference</th>
+<td width="20%" align="right"> <a accesskey="n" href="fs_reference_option.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div><div><h2 class="title" style="clear: both">
+<a name="fs_reference_input"></a>&lt;fs:input /&gt;</h2></div></div>
+<div></div>
+</div>
+<p>
+        fs:input is similar to (X)HTML's input tag. Depending on the <i class="parameter"><tt>type</tt></i> parameter,
+        a standard input control is displayed.
+      </p>
+<p>
+        Parameters:
+        </p>
+<div class="itemizedlist"><ul type="disc">
+<li>
+<i class="parameter"><tt>name</tt></i>: name of the form field</li>
+<li>
+<i class="parameter"><tt>type</tt></i>: input type (text, hidden, password, checkbox, radio)</li>
+<li>
+<i class="parameter"><tt>value</tt></i>: mandatory for radio and checkbox</li>
+</ul></div>
+<p>
+        Any other parameter that applies to the matching (X)HTML control is valid for &lt;fs:input /&gt;
+      </p>
+<p>
+        Sample:
+        </p>
+<pre class="programlisting">
+
+TEXT
+&lt;fs:input type=&quot;text&quot; name=&quot;foo&quot; maxlength=&quot;20&quot; /&gt;
+
+HIDDEN
+&lt;fs:input type=&quot;hidden&quot; name=&quot;hiddenfoo&quot; /&gt;
+
+PASSWORD
+&lt;fs:input type=&quot;password&quot; name=&quot;passfoo&quot; class=&quot;someclass&quot; /&gt;
+
+RADIO
+&lt;fs:input type=&quot;radio&quot; name=&quot;radiofoo&quot; value=&quot;1&quot; /&gt;
+&lt;fs:input type=&quot;radio&quot; name=&quot;radiofoo&quot; value=&quot;2&quot; /&gt;
+&lt;fs:input type=&quot;radio&quot; name=&quot;radiofoo&quot; value=&quot;3&quot; /&gt;
+
+CHECKBOX
+&lt;fs:input type=&quot;checkbox&quot; name=&quot;radiochk&quot; value=&quot;1&quot; /&gt;
+&lt;fs:input type=&quot;checkbox&quot; name=&quot;radiochk&quot; value=&quot;2&quot; /&gt;
+&lt;fs:input type=&quot;checkbox&quot; name=&quot;radiochk&quot; value=&quot;3&quot; /&gt;
+        
+        </pre>
+<p>
+      </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="fs_reference_iferrormessage.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="fs_reference.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="fs_reference_option.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">&lt;fs:ifErrormessage /&gt; </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> &lt;fs:option /&gt;</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

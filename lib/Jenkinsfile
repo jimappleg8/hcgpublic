@@ -1,0 +1,76 @@
+pipeline {
+    agent any
+
+    parameters {
+		choice choices: ['Dev', 'Staging', 'Production'], description: 'Choose which environment to push changes to.', name: 'DEPLOY_TO'
+	}
+
+	environment {
+		DEPLOY_TO = "${params.DEPLOY_TO}"
+	}
+
+    stages {
+        stage('deploy-dev') {
+        	when {
+        		environment ignoreCase: true, name: 'DEPLOY_TO', value: 'dev'
+        	}
+            steps {
+				// copy files to bolwebdev2
+				sh 'cd ${WORKSPACE}'
+				sh 'sudo chown jenkins:jenkins *'
+				// create the directory only if it doesn't already exist
+				sh 'ssh webadmin@bolwebdev2 \'sudo mkdir -p /var/opt/httpd/lib/\''
+				// prepare the dev server to receive files by changing the owner
+				sh 'ssh webadmin@bolwebdev2 \'sudo chown -R webadmin:webadmin /var/opt/httpd/lib/\''
+				// copy files from control server to dev
+				sh 'rsync -rav -e ssh --delete ${WORKSPACE}/lib/ webadmin@bolwebdev2:/var/opt/httpd/lib/'
+				// fix the owner/permissions on the dev server
+				sh 'ssh webadmin@bolwebdev2 \'sudo chown -R apache:apache /var/opt/httpd/lib/\''
+				sh 'ssh webadmin@bolwebdev2 \'sudo chmod -R g+w /var/opt/httpd/lib/\''
+            }
+        }
+        stage('deploy-staging') {
+        	when {
+        		environment ignoreCase: true, name: 'DEPLOY_TO', value: 'staging'
+        	}
+            steps {
+				// copy files to bolwebstage1
+				sh 'cd ${WORKSPACE}'
+				sh 'sudo chown jenkins:jenkins *'
+				// create the directory only if it doesn't already exist
+				sh 'ssh webadmin@bolwebstage1 \'sudo mkdir -p /var/opt/httpd/lib/\''
+				// prepare the staging server to receive files by changing the owner
+				sh 'ssh webadmin@bolwebstage1 \'sudo chown -R webadmin:webadmin /var/opt/httpd/lib/\''
+				// copy files from control server to staging
+				sh 'rsync -rav -e ssh --delete ${WORKSPACE}/lib/ webadmin@bolwebstage1:/var/opt/httpd/lib/'
+				// fix the owner/permissions on the staging server
+				sh 'ssh webadmin@bolwebstage1 \'sudo chown -R apache:apache /var/opt/httpd/lib/\''
+				sh 'ssh webadmin@bolwebstage1 \'sudo chmod -R g+w /var/opt/httpd/lib/\''
+            }
+        }
+        stage('deploy-production') {
+        	when {
+        		environment ignoreCase: true, name: 'DEPLOY_TO', value: 'production'
+        	}
+            steps {
+				// copy files to bolwebserv3 and 4
+				sh 'cd ${WORKSPACE}'
+				sh 'sudo chown jenkins:jenkins *'
+				// create the directories only if they don't already exist
+				sh 'ssh webadmin@bolwebserv3 \'sudo mkdir -p /var/opt/httpd/lib/\''
+				sh 'ssh webadmin@bolwebserv4 \'sudo mkdir -p /var/opt/httpd/lib/\''
+				// prepare the production servers to receive files by changing the owner
+				sh 'ssh webadmin@bolwebserv3 \'sudo chown -R webadmin:webadmin /var/opt/httpd/lib/\''
+				sh 'ssh webadmin@bolwebserv4 \'sudo chown -R webadmin:webadmin /var/opt/httpd/lib/\''
+				// copy files from control server to production
+				sh 'rsync -rav -e ssh --delete ${WORKSPACE}/lib/ webadmin@bolwebserv3:/var/opt/httpd/lib/'
+				sh 'rsync -rav -e ssh --delete ${WORKSPACE}/lib/ webadmin@bolwebserv4:/var/opt/httpd/lib/'
+				// fix the owner/permissions on the production servers
+				sh 'ssh webadmin@bolwebserv3 \'sudo chown -R apache:apache /var/opt/httpd/lib/\''
+				sh 'ssh webadmin@bolwebserv4 \'sudo chown -R apache:apache /var/opt/httpd/lib/\''
+				sh 'ssh webadmin@bolwebserv3 \'sudo chmod -R g+w /var/opt/httpd/lib/\''
+				sh 'ssh webadmin@bolwebserv4 \'sudo chmod -R g+w /var/opt/httpd/lib/\''
+            }
+        }
+    }
+}

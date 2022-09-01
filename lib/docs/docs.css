@@ -1,0 +1,33 @@
+body { background:#369 none; margin:0; padding:0; color:#000;
+  font:x-small/1.5em verdana, arial, helvetica, sans-serif; 
+  voice-family: "\"}\""; voice-family:inherit; font-size:small; } 
+  html>body {font-size:small;}
+
+b { font-weight: bold; }
+
+.breadcrumbs { font-size:80%; }
+.breadcrumbs a { color:#000; }
+
+h1 { font-weight:bold; font-size:160%; }
+h2 { font-weight:bold; font-size:120%; margin-top:1em; }
+h3 { font-weight:bold; font-size:100%; padding-bottom:0; margin-bottom:0; }
+
+#container { margin:12px; }
+
+#content { background:white; font-family:verdana, sans-serif; 
+  padding:10px 10% 36px 10%; text-align:left; font-size:10pt; }
+#content pre { background-color:#ffd; padding:0.5em; margin:1em 0; 
+  color:#000; font-size:1em; border:thin solid #903; }
+#content pre .new { color:red; }
+
+#topHeader { font-family:Arial, Helvetica, sans-serif; font-size:12px;
+  font-weight:bold; text-align:left; text-decoration:none; color:#FFF;
+  background:#69C none; padding:3px 0 2px 24px; }
+
+#docTitle { font-family:Arial, Helvetica, sans-serif; font-size:18px;
+  font-weight:bold; text-align:left; color:#666; background:#ADF none; 
+  padding:8px 0 6px 24px; }
+
+.tag { border:1px dashed #666; padding:0 12px 12px 12px; margin-bottom:18px; }
+.tag h2 { color:#369 }
+.tag p.first { margin-top:0; }

@@ -1,0 +1,129 @@
+
+! Language settings
+
+__Q:__ Where can you switch the language for the »!ErfurtWiki«?
+
+__A:__ Nowhere! It depends on the settings of your browser. In more recent
+browsers there is a way to define your preferred languages (yes, you can
+tell your browser which language you like most, and what other languages are
+acceptable).
+
+
+
+! Remove
+
+__Q:__ What for are the settings in "default settings are good settings - sometimes"?
+
+__A:__ please see the README file, most configuration constants are explained there,
+ask the author if something is unmentioned and unclear or annoying.
+As ewiki.php can be included() in very different environments these 
+settings may allow you to integrate it more sane and nicely. However
+usually the distributed settings are very __ok__.
+
+
+
+! no errors, but nothing happens
+
+__Q:__ There is no database-mistake, but I can't see or edit all files. 
+what's the reason?
+
+__A:__ In the current release: go to ewiki.php and make a "echo mysql_error();"
+in function "ewiki_database" before "return;". This might help to localise
+the problems :-)
+Reasons can be very different, so feel free to contact the author for support (icq95596825, mail: mario@erphesfurt.de).
+
+
+
+
+! Bad Backslashes
+
+__Q:__ I installed ErfurtWiki which is a very easy to use and efficient wiki
+but whenever I type ' or \ in the edit page it ouputs \' and \\. I am
+using last version of ErfurtWiki R1.00d2 on Apache 1.3 under win32 ?
+
+__A:__ This is not a bug in ErfurtWiki, Win32 or Apache, but a PHP configuration
+error in the __php.ini__. You should disable the __magic_quotes_gpc__ setting
+or include the fragments/strip_wonderful_slashes.php workaround script for
+servers you don't have access to the php.ini. In most cases this fixes
+that problem. -- milky
+
+
+
+! dash sign link titles and tables
+
+__Q__: Links with vertical bars within tables glitch like this:
+%%%
+==| ~[test link | http://www.yahoo.com/] |==
+
+__A__: Use the  new link entitling
+scheme using ~["double quotes" ExtendedWikiMarkup] to avoid this.  Double
+quotes is no WikiStandard and very specific to ErfurtWiki but handy.
+
+
+
+! Feature Requests
+
+__Q:__ Is it possible to have a page author listed with a name (perhaps as a
+WikiWord) in addition to the IP address?
+
+__A:__ The ewiki.php core script respects the "$ewiki_author" variable 
+and would write this into that author field of a saved wiki page (besides
+the usual IP address).
+  It additionally respects the HTTP "From:" field (like the anonymous-ftp
+password), that however none of the current browsers supports - personally I
+use a patched 'w3m' which actually does ;) so my changes usually carry my
+email address.
+
+However the example "yoursite.php" scripts distributed in the 
+tarball do not set the $ewiki_author variable. But it __is__
+possible to add this in your wikis layout script (yoursite.php).
+And there is in fact already a plugin to do that. Please see the README file
+or the plugins/ directore for page_wikiuserlogin.
+
+
+----
+!! Other discussions
+----
+
+
+! editable menu
+
+[anonymous]: The main menu is not available for editing. There should be a
+link for editing the main menue too. The menu page should be integrated into
+the ErfurtWiki!
+
+[MarioSalzer "milky"]: Once again, the "ErfurtWiki" is a library, neither
+a menu or a specific page layout belongs to it. What you can see here is the
+example-1 wrapper around the ewiki script, you really need your own layout
+to do that. However a "MainMenu" has now been integrated into the distributed
+example-1 wrapper (experimentally).
+
+
+! New default layout uncompatible with Konqueror Browser
+
+With the new style (since july'03) the ewiki default layout causes the
+menus to be displayed on very right of page in Konqueror browser (3.0.4).
+Probabely problem w/ table-tag. Maybe the same mistake causes main part of
+page when using the ''nuke''-layout to be displayed very wide (same
+browser). -- MassenMensch
+
+[MarioSalzer "milky"]: It looks as it should in all my Mozilla versions, and
+it also works in Opera and IE (less nicely of course). The Konqueror really
+breaks thinks a bit (has problems with the "float:" as I figured out).
+However the menu on the right side is a good thing and intended to be there,
+it is more comfortable for lynx- and screenreader-users.
+
+["APF"  AndyFundinger]:  It sounds like you are describing the intended
+look.  Personally I'm not sure it's an improvement but it is usable and I
+expect most users design their own layout anyway.
+
+["I" MarioSalzer] hope they do, this is the reason that lead to the new
+layout.
+
+[anonymous]: sorry, but looks like hell in Safari.
+
+["milky" MarioSalzer]: That's because of their KHTML (KDE WebCore) rendering
+engine. It has some trouble with CSS layouts (which utilize the "float:"
+thingi to work completely without tables), see Konqueror notes above.
+
+

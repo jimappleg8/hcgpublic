@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>trigger_error()</title>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.61.3">
+<link rel="home" href="index.html" title="Formsess">
+<link rel="up" href="formsess_reference.html" title="Chapter 7. Method reference">
+<link rel="previous" href="formsess_setType.html" title="setType()">
+<link rel="next" href="formsess_in_the_templates.html" title="Part III. Formsess in the template">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">trigger_error()</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="formsess_setType.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 7. Method reference</th>
+<td width="20%" align="right"> <a accesskey="n" href="formsess_in_the_templates.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div><div><h2 class="title" style="clear: both">
+<a name="formsess_trigger_error"></a>trigger_error()</h2></div></div>
+<div></div>
+</div>
+<div class="funcsynopsis">
+<table border="0" summary="Function synopsis" cellspacing="0" cellpadding="0" style="padding-bottom: 1em">
+<tr>
+<td><code class="funcdef">void <b class="fsfunc">trigger_error</b>(</code></td>
+<td>
+<var class="pdparam">$field</var>, </td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<var class="pdparam">$error_message</var><code>)</code>;</td>
+<td> </td>
+</tr>
+</table>
+<table border="0" summary="Function argument synopsis" cellspacing="0" cellpadding="0">
+<tr>
+<td>string  </td>
+<td>
+<var class="pdparam">$field</var>;</td>
+</tr>
+<tr>
+<td>string  </td>
+<td>
+<var class="pdparam">$error_message</var>;</td>
+</tr>
+</table>
+</div>
+<p>
+        Add an error for a field.
+      </p>
+<p>
+        Very useful when you want to run some custom server side validation and benefit of formsess
+        error messages mechanisms. Just trigger an error on any field you want with the error message
+        of your choice, and it will be displayed as if it had been triggered by a built-in validator.
+      </p>
+<p>
+        If a value was previously saved for that field, it is erased.
+      </p>
+<p>
+        The <i class="parameter"><tt>$error_code</tt></i> parameter is obsolete.
+      </p>
+<p>
+        See also <a href="formsess_reset.html" title="reset()"><tt class="function">reset</tt></a>,
+        <a href="formsess_hasErrors.html" title="hasErrors()">hasErrors</a>
+      </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="formsess_setType.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="formsess_reference.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="formsess_in_the_templates.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">setType() </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Part III. Formsess in the template</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

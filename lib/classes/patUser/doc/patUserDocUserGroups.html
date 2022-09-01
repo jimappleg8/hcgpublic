@@ -1,0 +1,748 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- generated using Randy, the patXMLRenderer -->
+<html>
+<head>
+	<title>patUser Documentation</title>
+	<meta http-equiv="Description" content="">
+	<meta http-equiv="Keywords" content="">
+	<link rel="stylesheet" href="styles/offline.css" type="text/css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#000000" alink="#000000" vlink="#000000" marginwidth="8" marginheight="0" topmargin="0" leftmargin="8" rightmargin="8" bottommargin="0">
+
+	
+	
+	
+		
+		<table border="0" cellpadding="0" cellspacing="0" width="90%"><tr><td>
+			<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="abstract"><b>
+				Organizing users in groups makes it easy to assign a permission to several users at once.
+			</b><br></font>
+			<img src="img/offline/px.gif" width="1" height="14" alt="" border="0"><br>
+		</td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Defining tables</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					To work with groups, you have to tell patUser on startup, where group data is stored.
+					Of course the best way is again, to include the following lines in your prepend.php:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">01 $user-&gt;setGroupTable( &quot;groups&quot; );
+02 $user-&gt;setGroupFields( array( &quot;primary&quot; =&gt; &quot;gid&quot;, &quot;name&quot; =&gt; &quot;name&quot; ) );
+03 $user-&gt;setGroupRelTable( &quot;usergroups&quot; );
+04 $user-&gt;setGroupRelFields( array( &quot;uid&quot; =&gt; &quot;uid&quot;, &quot;gid&quot; =&gt; &quot;gid&quot; ) );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					In line 01 you define the table, that stores the group data.
+					In line 02 you define the fieldnames of the group table. Required is a primary
+					key (default is &quot;gid&quot;) and a name for each group.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					To organize users in groups, you need a table that stores user-group relations.
+					This table consists of two fields: one that stores a user id and one that stores
+					a group id. In lines 03 and 04 you define the name of the table and how you called
+					the fields in the table.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Working with groups</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					As you've definded the tables and finished setup, you may use groups
+					in your website. patUser provides a lot of functions for these tasks.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">
+$groups = $user-&gt;getGrous( array( &quot;gid&quot;, &quot;name&quot; ),
+                           array( array( &quot;field&quot; =&gt; &quot;name&quot;
+                                         &quot;value&quot; =&gt; &quot;pat&quot;,
+                                         &quot;match&quot; =&gt; &quot;contains&quot; ) ),
+                           array( &quot;orderby&quot; =&gt; &quot;name&quot; )
+                         );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					This function is similar to the getUsers() method. Take a look at
+					
+	<a href="patUserDocUserData.html" class="link">Working with user data</a>
+ for more
+					information.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Modifying, adding and deleting groups</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					Similar to the functions for user data, we've implemented functions for working
+					with groups. These functions are in particular:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				<b>getGroupData()</b>
+
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+							This function retrieves data of a group.
+						
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+					</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				<b>modifyGroup()</b>
+
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+							This function modifies a group. The first parameter is used to identify the 
+							group and the second parameter is the new data for the group.
+						
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+					</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				<b>addGroup()</b>
+
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+							Use this function to add a group. It accepts an assoc array as the only parameter.
+							This array at least has to contain a name for the group.
+						
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+					</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				<b>deleteGroup()</b>
+
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+						<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+							Use this function to delete a group. It accepts an assoc array as the only parameter.
+							This array is used to identify a group, the easiest way to delete a group is supplying the group id.
+						
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+					</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td></tr></table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Organizing users in groups</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					With patUser you can organize users in group. We implemented several functions
+					that allow you to do this.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">$user-&gt;addUserToGroup( array( &quot;uid&quot; =&gt; 5, &quot;gid&quot; =&gt; 10 ) );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					This will add the user with the user id 5 to the group with the group id 10.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td align="center">
+			<table width="80%" border="0" cellpadding="0" cellspacing="0"><tr><td bgcolor="#000000"><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"></td></tr></table>
+			<table width="80%" border="0" cellpadding="2" cellspacing="0">
+			<tr>
+				<td><img src="img/offline/px.gif" width="23" height="1" alt="" border="0"></td>
+				<td valign="top" width="1%"><img src="img/offline/icon_tip.gif" width="43" height="58" alt="" border="0" vspace="3"></td>
+				<td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td>
+				<td>
+					<img src="img/offline/px.gif" width="1" height="6" alt="" border="0"><br>
+			
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+						<b>Getting IDs</b><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+						
+					Use identifyUser() and identifyGroup() to get user or group ids.
+				
+					</font>
+				</td>
+				<td><img src="img/offline/px.gif" width="30" height="1" alt="" border="0"></td>
+			</tr>
+			</table>
+			<table width="80%" border="0" cellpadding="0" cellspacing="0"><tr><td bgcolor="#000000"><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"></td></tr></table>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+		</td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">$user-&gt;removeUserFromGroup( array( &quot;uid&quot; =&gt; 5, &quot;gid&quot; =&gt; 10 ) );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					This will remove the user with the user id 5 from the group with the group id 10.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Which user is in which group?</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					Of course you will want to know which user is in which group.
+					patUser supplies three functions to retrieve this information:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">getJoinedGroups()</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">getUsersInGroup()</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top">
+			<img src="img/offline/px.gif" width="1" height="3" alt="" border="0"><br>
+			<img src="img/offline/bullet_ul.gif" width="9" height="9" alt="" border="0" hspace="6"><br>
+		</td>
+		<td class="content" valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">isMemberOfGroup()</font></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td></tr></table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					Take a look at the API documentation below for more information.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>API documentation</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				These functions are those available for the above features:
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>setGroupTable</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">set tablename that contains group info<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>string</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$table<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">name of the table that contains group data</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>setGroupFields</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">set fieldnames that contain group info<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$fields<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">assoc array containing fieldnames of the grouptable</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>setGroupRelTable</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">set tablename that contains user group relations<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>string</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$table<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">name of the table that contains user group relations</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>setGroupRelFields</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">set fieldnames that are used in the user group relations<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$fields<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">assoc array containing fieldnames of the user group relation table</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">array <b>getGroupData</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">fetch the group data from group table<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$fields = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">fields to get</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$clause = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">params to identify the group (like &quot;name&quot; =&gt; &quot;mygroup&quot;)</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Returns:</b></font><br><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$data<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"> data of the group</font></td></tr></table></td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>modifyGroup</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">modify an existing group<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$olddata<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">old data of the group</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$newdata<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">new data of the group</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">int <b>addGroup</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">adds a group<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$data = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">date for the group</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Returns:</b></font><br><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>int</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$gid<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"> ID of the group</font></td></tr></table></td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>deleteGroup</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">delete an existing group<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$groupdata = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">data used to identify a group</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>getGroups</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">get groups from the grouptable<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$fields = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">array containing fieldnames to be fetched</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$clause = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">array containing conditions for the where statement</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$options = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">array containing misc options</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>identifyGroup</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">identify a group by certain fields<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$fields<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">several fields to identify the group</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>boolean</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$createError = true]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">if set to false, no error will be added to errorlist if no group was found</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">bool <b>addUserToGroup</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">add a user to a group<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$relation<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">user id and group id</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Returns:</b></font><br><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>bool</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$success<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"> true if user could be added</font></td></tr></table></td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">bool <b>removeUserFromGroup</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">delete user(s) from group(s)<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$relation<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">user id and group id (use all to delete all users / groups )</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Returns:</b></font><br><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>bool</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$success<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"> true if user could be added</font></td></tr></table></td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">array <b>getJoinedGroups</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">get joined groups<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$options = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">several options (like orderby, limit, offset or uid)</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Returns:</b></font><br><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$joined<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"> array containing arrays with all data of the joined groups</font></td></tr></table></td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">array <b>getUsersInGroup</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">get users in group<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$fields<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">fields to get for the users (only from authTable)</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$options = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">several options (like orderby, limit, offset)</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Returns:</b></font><br><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$users<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"> array containing arrays with all requested data of the users in this group</font></td></tr></table></td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">boolean <b>isMemberOfGroup</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">check, if a user is in a group<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>int</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$uid<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">user id</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>int</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$gid<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">group id</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Returns:</b></font><br><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>boolean</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$member<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"> true, if user is in group, false otherwise</font></td></tr></table></td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+		
+		<center><table width="90%" border="0" cellpadding="0" cellspacing="0"><tr><td><a href="patUserDocUserData.html" class="link"><img src="img/offline/footernav_prev.gif" width="48" height="23" alt="" border="0"></a></td>
+<td align="right"><a href="patUserDocPermissions.html" class="link"><img src="img/offline/footernav_next.gif" width="48" height="23" alt="" border="0"></a></td>
+</tr></table></center><table bgcolor="#608DB7" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td><table border="0" cellpadding="0" cellspacing="0"><tr><td><img src="img/offline/footerbar_start.gif" width="102" height="16" alt="" border="0"></td><td><a href="javascript:window.print();"><img src="img/offline/footerbar_print.gif" width="59" height="16" alt="" border="0"></a></td></tr></table></td><td align="right"><table border="0" cellpadding="0" cellspacing="0"><tr><td nowrap><font face="verdana,arial,tahoma,helvetica" size="-2" class="litewhite" color="#ffffff">Last Updated: 2001-11-02 23:45:42<br></font></td><td><a href="#top"><img src="img/offline/footerbar_end.gif" width="31" height="16" alt="Jump to the top of the page (of course only if you're far enough down...)" border="0"></a></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="30" alt="" border="0"><br></td><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td></tr></table></td><td><img src="img/offline/px.gif" width="15" height="0" alt="" border="0"></td></tr></table>
+	
+</body>
+</html>

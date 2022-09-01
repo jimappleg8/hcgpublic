@@ -1,0 +1,67 @@
+The ErfurtWiki engine (see http://ewiki.berlios.de/) is rather advanced and provides a lot of extensions and features now. Note that this list is always incomplete, as there is now too much in ewiki to document it in detail and correctly enough, just have a look at the [http://erfurtwiki.sourceforge.net/?id=README.plugins "README.plugins"].
+
+* [http://www.php.net/ PHP]
+* easy integration into existing sites
+* __simple__ architecture
+* well documented, see [README]
+* __easy__ extension mechanism
+* admin tools/ via www and a powerful cmdline db admin tool
+* tries to be as __fast__ as possible (regex used only where absolutely necessary)
+* provides a high degree of customizeability
+* can handle case-insensitive WikiLinks
+* allows different databases
+** MySQL per default
+** flat_files (and faster compressed companion format)
+** anydb (PEAR::DB, ADOdb, dbx) for most other SQL dbs
+** dba/dbm BerkelyDB
+** PhpWiki v1.3.x database access wrapper
+* can deal with binary and text content
+* very easy ImageUploading is possible
+* caches referenced (external) images 
+* supports many different Wiki markups (and tries to unify to a certain degree)
+* advanced CSS support (with emphasis on the "cascading")
+** allows user classes/markup in pages
+** many plugins or core extensions can easily be styled
+* has a very simple but featureful PlugInterface that already lead to various extensions (thus keeping the core script small):
+** PageIndex, WordIndex
+** PowerSearch
+** FileDownload and FileUpload pages
+** an advanced TextUpload feature (can extract pages in different text formats even from tar/zip archives)
+** AboutPlugins, PhpInfo
+** OrphanedPages, WantedPages
+** UpdatedPages, RecentChanges, WikiNews
+** and a lot more: WikiDump, [README], SiteMap, AddNewPage/CreateNewPage, HitCounter, RandomPage, [Fortune], ScanDisk, ImageGallery, InterWikiMap, WikiUserLogin
+* in-page functionality through the MpiPlugins
+* easily installable [ErfurtWiki:XpiPlugins ".xpi plugins"] using the PlugInstall page
+* many functionality enhancement plugins:
+** email address protection, see [ProtectedEMail]
+** concurrent edit resolving (patchsaving.php)
+** simple diff or GNU diff
+** image resizing on upload (libgd2 or magick)
+** markup emulation:
+*** bbcode
+*** miki
+*** phpwiki
+*** sfwiki
+** footnotes markup
+** allows also html usage in pages (only where explicitely allowed)
+** "like pages" feature
+** page alias names
+** ![ notify: ... ] markup
+** ![jump:PageName] extension
+* more plugins:
+** calendar
+** StaticPages - which are .html and .php files in a dedicated subdirectory, which are read when their filename is requested as page name
+** spellchecking
+** inline admin plugins
+** inline markup plugins (MpiPlugins)
+* also has a pluginloader plugin
+* advanced user-friendly HTTP usage
+** provides a !SaveAs-filename within HTTP headers for example (most other Pseudo-CMS don't even want you to store a page on harddisk)
+* _auth() mechanism to be implemented by parent/container CMS
+** multiple simple or advanced example auth systems are implemented already (UNIX like permission system, or simple per-page passwords)
+** different user databases could be used (htpasswd, array/list, sql/online database, LDAP, ...)
+* partially lockable pages (appendonly, appendwrite, appendcomment)
+* database can be diveded into subwikis
+* very customizeable page linking and advanced features (previews, icons, css, plural, language negotiation, interwiki capable)
+

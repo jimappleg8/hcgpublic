@@ -1,0 +1,109 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Chapter 6. Assigning values to form fields</title>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.61.3">
+<link rel="home" href="index.html" title="Formsess">
+<link rel="up" href="formsess_in_the_php_code.html" title="Part II. Formsess in the PHP Code">
+<link rel="previous" href="using_formsess.html" title="Chapter 5. Using formsess">
+<link rel="next" href="formsess_reference.html" title="Chapter 7. Method reference">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">Chapter 6. Assigning values to form fields</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="using_formsess.html">Prev</a> </td>
+<th width="60%" align="center">Part II. Formsess in the PHP Code</th>
+<td width="20%" align="right"> <a accesskey="n" href="formsess_reference.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="chapter" lang="en">
+<div class="titlepage">
+<div><div><h2 class="title">
+<a name="assigning.values"></a>Chapter 6. Assigning values to form fields</h2></div></div>
+<div></div>
+</div>
+<p>
+      One of the biggest differences between a standard &quot;smarty&quot; form and a formsess form is the way you assign data to your form fields.
+    </p>
+<p>
+      In a smarty form, a field value is handled using smarty variables: you create a variable in the appropriate field in the template,
+      and assign a value to that variable from your PHP Script
+      </p>
+<pre class="programlisting">
+TEMPLATE
+
+&lt;form method=&quot;POST&quot; action=&quot;foo.php&quot; name=&quot;bar&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;foo&quot; value=&quot;{$FOO}&quot; /&gt;
+&lt;form&gt;
+
+      </pre>
+<p>
+      </p>
+<pre class="programlisting">
+SCRIPT
+
+$smarty-&gt;assign('FOO', 'bar');
+
+      </pre>
+<p>
+    </p>
+<p>
+      Such a method has several weakness:
+      </p>
+<div class="itemizedlist"><ul type="disc">
+<li>logic separation: forms are usually part of the backend logic, since what is posted using the forms is sent to scripts. This way a lot of stuff depends on the template designer.</li>
+<li>sometimes complex: in some situations, such a method can require a lot of template code; by instance for a checkbox, a select, a radio button... this is why the {html_*} smarty functions were written, but they don't fit all the situations</li>
+</ul></div>
+<p>
+      Formsess helps you avoiding these problems. You create your form in your template without thinking about the assigned values.
+      All that stuff is handled from the script, and you don't even have to type a single line of smarty code.
+      </p>
+<pre class="programlisting">
+TEMPLATE
+
+&lt;fs:form method=&quot;POST&quot; action=&quot;foo.php&quot; name=&quot;bar&quot;&gt;
+  &lt;fs:input type=&quot;text&quot; name=&quot;foo&quot; /&gt;
+&lt;/fs:form&gt;
+
+      </pre>
+<p>
+      </p>
+<pre class="programlisting">
+SCRIPT
+
+$fs = new formsess('bar');
+$fs-&gt;assign('foo', 'bar');
+
+      </pre>
+<p>
+      And it works for <span class="emphasis"><em>any</em></span> type of form field: select, radio, checkbox, text, hidden...
+      You no longer have to think about quotes escaping, loops to check for a checkbox value.
+      Read the documentation for the assign method for more information
+    </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="using_formsess.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="formsess_in_the_php_code.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="formsess_reference.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Chapter 5. Using formsess </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> Chapter 7. Method reference</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

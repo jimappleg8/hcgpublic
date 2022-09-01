@@ -1,0 +1,36 @@
+A WikiWikiWeb allows its users to quickly and easy add or change
+pages. Its best use is for collecting informations to one very
+specific subject to build a powerful knowledge base. But without
+contributors or editorial staff it won't be a very useful tool.
+
+You can of course use it for other less scientific jobs too:
+* lite content management for a private homepage 
+* as GuestBook
+* personal online NotePad
+* instead of a forum / message board
+
+µµClick on EditThisPage to tell the world what __you__ use it for.µµ
+
+For informations on how to contribute read the notes about how to
+CreatePages and the summary of available WikiMarkup, then try out
+the EditThisPage link on the bottom of the SandBox, NotePad or
+GuestBook.
+
+! Serious concerns about the open approach
+
+Of course if someone runs a page where really everybody can change things,
+there are also some risks you should be aware of, if you'd like to use it
+for your site.
+
+While there are many contributors adding useful notes and information to
+a wiki there can be also some black sheeps, which annoy others or delete
+content in the hope that random deletion could bring some fun to their life.
+Even if it is rather easy to bring back lost content due to the unremovable
+version history, this can be a lot of effort because of the amount of free
+time 5th grade pupils usually have.
+
+Therefor you should know how to prevail people upon keeping nice most
+of the time. Restricting a wiki with some sort of authentication mechanism,
+which enforces users to register before they're allowed to do anything, would
+really hurt the whole concept; you should then rather try
+[PhpNuke|http://phpnuke.org/] or a similar portal software.

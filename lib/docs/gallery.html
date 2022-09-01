@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+   <title>hcgPublic Documentation</title>
+   <link rel="STYLESHEET" type="text/css" href="docs.css">
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="topHeader">
+   hcgPublic Documentation
+</div>
+
+<div id="docTitle">
+   User Manual
+</div>
+
+<div id="content">
+
+<p class="breadcrumbs"><a href="index.html">User Manual</a> > Gallery Module</p>
+
+<h1>Gallery Module</h1>
+
+<div class="tag">
+<h2>dir_gallery</h2>
+<pre>
+&lt;?php get("gallery.dir_gallery", [$pwd], [$site_id]); ?&gt;
+</pre>
+
+<h3>Description:</h3>
+<p class="first">The dir_gallery tag displays the images in a particular directory. It creates a thumbnail view and a link to a preview image. If the thumbnail or preview images don't exist, it will use ImageMagick to create those images. If <code>$pwd</code> (present working directory) is not specified, it will display images in the same directory as the PHP file calling the script. If <code>$site_id</code> is not specified, it will use the site ID of the site from which the script was called.</p>
+
+<p>NOTE: For ImageMagick to work, it must be installed on the server and it's location must be assigned to the <code>$_HCG_GLOBAL['convert_cmd']</code> variable in the <tt>lib/config.inc.php</tt> file.</p>
+
+<h3>Thumbnail Images</h3>
+<p class="first">The script is currently hard-wired to create 80x80 pixel thumbnail images. The thumbnail file is a JPEG file with a name in the form <tt>TN_&lt;image base name&gt;.jpg</tt>.</p>
+
+<h3>Preview Images</h3>
+<p class="first">The script is currently hard-wired to create 450x450 pixel preview images. The preview file is a JPEG file with a name in the form <tt>PV_&lt;image base name&gt;.jpg</tt>.</p>
+
+<p>At this time, I have not figured out how to add a watermark automatically to the image, so if you want a watermark, you will need to create the previews manually. A visible watermark is useful to keep users from downloading the preview and trying to use it where a high-res image is required.</p>
+
+<h3>Description Files</h3>
+<p class="first">The script looks for a description file for each image in the directory. The description file is an ASCII file with a name in the form <tt>DE_&lt;image base name&gt;.txt</tt>. It contains two lines: the first line will become the "heading" for the image, the second line is the "description". If no description file is found, the "heading" is set as the high-res filename and the description is set as "No description available." These files need to be saved as Unix text files (using BBEdit) for them to display properly. If your heading and description are displaying all on one line, it is likely because the text file is saved with "Macintosh" line endings.</p>
+
+<h3>Template Variables</h3>
+<p class="first">The script looks for a template called <tt>dir_gallery.tpl</tt> in the site's local <tt>templates</tt> folder. If it doesn't find it, it will use the default template in <tt>&lt;application_dir&gt;/inc/templates/</tt>.</p>
+
+<p>The script assigns its data to the $gallery variable which is a multi-dimensional array. To access each image in this array, you can use the "foreach" function in your template:</p>
+
+<p><code>{foreach from=$gallery item="image" }
+<br>{/foreach}</code></p>
+
+<p>Inside this loop, you can access these variables:</p>
+
+<table cellpadding="4" border="1" cellspacing="0">
+<tr>
+<td><code>{$image.doc_pwd}</code></td>
+<td>the directory where the images are</td>
+</tr>
+<tr>
+<td><code>{$image.thumbnail}</code></td>
+<td>the filename of the thumbnail image</td>
+</tr>
+<tr>
+<td><code>{$image.preview}</code></td>
+<td>the filename of the preview image</td>
+</tr>
+<tr>
+<td><code>{$image.file}</code></td>
+<td>the filename of the high-res image</td>
+</tr>
+<tr>
+<td><code>{$image.heading}</code></td>
+<td>the heading text pulled from the DE file</td>
+</tr>
+<tr>
+<td><code>{$image.description}</code></td>
+<td>the description pulled from the DE file</td>
+</tr>
+</table>
+
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>slideshow</h2>
+<pre>
+&lt;?php get("gallery.slideshow", [$template]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">No description available.</p>
+</div> <!-- tag -->
+
+
+</div> <!-- content -->
+
+</div> <!-- container -->
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+You really should learn what the basic WikiMarkup can do for you, before you
+start to read about more complex features.
+
+
+!! Image markup
+
+Images can be inlined into a page using square brackets around the absolute
+www-address of the image file, like ![http://www/image.png].
+
+To align an image (define how the following text flows around it) one 
+can add space characters inside the square brackets before and/or after
+its !http://-address:
+** text flows around on the right ![http://example.com/image.png  ]
+** left aligned image ![  http://example.com/image.png]
+** with spaces on the left and right, a image will display centred
+
+One can also specify to which size a image shall be rescaled by the browser,
+if this is added as parameters with a query string like appendation; for
+example ![http://www.example.com/image.png?x=200&y=100] would scale the
+image to 200 pixels width and 100 pixels height. One can also use width= and
+height= parameters to do so.
+
+If you do not want an image to get inlined into the current page, then just
+leave out the square brackets around its URL.
+
+
+!! footnotes
+
+To create a footnote {{ a footnote can contain additional information snippets}}
+use double curly brackets. Usually creating a new page to explain something
+in more detail is a much better approach, so the footnotes extension is a
+plugin in ErfurtWiki and thus not available per default.
+
+
+!! Links
+
+* a WikiWord will form a hyperlink
+* any valid www-address like http://www.example.com/ will do too
+* many nonvalid addresses will do too, see file://localhost/etc/passwd
+* [square brackets around text] makes a hyperlink
+** adding (more) [[square brackets around it]] is more [[[[intuitive]]]] than with other wikis
+** a ![title | for square bracket links ] can be added using the | character
+*** the title should be on the left to the linked WikiWord
+*** but for ewiki it can be on either side, because a http://www can be easily distinguished
+** a !["title" for square bracket links] can also be assigned using quotation marks
+*** the title inside the quotation marks can be on either side of the !["..." wiki link] or ![http:// "URL"]
+*** you can use this too for image links
+*** this scheme is useful, but incompatible with other !WikiSoftware
+* the ! exclamation mark or the tilde ~ can be used to escape a !!WikiWord or a !!http://www.address.net/ and of course escapes !![square brackets] as easily
+** this is more understandable than escaping with "[" like in other wikis (like [PhpWiki|PhpWiki:])
+* instead of square brackets, one may utilize the ^ character to make a ^^wikilink of !NotBumpyWords
+
+
+!! Anchors
+
+Instead of linking from page to page, one can also create inner page links
+using so called anchors. Anchors are defined and referenced using the hash
+sign inside before square brackets. #![anchorname] for example creates an
+anchor, to reference it one must put both the hash sign and the anchor name
+inside the square brackets, like [#anchorname].
+
+
+Requiring a pagename in front of the anchor name to reference to it is some
+overhead but the only senseful way to create valid links. So to create
+links to an anchor on the current page one must write ![CurrentPage#anchor].
+
+Anchors and anchor references can and should also be entitled using
+quotation marks or the dash sign:
+* #![anchor "Title for this anchor"].
+* ![#anchor2 "anchor2 jump link title"]
+<!-- note: the "!" is only in fornt of the brackets here, to show you how the wikisource code should look like
+
+
+
+!! Lists
+
+* one can create lists by writing an asterisk at the beginning of a line
+*# or enumerated lists by using a hash sign instead
+** instead of the asterisk the - minus character can be used sometimes
+** definition lists can be created using :: or ;: at the line start or as sublist
+**:definition: explanation
+**:anotherdef: another description
+
+
+!! Paragraphs
+
+* lists automatically make up a new paragraph
+* every block of text (without empty lines) will form a paragraph
+
+Text can be indented using TABs or spaces at the beginning of a line:
+
+      You'll need at least three spaces to make indentation. One TAB has
+      the width of eight spaces, but you cannot enter them in mainstream
+      browsers.
+	 You can mix indendation levels and thus structure your text very
+         easily and intuitve.
+      But note, that indendation will only be visible in newer browser
+      versions (because this feature havily relies upon style sheets for
+      the actua paragraph layout).
+
+>> You can right align text by using two grater-than characters
+>> at the beginning of a line.
+
+
+!! PRE-formatted text
+
+<pre>
+   If  you  wish  text  to  appear "pre-formatted" then
+ all you have to do is to start that paragraph using
+    the code "<pre>" at the line start. End that
+  paragraph again by writing "</pre>" at the beginning
+of a line.
+</pre>
+
+Most people will already know that markup, as it is a plain <HTML> tag, and
+so will feel very comfortable with it. But note that "<pre>" and "</pre>"
+must be written in all-lowercase, else it won't apply! 
+
+
+!! Text style
+
+* text can be made __bold__ or **bold**
+* or ''italic''
+* ##big## and 도small도
+* up^^set^^
+* ==typewriter== like font
+
+But there exist equivalents in old style WikiMarkup:
+
+* '''bold'''
+* '''''bold and italic'''''
+
+And ##most## of 도these도 things **can** be __''combined''__.
+
+
+!! HTML comments
+
+* HTML-comments can be inserted using a <!-- at a line start, but __don't__ add the --> as it will be appended automatically and would appear as text
+* use this trick to hide informations from plain visitors (only somebody who edits a page can read comments)
+
+
+!! !!InterWiki:Links
+
+* there exist abbreviations for concurrent wikis on the web
+* to reference a page from another wiki, just prepend the Wikis name and a colon before the remote !WikiPageName:
+** ErfurtWiki:ErfurtWiki
+** Wiki:WikiClones
+** Wiki:InterWiki
+* that's why you shouldn't use the colon inside of square brackets
+
+
+
+!! mpi plugins from Hans B. Pufal
+
+The ''mpi plugins'' utilize the general PlugInterface to extend the ewiki
+markup with <html> tag like references to generate dynamic content. You must
+first include("plugins/mpi.php") and all the desired modules to use them.
+
+<?plugin: plugins?>
+
+<?plugin: insert !WorldWideWeb?>
+
+<?plugin: calendar?>
+
+If you can't see anything special above this, then the according mpi plugins
+are probably disabled.
+

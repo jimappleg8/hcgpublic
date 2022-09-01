@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+   <title>hcgPublic Documentation</title>
+   <link rel="STYLESHEET" type="text/css" href="docs.css">
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="topHeader">
+   hcgPublic Documentation
+</div>
+
+<div id="docTitle">
+   User Manual
+</div>
+
+<div id="content">
+
+<p class="breadcrumbs"><a href="index.html">User Manual</a> > Products Module</p>
+
+<h1>Products Module</h1>
+
+<div class="tag">
+<h2>category_id_title</h2>
+<pre>
+&lt;?php get("products.category_id_title", $cat_id); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Returns the category name in title case, based on the Category ID.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>category_list</h2>
+<pre>
+&lt;?php get("products.category_id_title", $cat_id, [$site_id], [$tpl]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Displays all products in a given category.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>get_brand_name</h2>
+<pre>
+&lt;?php get("products.get_brand_name", [$site_id]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Returns the brand name given a site ID. If no site ID is given, it uses the current site.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>multi_category_list</h2>
+<pre>
+&lt;?php get("products.multi_category_list", $cat_id, [$cat_list], [$site_id], [$tpl]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Displays all products in a given category, sorted by a second category. For example, it can display a list of kosher teas sorted by tea type (i.e. green tea, herb tea, red tea, etc.).</p>
+<h3>Template Variables</h3>
+<p class="first">The tag looks for <tt>multi_category_list.tpl</tt> as the default template.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>multi_category_list_by_field</h2>
+<pre>
+&lt;?php get("products.multi_category_list_by_field", $select, $category, [$cat_list], [$site_id], [$tpl]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Similar to the multi-category_list except the primary "category" is based on an SQL "where" statement. You can essentially create a new category by searching for a set of records that meet a certain criteria. For example, if we want to list all new products, we can use a <code>$select</code> of "FlagAsNew = 1".</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>nutrition_facts</h2>
+<pre>
+&lt;?php get("products.nutrition_facts", $prod_id, [$display_hd]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Returns a formatted HTML version of a product's Nutrition Facts panel.</p>
+<h3>Template Variables</h3>
+<p class="first">The tag uses one of several templates depending on what type of Nutrition Facts box the product has. For example, baby food Nutrition Facts boxes are different than the standard one. As of now, the only template that is complete is the standard US nutrition facts, but more will be completed shortly, including a Canadian version.</p>
+</div> <!-- tag -->
+
+
+<div class="tag">
+<h2>product_detail</h2>
+<pre>
+&lt;?php get("products.product_detail", $prod_id, [$cat_id], [$site_id], [$tpl]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">No description.</p>
+<h3>Template Variables</h3>
+<p class="first">The tag looks for <tt>product_detail.tpl</tt> as the default template.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>product_meta</h2>
+<pre>
+&lt;?php get("products.product_meta", $prod_id); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Returns just the product's meta data in a format that allows the information to be passed to a template as a variable.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>random_product</h2>
+<pre>
+&lt;?php get("products.random_product", [$bool_field], [$cat_id], [$site_id]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Returns product data for a random product for the brand, optionally limited to products where a boolean field is set to true (such as "FlagAsNew") or products in a particular category. Can be used to display a "featured product" on any page of the site.</p>
+</div> <!-- tag -->
+
+
+</div> <!-- content -->
+
+</div> <!-- container -->
+
+</body>
+</html>

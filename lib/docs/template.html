@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+   <title>hcgPublic Documentation</title>
+   <link rel="STYLESHEET" type="text/css" href="docs.css">
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="topHeader">
+   hcgPublic Documentation
+</div>
+
+<div id="docTitle">
+   User Manual
+</div>
+
+<div id="content">
+
+<p class="breadcrumbs"><a href="index.html">User Manual</a> > Template Module</p>
+
+<h1>Template Module</h1>
+
+<div class="tag">
+<h2>include_tpl(</h2>
+<pre>
+&lt;?php get("module.tag_name", $tpl_file, [$data_array], [$data_name]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Returns the specified template, optionally replacing any variables in the template with those supplied in <code>$data_array</code>. <code>$data_array</code> is an associative array. The tag will assign the data to a variable based on the template name unless a <code>$data_name</code> is specified. For example, in the <tt>header.tpl</tt> file, variables can be accessed by <code>{$header.variable_name}</code>.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>include_tpl_array</h2>
+<pre>
+&lt;?php get("module.tag_name", $tpl_file, $data_array); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Similar to the include_tpl tag except it allows for multiple assign statements. The data array is a two-dimensional array in the form <code>array('label1' => array('key1' => "value1"), 'label2' => array('key2' => "value2"). In the template you would be able to access these as <code>{label1.key1}</code> and <code>{label2.key2}</code></p>
+</div> <!-- tag -->
+
+
+</div> <!-- content -->
+
+</div> <!-- container -->
+
+</body>
+</html>

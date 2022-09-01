@@ -1,0 +1,64 @@
+This page tries to collect some stuff, that did not fit into the ~ChangeLog
+and README files, but are worth a note (for example known compatibility
+issues and some script design and behaviour notes).
+
+If you need some more informations, please also have a look at the page with
+the OccasionallyAskedQuestions. If you'd like to conribute to the project
+then visit:
+
+* our online [ErfurtWiki:SupportForum "SupportForum"]
+* issue an [ErfurtWiki:BugReports "BugReport"] if something has broken
+* or note some wishes on [ErfurtWiki:UserSuggestions "UserSuggestions"]
+* but also have a look at the ErfurtWiki:LatestNews from time to time
+
+
+! known bugs and problems
+
+* syntax for inner page anchors is likely to change
+* <pre> markup still does not prevent ~WikiLinks from getting rendered, this will require a complete rewrite of the rendering kernel
+* non-ASCII characters in some page names reportedly may yield problems in some cases
+
+
+! HTML validity
+
+While the code produced by this wiki engine is rather good and senseful
+it is not 100% valid. It works in most browsers, but
+
+* [w3c tidy|http://www.w3.org/People/Raggett/tidy/] doesn't like the <p> and </p> tags which enclose paragraphs, however I think it is correct that way
+* the [dillo|http://dillo.auriga.wearlab.de/] webbrowser has problems with the </p> behind headlines and thus closes opened tables (while it works quite well with other gtkhtml deprived browsers)
+* finally the sublists should get enclosed in <li> ... </li> too, but until anybody complains this won't be changed
+
+It looks as desired in:
+* all [Mozilla|http://mozilla.org/] variants (including [Netscape|http://netscape.com/] 6/7)
+* Opera 5, 6 and 7
+* amaya - the reference browser implementation from http://w3c.org/
+* Netscape 4
+* w3m
+* links
+* Konqueror
+* Windows Netscape 2.01 and Netscape 1.1 (W32s)
+* M$IE 4+
+
+
+! Compatibility to !PhpWiki
+
+The database table structure of ErfurtWiki is compatible to the one used by
+PhpWiki:, however it is rather untested if you can reuse them. Especially
+changing back from !ErfurtWiki to !PhpWiki is eventually not possible.
+
+
+! Compatibility regarding WikiMarkup
+
+* !ErfurtWiki only implements parts of the new style markup
+* older markup (tabs to the left) will not work and it won't get implemented
+* the uploaded images are represented using internal:// references which are obviously invalid protocol identifiers, therefor you should strip them off if you reuse your wiki pages with another wiki software
+
+
+! design limitations
+
+* The database backend has been enhanced to gracefully pass previous memory problems, it however still works in a buffered mode. So the maximum number of possible pages (the point until most functionality remains intact) is around 172000 now (estimated assuming 5MB memory and an average page name strlen of 20).
+
+
+! random notes
+
+* 23% of the core script are comments and whitespace things (it are about 31% when measured in byte size)

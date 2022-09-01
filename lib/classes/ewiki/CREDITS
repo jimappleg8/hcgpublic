@@ -1,0 +1,54 @@
+Who worked on ErfurtWiki
+========================
+
+
+Mario Salzer <mario*erphesfurt·de> [http://mario.erphesfurt.de/]
+
+ - original author, current maintainer
+
+
+Carsten Senf <ewiki*csenf·de> (from Erfurt)
+
+ - db_flat_files.php bugfixes for Win32 systems
+ - calendar.php
+ - db_fast_files.php
+ - page_since_updates.php
+
+
+Hans B. Pufal <hansp*aconit·org> [http://www.aconit.org/]
+
+ - various enhancements, bugfixes
+ - mpi_calendar
+ - mpi_environment
+ - mpi_plugins
+ - mpi_page_flags
+ - markup_complextbl
+
+
+Frank 'Sigi' Luithle <sigi*fsinfo.cs.uni-sb·de>
+
+ - contributed the wiki_format.inc (reduced rendering core)
+
+
+Beate Paland <bep*web·de> [http://www.paland.tv/]
+
+ - bug notices and many helpful suggestions
+   (constantly demanded for <pre> support)
+ - phpCMS integration, see http://www.paland.tv/...
+
+
+Markus Ackermann <maol*symlink·ch> [http://www.symlink.ch/]
+
+ - bug reports, improvement suggestions
+
+
+Dominik Eckhardt <the.oberon*gmx·de>
+
+ - suggested the TAB indentation
+
+
+Andy Fundinger <andy*burgiss·com> [http://burgiss.com/]
+
+ - reports and compatibility fixes for PHP.A/W32
+ - spellcheck2
+

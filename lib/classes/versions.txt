@@ -1,0 +1,12 @@
+ADODB 3.60
+
+ewiki R1.02b
+
+Formsess 2.0.0 RC2
+
+PatUser 2.2.3
+
+PEAR Classes
+   Validate 0.2.0 (alpha)
+
+Smarty 2.6.9

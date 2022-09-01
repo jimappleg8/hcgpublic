@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>&lt;fs:html_select_date /&gt;</title>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.61.3">
+<link rel="home" href="index.html" title="Formsess">
+<link rel="up" href="fs_reference.html" title="Chapter 10. Reference">
+<link rel="previous" href="fs_reference_form.html" title="&lt;fs:form /&gt;">
+<link rel="next" href="fs_reference_html_select_time.html" title="&lt;fs:html_select_time /&gt;">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">&lt;fs:html_select_date /&gt;</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="fs_reference_form.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 10. Reference</th>
+<td width="20%" align="right"> <a accesskey="n" href="fs_reference_html_select_time.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div><div><h2 class="title" style="clear: both">
+<a name="fs_reference_html_select_date"></a>&lt;fs:html_select_date /&gt;</h2></div></div>
+<div></div>
+</div>
+<p>
+			  This is a custom tag that was inspired by smarty's html_select_date function.
+				It allows to quickly display 3 form items to select a date in a form.
+				That way, it's much easier to use and validate a date, since any formsess operation
+				(<a href="formsess_get_value.html" title="get_value()">formsess::get_value</a>, or
+				<a href="formsess_save.html" title="save()">formsess::save</a>) will apply to the date itself and not
+				each field independentely.
+			</p>
+<p>
+        Any parameter that can be used with the smarty function
+        <a href="http://smarty.php.net/manual/en/language.function.html.select.date.php" target="_top">html_select_date</a>
+        is valid for this tag.
+        The only difference is that the &quot;prefix&quot; parameter is replaced by &quot;name&quot; in order to match
+        the rest of the formsess architecture.
+      </p>
+<p>
+        Sample:
+        </p>
+<pre class="programlisting">
+
+&lt;fs:html_select_date name=&quot;foo&quot; /&gt;
+        
+        </pre>
+<p>
+      </p>
+<p>
+        See also <a href="fs_reference_html_select_time.html" title="&lt;fs:html_select_time /&gt;">&lt;fs:html_select_time /&gt;</a>
+      </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="fs_reference_form.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="fs_reference.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="fs_reference_html_select_time.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">&lt;fs:form /&gt; </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> &lt;fs:html_select_time /&gt;</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

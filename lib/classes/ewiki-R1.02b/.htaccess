@@ -1,0 +1,5 @@
+DirectoryIndex index.php index.html example-1.php
+
+<Files ewiki.ini>
+   Deny from All
+</Files>

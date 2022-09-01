@@ -1,0 +1,91 @@
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	background-color: #FFFFFF;
+}
+
+p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+}
+
+a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #009933;
+	text-decoration: none;
+}
+
+a:hover {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #00CC33;
+	text-decoration: none;
+}
+
+h2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-variant: small-caps;
+	color: #000000;
+	line-height: 16px;
+	font-weight: bold;
+}
+
+h1.title {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-variant: small-caps;
+	color: #000000;
+	line-height: 18px;
+	font-weight: boldest;
+}
+
+hr {
+	border-top: 1px dashed #666666;
+	border-bottom: 1px solid #666666;
+	border-left: 0;
+	border-right: 0;
+	color: #ffffff;
+	background-color: #ffffff;
+	height: 3x;
+	width: 80%;
+}
+
+td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	text-decoration: none;
+}
+
+pre.programlisting {
+	border: 1px dashed black;
+	background-color: #eeeeee;
+	color: #000000;
+	padding: 5px
+}
+
+.titre {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-variant: small-caps;
+	color: #000000;
+	line-height: 16px;
+	font-weight: bold;
+}
+
+.text {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+}
+
+.inactive-menu-link {
+	color: #00Cc33;
+	text-decoration: none;
+	font-size: 11px;
+}
+.error { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; font-weight: bold; color: #cc0000; }

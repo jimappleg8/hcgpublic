@@ -1,0 +1,20 @@
+! A general pluginterface
+
+The main [PHP|http://php.net/] script of ErfurtWiki contains everything
+necessary to run a wiki site (except the html around which make up your
+sites` layout). However at some point of its development the extensions
+got too large to be included into the core without hurting speed. So from
+now non-essential but powerful extensions can be added (using just PHPs
+include() statement) into the engine through the new __pluginterface__,
+which is surprisingly just a simple array structure listing the
+extension functions.
+
+Please see the [README.plugins], [README.programming] or ErfurtWiki:ListOfPluginHooks
+for a complete plugin list and more informations about this.
+
+
+! The mpi plugins
+
+Another extension are the MpiPlugins which themselves utilize the general
+pluginterface to chain into the page transformation process to extend them
+with dynamically generated content.

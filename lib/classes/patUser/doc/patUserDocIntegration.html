@@ -1,0 +1,383 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- generated using Randy, the patXMLRenderer -->
+<html>
+<head>
+	<title>patUser Documentation</title>
+	<meta http-equiv="Description" content="">
+	<meta http-equiv="Keywords" content="">
+	<link rel="stylesheet" href="styles/offline.css" type="text/css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#000000" alink="#000000" vlink="#000000" marginwidth="8" marginheight="0" topmargin="0" leftmargin="8" rightmargin="8" bottommargin="0">
+
+	
+	
+	
+		
+		<table border="0" cellpadding="0" cellspacing="0" width="90%"><tr><td>
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>A good way to start</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					On a general basis, we'd recommend creating two PHP files that take care of common instructions like including all the extenal classes
+					needed in your project. We normally name them &quot;prepend.php&quot; (for all instructions that have to be done before you can start), and an 
+					&quot;append.php&quot; which could be used for statistical functions as well as the history features of patUser.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>The prepend.php in detail</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">01 include( &quot;include/patDbc.php&quot; );
+02 include( &quot;include/patUser.php&quot; );
+03 include( &quot;include/patTemplate.php&quot; );
+04
+05 $myDbc = new patMySqlDbc( &quot;localhost&quot;, &quot;mydb&quot;, &quot;myuser&quot;, &quot;mypass&quot; );
+06 $tmpl  = new patTemplate();
+07 $tmpl-&gt;setBasedir( &quot;templates&quot; );
+08 
+09 $user = new patUser( true );
+10 $user-&gt;setAuthDbc( $myDbc );
+11 $user-&gt;setTemplate( $tmpl );
+12
+13 $user-&gt;setAuthTable( &quot;users&quot; );
+14 $user-&gt;setAuthFields( array( &quot;passwd&quot; =&gt; &quot;userpass&quot; ) );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Lines 01 to 03: include necessary files</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					Here we include the patDbc class (for the mySql database connectivity), the 
+					patUser class (guess for what...) and the patTemplate class (for the output).
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Lines 05 to 07: Instantiate helper classes</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					patDbc needs to be instantiated with all the details necessary for the connection
+					to your user database. The patTemplate class only needs to know in which folder 
+					the templates used for the login screen are stored.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Lines 09 to 11: Startup of the user class</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					Here we instantiate the patUser class, and set the references to the dbc and 
+					template objects. The patUser object accepts two parameters on startup, the first
+					defines if PHP sessions should be used, and the second defines the name of the 
+					global variable used to store all session data (default name is &quot;patUserData&quot;).
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td align="center">
+			<table width="80%" border="0" cellpadding="0" cellspacing="0"><tr><td bgcolor="#000000"><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"></td></tr></table>
+			<table width="80%" border="0" cellpadding="2" cellspacing="0">
+			<tr>
+				<td><img src="img/offline/px.gif" width="23" height="1" alt="" border="0"></td>
+				<td valign="top" width="1%"><img src="img/offline/icon_caution.gif" width="35" height="61" alt="" border="0" vspace="3"></td>
+				<td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td>
+				<td>
+					<img src="img/offline/px.gif" width="1" height="6" alt="" border="0"><br>
+					
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="caution">
+						<b>Working with sessions</b><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+						
+					If you want to work with sessions, don't forget that you always have to add the session
+					ID to <b>every</b>
+ link. If you'd like to know more on the subject, you should take a look
+					at the PHP manual.
+				
+					</font>
+				</td>
+				<td><img src="img/offline/px.gif" width="30" height="1" alt="" border="0"></td>
+			</tr>
+			</table>
+			<table width="80%" border="0" cellpadding="0" cellspacing="0"><tr><td bgcolor="#000000"><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"></td></tr></table>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+		</td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Lines 13 and 14: Setting data sources</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					With setAuthTable(), we set the name of the table (in your database that you 
+					provided on line 05) that is used to store your main user data. With setAuthFields(), 
+					you set the names of the <b>required</b>
+ user fields (primary, username and passwd) that
+					are used to identify a given user. Default field names are &quot;uid&quot;, &quot;username&quot; and &quot;passwd&quot;.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>The append.php in detail...</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					...is fairly simple, so we won't go into much detail - as this is mainly about
+					the history functions of patUser, you should have a look at the section about those
+					for more in-depth information.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>API documentation</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				These functions are those available for the above features:
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>patUser</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">create new user object<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>boolean</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$useSessions = true]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">flag to indicate that sessions should be used</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>string</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$sessionVar = &quot;patUserData&quot;]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">name of the global var used for sessions</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>setAuthDbc</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">set dbc that contains auth info<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>object patDbc</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">&amp;$dbc<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">patDbc Object</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>setAuthTable</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">set tablename that contains auth info<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>string</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$table<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">name of the table that contains auth data</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>setAuthFields</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">set fieldnames that contain auth info<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$fields<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">assoc array containing fieldnames of the authtable</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>setTemplate</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">set template object<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				the template object is used for displaying login / logout screens
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>object patTemplate</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">&amp;$tmpl<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">patTemplate Object</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+		
+		<center><table width="90%" border="0" cellpadding="0" cellspacing="0"><tr><td><a href="patUserDocInstallation.html" class="link"><img src="img/offline/footernav_prev.gif" width="48" height="23" alt="" border="0"></a></td>
+<td align="right"><a href="patUserDocSessions.html" class="link"><img src="img/offline/footernav_next.gif" width="48" height="23" alt="" border="0"></a></td>
+</tr></table></center><table bgcolor="#608DB7" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td><table border="0" cellpadding="0" cellspacing="0"><tr><td><img src="img/offline/footerbar_start.gif" width="102" height="16" alt="" border="0"></td><td><a href="javascript:window.print();"><img src="img/offline/footerbar_print.gif" width="59" height="16" alt="" border="0"></a></td></tr></table></td><td align="right"><table border="0" cellpadding="0" cellspacing="0"><tr><td nowrap><font face="verdana,arial,tahoma,helvetica" size="-2" class="litewhite" color="#ffffff">Last Updated: 2001-11-01 22:14:12<br></font></td><td><a href="#top"><img src="img/offline/footerbar_end.gif" width="31" height="16" alt="Jump to the top of the page (of course only if you're far enough down...)" border="0"></a></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="30" alt="" border="0"><br></td><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td></tr></table></td><td><img src="img/offline/px.gif" width="15" height="0" alt="" border="0"></td></tr></table>
+	
+</body>
+</html>

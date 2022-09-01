@@ -1,0 +1,839 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- generated using Randy, the patXMLRenderer -->
+<html>
+<head>
+	<title>patUser Documentation</title>
+	<meta http-equiv="Description" content="">
+	<meta http-equiv="Keywords" content="">
+	<link rel="stylesheet" href="styles/offline.css" type="text/css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#000000" alink="#000000" vlink="#000000" marginwidth="8" marginheight="0" topmargin="0" leftmargin="8" rightmargin="8" bottommargin="0">
+
+	
+	
+	
+		
+		<table border="0" cellpadding="0" cellspacing="0" width="90%"><tr><td>
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Working with user data</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					patUser lets you manage user data distributed over several table, even several
+					databases on several hosts.
+					To use this feature you have to add patDbc objects to patUser. The best way to do this is
+					in your prepend.php. Just include and modify the following lines:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">$newDbc = new patMySqlDbc( &quot;newhost&quot;, &quot;newDB&quot;, &quot;newUser&quot;, &quot;newPass&quot; );
+$user-&gt;addDbc( &quot;newDbc&quot;, $newDbc );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					These two lines create a new database connectivity (you should fill in you hostname,
+					dbname, username and password) and add it to the patUser object with the internal name
+					&quot;newDbc&quot;. It can later be referenced with this name.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Working with several tables</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					To work with data in other tables than the table used for authentication,
+					you have to tell patUser how to access the tables. You should include this
+					in your prepend.php to ensure that you have access to these tables in all you files.
+					This is a short example of how you may add a table:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">
+$user-&gt;addTable( &quot;bookmarks&quot;, array( &quot;dbc&quot;        =&gt; &quot;newDbc&quot;
+                                     &quot;table&quot;      =&gt; &quot;userBkmarks&quot;,
+                                     &quot;foreign&quot;    =&gt; &quot;uid&quot;,
+                                     &quot;primary&quot;    =&gt; &quot;id&quot;,
+                                     &quot;minentries&quot; =&gt; 0,
+                                     &quot;maxentries&quot; =&gt; 5 ) );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					This will add a table with the internal name &quot;bookmarks&quot;.
+					It can be accessed through the connectivity &quot;newDbc&quot;, that we defined
+					above. The name of the table in the database is &quot;userBkmarks&quot; and the
+					user id (so you know which user made which bookmark) is stored in the field &quot;uid&quot;.
+					As each user is allowed to have more bookmarks, you will need a primary key in
+					your table to identify each line. You have to tell patUser, which field stores
+					the primary key. With the last two lines you can define the minimum and maximum
+					amount of entries in this table for each user.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					You may add as many dbcs and tables as long as you use unique names.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Reading the data</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					As you now told patUser, where data is stored, you will want to access the data.
+					patUser provides a powerful API for this task:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">$data = $user-&gt;getUserData( array( &quot;table&quot;  =&gt; &quot;bookmarks&quot;,
+                                   &quot;uid&quot;    =&gt; 5,
+                                   &quot;fields&quot; =&gt; array( &quot;url&quot;, &quot;title&quot; )
+                            array( &quot;url&quot;    =&gt; &quot;http://www.php-tools.de&quot; ) );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					This will get data from the table you added with the internal name &quot;bookmarks&quot;.
+					It will fetch the fields &quot;url&quot; and &quot;title&quot; (you may get any fields from your table).
+					As a user id is specified with &quot;uid&quot; =&gt; 5, it will get the data for the user with the
+					user id 5. If no user id is specified the user id of the authenticated user is taken.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					With the second parameter, you may defined options for the where statement.
+					In the above example, only these lines from the table bookmarks will be fetched
+					where the field &quot;url&quot; contains the value &quot;http://www.php-tools.de&quot;.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					The function will return an array, which contains as much associative arrays
+					as lines where found.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Changing the data</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					patUser provides a function that lets you modify any data of the user.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">
+$user-&gt;modifyUser( array( &quot;title&quot;   =&gt; &quot;PHP Application Tools&quot;,
+                          &quot;url&quot;     =&gt; &quot;http://www.php-application-tools.de&quot;  ),
+						  
+                   array( &quot;table&quot;   =&gt; &quot;bookmarks&quot;,
+                          &quot;mode&quot;    =&gt; &quot;update&quot;,
+                          &quot;olddata&quot; =&gt; array( &quot;url&quot; =&gt; &quot;http://www.php-tools.de&quot; ),
+                          &quot;uid&quot;     =&gt; 5
+                        )
+                 );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					modifyUser() is a quite powerful function, so we'll explain all parameters here.
+					The first array specifies the new data that should be stored in the database.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					The second parameter specifies a lot of options. At first you define the table in
+					which you want to change data. Here you also define the mode of the change: do you want to
+					&quot;insert&quot; new data or &quot;update&quot; existing data. If you are modifying existing data,
+					you'll need some values to identify the old entry, if there could be more than one
+					entry for each user in the table. Use &quot;olddata&quot; to specify which entry you would like
+					to edit.
+					If you want, you may specify a user id; if it's left out, the user id of the authenticated
+					user is used.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					The above example would change the bookmark for http://www.php-tools.de for the user with the
+					user id 5. It will change the title to &quot;PHP Application Tools&quot; and the url to
+					&quot;http://www.php-application-tools.de&quot;.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Deleting data</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					Of course it's also possible to delete users or data of users:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">
+$user-&gt;deleteUser( array( &quot;table&quot;   =&gt; &quot;bookmarks&quot;,
+                          &quot;olddata&quot; =&gt; array( &quot;url&quot; =&gt; &quot;http://www.php-application-tools.de&quot; ),
+                          &quot;uid&quot;     =&gt; 5
+                        )
+                 );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				 <table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+				 	This example will delete the bookmark for http://www.php-application-tools.de of
+					the user with user id 5. If no user id is given, the currently logged in user
+					is used.
+					If no &quot;olddata&quot; is specified, all entries in the defined table will be deleted.
+					And finally if no table is given all data for the user will be deleted.
+				 
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Adding new user</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					patUser provides a function that enables you add a new user to your database.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">
+$user-&gt;addUser( array( &quot;username&quot; =&gt; &quot;foo&quot;,
+                       &quot;passwd&quot;   =&gt; &quot;bar&quot;,
+					   &quot;email&quot;    =&gt; &quot;foo@bar.de&quot; ),
+                true );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				 <table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					This will add a user with the name &quot;foo&quot; to your database. The user has
+					the eMail adress &quot;foo@bar.de&quot; and the password &quot;bar&quot;.
+					As the second parameter is set to true, the user will automatically be logged in.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td align="center">
+			<table width="80%" border="0" cellpadding="0" cellspacing="0"><tr><td bgcolor="#000000"><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"></td></tr></table>
+			<table width="80%" border="0" cellpadding="2" cellspacing="0">
+			<tr>
+				<td><img src="img/offline/px.gif" width="23" height="1" alt="" border="0"></td>
+				<td valign="top" width="1%"><img src="img/offline/icon_tip.gif" width="43" height="58" alt="" border="0" vspace="3"></td>
+				<td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td>
+				<td>
+					<img src="img/offline/px.gif" width="1" height="6" alt="" border="0"><br>
+			
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+						<b>Popular &quot;retype password&quot; feature</b><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+						
+					If you want to use the popular &quot;retype password&quot; feature, when new users
+					are registering on your webpage, just supply an array with two entries
+					as passwd parameter for the addUser() function. patUser will automatically
+					check, if both passwords are identical or return an error code otherwise.
+				
+					</font>
+				</td>
+				<td><img src="img/offline/px.gif" width="30" height="1" alt="" border="0"></td>
+			</tr>
+			</table>
+			<table width="80%" border="0" cellpadding="0" cellspacing="0"><tr><td bgcolor="#000000"><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"></td></tr></table>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+		</td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					addUser() will return the user id of the new user if he could be added or
+					false otherwise.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>Building user lists</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					As you'll probably have more than one user on your site, you will want to create user
+					lists. patUser provides a function, which can gat lists for you:
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><pre class="preformatted">$list = $user-&gt;getUsers( array( &quot;uid&quot;, &quot;username&quot;, &quot;email&quot; ),
+                         array( array( &quot;field&quot; =&gt; &quot;name&quot;
+                                       &quot;value&quot; =&gt; &quot;a&quot;,
+                                       &quot;match&quot; =&gt; &quot;startswith&quot; ),
+                         array( &quot;orderby&quot; =&gt; &quot;name&quot;,
+                                &quot;limit&quot;   =&gt; 10 )
+                        );</pre></td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					The first parameter specifies the names of the fields you like to select from the database.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					The second contains a list of conditions for the select statement.
+					See 
+	<a href="patUserDocSelectConditions.html" class="link">Building conditions</a>
+
+					for details.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					The last parameter specifies further options for the list. Available options are:
+					table (to define the table, from which the fields are fetched), orderby (to define
+					the field by which the result is ordered, limit (if you want to limit the amount of
+					returned list) and offset (if you do not want the first users in the list).
+					Furthermore you can use &quot;conditions&quot; =&gt; &quot;all&quot; or &quot;any&quot; to specify wether the users
+					have to match all or any of the specified conditions.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					The above example will return user id, name and email of the first 10 users from the authentication table,
+					whose name starts with an &quot;a&quot; and sorts them by name
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>More features...</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				
+					There are still more functions that can be used for working with user data.
+					Just take a look at the API documentation below.
+				
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+			
+			
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+			<b>API documentation</b><br>
+			</font>
+			<img src="img/offline/px.gif" width="1" height="9" alt="" border="0"><br>
+			
+				<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				These functions are those available for the above features:
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>addDbc</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">add a dbc<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				you can use as many dbcs as you like to access data stored in different databases
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>string</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$name<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">unique name to access the dbc</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>object patDbc</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">&amp;$dbc<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">patDbc object</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>addTable</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">add table that is used to store user data<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<font face="verdana,tahoma,arial,sans-serif" size="2" class="content">
+				values for tabledefs:- foreign		(required)	name of the field, that stores the foreign key- primary		(optional)	only needed when more than one line for each user is stored in the table- table		(optional)	name of table in database- dbc			(optional)	dbc to use- minentries	(optional)	minimum amount of entries in this table- maxentries	(optional)	maximum amount of entries in this table
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="9" alt="" border="0"></td>
+	</tr>
+</table>
+
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>string</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$name<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">internal name of the table</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$tabledef<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">array containing information about the table</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">array <b>getUserData</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">fetch the user data from a table<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$options = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">several options, like table name, user id and fields to get</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$clause = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">assoc array containing fields/values for the where statement</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Returns:</b></font><br><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$data<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"> user data</font></td></tr></table></td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>getUsers</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">get users from any table<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$fields = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">array containing fieldnames to be fetched</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$clause = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">array containing conditions for the where statement</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$options = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">array containing misc options</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>identifyUser</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">identify a user by certain fields<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$options<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">several options to identify the user</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">int <b>addUser</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">adds a user<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$authData<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">data for the user that will be stored in the authtable (compared with authFields)</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>boolean</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$login = true]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">automatically login after creation</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Returns:</b></font><br><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>int</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$uid<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"> User ID of the user</font></td></tr></table></td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>modifyUser</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">modify an existing user<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$data<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">new data for the user</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$options = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">various options like mode (insert|update), uid and table</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>deleteUser</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">delete (data of) an existing user<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>array</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$options = array()]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">options for the deletion</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+				<table width="500" cellpadding="0" cellspacing="0" border="0"><tr valign="top"><td><img src="img/offline/apidoc_function.gif" width="27" height="21" alt="" border="0"></td><td><img src="img/offline/px.gif" width="10" height="1" alt="" border="0"></td><td><table width="500" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">void <b>countTableEntries</b></font><br><img src="img/offline/px.gif" width="1" height="7" alt="" border="0"><br><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="16" height="1" alt="" border="0"></td><td width="100%"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">count amount of entries for a user in a table<img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br></font><img src="img/offline/px.gif" width="1" height="1" alt="" border="0"><br>
+					<font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><b>Parameters:</b><br></font>
+<img src="img/offline/px.gif" width="1" height="2" alt="" border="0"><br>
+
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content"><i>string</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$table<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">name of the table</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+						<table cellpadding="0" cellspacing="0" border="0"><tr><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">[<i>integer</i><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td valign="top"><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">$uid = 0]<img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></font></td><td><font face="verdana,tahoma,arial,sans-serif" size="2" class="content">useri id (logged in user is used if none is given)</font></td></tr></table><img src="img/offline/px.gif" width="1" height="4" alt="" border="0"><br>
+					
+
+				</td></tr></table></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="22" alt="" border="0"><br>
+			
+		</td>
+	</tr>
+	<tr>
+		<td><img src="img/offline/px.gif" width="1" height="14" alt="" border="0"></td>
+	</tr>
+</table>
+
+		
+		<center><table width="90%" border="0" cellpadding="0" cellspacing="0"><tr><td><a href="patUserDocAuthentication.html" class="link"><img src="img/offline/footernav_prev.gif" width="48" height="23" alt="" border="0"></a></td>
+<td align="right"><a href="patUserDocUserGroups.html" class="link"><img src="img/offline/footernav_next.gif" width="48" height="23" alt="" border="0"></a></td>
+</tr></table></center><table bgcolor="#608DB7" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td><table border="0" cellpadding="0" cellspacing="0"><tr><td><img src="img/offline/footerbar_start.gif" width="102" height="16" alt="" border="0"></td><td><a href="javascript:window.print();"><img src="img/offline/footerbar_print.gif" width="59" height="16" alt="" border="0"></a></td></tr></table></td><td align="right"><table border="0" cellpadding="0" cellspacing="0"><tr><td nowrap><font face="verdana,arial,tahoma,helvetica" size="-2" class="litewhite" color="#ffffff">Last Updated: 2001-11-03 00:05:46<br></font></td><td><a href="#top"><img src="img/offline/footerbar_end.gif" width="31" height="16" alt="Jump to the top of the page (of course only if you're far enough down...)" border="0"></a></td></tr></table></td></tr></table><img src="img/offline/px.gif" width="1" height="30" alt="" border="0"><br></td><td><img src="img/offline/px.gif" width="12" height="1" alt="" border="0"></td></tr></table></td><td><img src="img/offline/px.gif" width="15" height="0" alt="" border="0"></td></tr></table>
+	
+</body>
+</html>

@@ -1,0 +1,19 @@
+<refentry id="{@id}">
+ <refnamediv>
+  <refname>hcgPublic Admin Module</refname>
+  <refpurpose>About the Admin Module for hcgPublic</refpurpose>
+ </refnamediv>
+ <refsynopsisdiv>
+  <refsynopsisdivinfo>
+   <author>
+    Jim Applegate
+    <authorblurb>Documentation written by {@link mailto:japplega@hain-celestial.com japplega@hain-celestial.com}</authorblurb>
+   </author>
+   <copyright>Copyright 2006, Jim Applegate</copyright>
+  </refsynopsisdivinfo>
+ </refsynopsisdiv>
+ <refsect1 id="{@id manual}">
+  <title>Admin Module Manual</title>
+  <para>Welcome to the Administration module for hcgPublic. This module is the heart and soul of the administration site. Other modules tie into the structure created by this module to provide their own administration pages. It provides the tools you need to have to create a full-featured administrative site from which you can manage all your websites.</para>
+ </refsect1>
+</refentry>

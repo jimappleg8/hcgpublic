@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+   <title>hcgPublic Documentation</title>
+   <link rel="STYLESHEET" type="text/css" href="docs.css">
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="topHeader">
+   hcgPublic Documentation
+</div>
+
+<div id="docTitle">
+   User Manual
+</div>
+
+<div id="content">
+
+<p class="breadcrumbs"><a href="index.html">User Manual</a> > Core Module</p>
+
+<h1>Core Module</h1>
+
+<div class="tag">
+<h2>append_js_code</h2>
+<pre>
+&lt;?php get("core.append_js_code", $js_code); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Sets the global $_HCG_GLOBAL['javascript'] variable by inserting the contents of the $js_code variable. This function can be called from pages or from within scripts.</p>
+<h3>Template Variables</h3>
+<p class="first">There is no template for this tag.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>append_js_file</h2>
+<pre>
+&lt;?php get("core.append_js_file", $js_file); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Sets the global $_HCG_GLOBAL['javascript'] variable by inserting the .js file specified. If JavaScript is automatically generated, it can be inserted into the same variable using append_js_code(). These functions can be called from pages or from within scripts.</p>
+<p>The function looks in the site folder/js/ for the file, and if it's not there, the file is assumed to be in the $_HCG_GLOBAL['js_dir'] directory.</p>
+<h3>Template Variables</h3>
+<p class="first">There is no template for this tag.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>get_js_file</h2>
+<pre>
+&lt;?php get("core.get_js_file", $js_file); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Returns the contents of a JavaScript file. This is for cases when you need to grab some JavaScript but you don't want it mixed with the JavaScript used in the Header section of the page. For example, if you have a script that writes the call for a Flash image.</p>
+<p>The function looks in the site folder/js/ for the file, and if it's not there, the file is assumed to be in the $_HCG_GLOBAL['js_dir'] directory. </p>
+<h3>Template Variables</h3>
+<p class="first">There is no template for this tag.</p>
+</div> <!-- tag -->
+
+<div class="tag">
+<h2>wrap_js</h2>
+<pre>
+&lt;?php get("core.wrap_js", [$js_file]); ?&gt;
+</pre>
+<h3>Description</h3>
+<p class="first">Wraps the contents of $_HCG_GLOBAL['javascript'] in the HTML code given in the specified file. The default file is wrapper.js which is a template file with the variable $hcg_javascript in the middle.</p>
+<p>The function returns the contents of the $_HCG_GLOBAL['javascript'] wrapped in the wrapper file. This is so that in a PHP file, you can assign the results to a header variable such as $hdr['js'] and pass it to the header template.</p>
+<p>The function looks in the site folder/js/ for the file, and if it's not there, the file is assumed to be in the $_HCG_GLOBAL['js_dir'] directory.</p>
+<h3>Template Variables</h3>
+<p class="first">There is no template for this tag.</p>
+</div> <!-- tag -->
+
+</div> <!-- content -->
+
+</div> <!-- container -->
+
+</body>
+</html>

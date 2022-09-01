@@ -1,0 +1,36 @@
+This site runs »!ErfurtWiki«, which is an implementation of the WikiWikiWeb
+hypertext system. It allows everybody who comes along to edit and create
+new pages very easily.
+
+* read the WikiHowto if you'd like to know what this can be used for
+* learn how to CreatePages
+* click on [[EditThisPage]] to change the contents of a page
+* make friends with WikiMarkup
+* visit the [GuestBook|ErfurtWiki:GuestBook] or the SandBox and NotePad to play with it
+* SearchPages or go to the list of NewestPages
+* there are also lists of the MostVisitedPages, MostOftenChangedPages and recently UpdatedPages
+
+ErfurtWiki is implemented in the PHP scripting language and fully
+contained in one script file. It was implemented more like a library and thus
+allows very quick integration into existing web sites, because it does not
+enforce a specific page layout or requires you to chose from factory page
+themes/skins.
+
+Other cool features are:
+* the new PlugInterface that allows to extend ''ewiki'' µµ(internal project name)µµ while keeping the core small (just one script).
+* it has a very easy ImageUploading function
+* caches referenced images 
+* can work with a MySQL database or without (using the flat files backend)
+* external administration tools are available
+* besides all this it is rather fast (using mainly simple string arithmetics to render wiki pages)
+* plugins for example provide the PageIndex or the ImageGallery and the !LikePages feature
+
+See also:
+* look at the SoftwareNotes for compatibility issues and known problems
+* the page about OccasionallyAskedQuestions, use it for support questions and/or bug reports
+* if you'd like to conribute to the project:
+** visit our online [ErfurtWiki:SupportForum "SupportForum"]
+** issue an [ErfurtWiki:BugReports "BugReport"] if something has broken
+** or note some wishes on [ErfurtWiki:UserSuggestions "UserSuggestions"]
+** but also have a look at the ErfurtWiki:LatestNews from time to time
+

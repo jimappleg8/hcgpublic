@@ -1,0 +1,55 @@
+(Note: incomplete, there is now too much in ewiki to document it in detail
+and correctly enough, just visit the [http://erfurtwiki.sourceforge.net/plugins/ "plugins/"] directory)
+
+* PHP
+* easy integration into existing sites
+* __simple__ architecture
+* well documented, see [README]
+* __easy__ extension mechanism
+* admin tools/ via www and a powerful cmdline db admin tool
+* tries to be as __fast__ as possible (regex used only where absolutely neccessary)
+* allows different databases
+** MySQL per default
+** flat_files (and faster compressed companion format)
+** anydb (PEAR::DB, ADOdb, dbx) for most other SQL dbs
+** dba/dbm BerkelyDB
+** PhpWiki v1.3.x database access wrapper
+* can deal with binary and text content
+* very easy ImageUploading is possible
+* caches referenced (external) images 
+* supports many different Wiki markups (and tries to unify to a certain degree)
+* allows user CSS markup in pages
+* has a very simple but featureful PlugInterface that already lead to various extensions (thus keeping the core script small):
+** FileDownload and FileUpload pages
+** AboutPlugins
+** OrphanedPages
+** PageIndex
+** PowerSearch
+** RandomPage
+** WantedPages
+** WordIndex
+* many functionality enhancement plugins:
+** email address protection, see [ProtectedEMail]
+** concurrent edit resolving (patchsaving.php)
+** simple diff or GNU diff
+** image resizing on upload (libgd2 or magick)
+** markup emulation:
+*** bbcode
+*** miki
+*** phpwiki
+*** sfwiki
+** footnotes markup
+** allows also html usage in pages (only where explicitely allowed)
+** "like pages" feature
+** page alias names
+** ![ notify: ... ] markup
+* more plugins:
+** calendar
+** StaticPages - which are .html and .php files in a dedicated subdirectory, which are read when their filename is requested as page name
+** spellchecking
+** inline admin plugins
+** inline markup plugins (mpi)
+* also has a pluginloader plugin
+* advanced user-friendly HTTP usage
+** provides a !SaveAs-filename within HTTP headers for example (most other Pseudo-CMS don't even want you to store a page on harddisk)
+* _auth() mechanism to be implemented by parent/container CMS

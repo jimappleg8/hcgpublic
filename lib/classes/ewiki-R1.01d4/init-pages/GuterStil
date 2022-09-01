@@ -1,0 +1,37 @@
+Schreibe einfach was dir gerade einfällt. Es geht hier hauptsächlich um
+die Sammlung von nützlichem Inhalt. Es gibt keinen Grund sich gleich am
+Anfang Sorgen darüber zu machen, wie der Text dann später angezeigt wird.
+
+Deine eigene Meinung zu signieren ist manchmal gar keine schlechte Idee.
+Zumindest wenn du in der ersten Person schreibst, solltest du das tun.
+
+Auch wenn dies hier nicht das [IRC|irc://#irchelp] oder ein Forum / eine
+Newsgroup ist, darfst du dich ruhig gesprächig geben.
+
+Wenn du einen Text nicht gleich vervollständigen kannst, ist das
+normalerweise gar nicht schlimm, denn möglicherweise tut das jemand
+anderes schon wenige Minuten später.
+
+Aber bitte kürze keine Texte die jemand anders geschrieben hat, erstelle
+lieber eine eigene Seite und fülle sie mit ''deiner'' Meinung zu einem
+Thema. Und benutze diese Seite bitte auch nicht um andere zu ärgern; die
+Internettechnologie erlaubt es übrigens relativ schnell deine Adresse
+herauszubekommen.
+
+
+! Kommentieren
+
+Wenn du ein Thema oder eine Seite ergänzen möchtest, die ein anderer
+begonnen hat, ist es (manchmal) sinnvoll eine horizontale Linie (-----)
+darunter einzufügen. Wichtig ist aber, daß du deinen Namen vor oder nach
+dem ergänzenden Text einfügst:
+
+<pre>
+~DeinName:
+  ... dein Kommentar zu den
+  vorausgegangenen Absätzen ...
+</pre>
+
+Auf diese Weise werden Diskussionen lebendiger und verschiedene Meinungen
+geraten nicht unleserlich durcheinander.
+

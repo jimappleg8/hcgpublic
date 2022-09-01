@@ -1,0 +1,17 @@
+Cuando desee agregar una nueva página a este website, debe 
+encontrar una página con un contenido similar para comenzar,
+pues en un sistema de hipertexto como este, los contenidos
+relaciones entre si debe estar enlazados.
+
+Cuando haya encontrado una página, simplemente eliga 
+EditarEstaPágina, con lo cual podrá cambiar el contenido. En la
+ubicación apropiada inserte una nueva PalabraWiki válida
+(es decir el título de su nueva página).  Preferiblemente emplee un nombre dicie
+nte para el enlace, de forma que después
+otras personas deseen usarlo.
+
+Después de salvar sus modificaciones, aparecerá en la
+página modificada, a continuación de la nueva PalabraWiki (es decir 
+del nuevo enlace) un signo de interrogación, pues EstaPaginaAunNoExiste.
+Haga click sobre este, para obtener una nueva región de edición,
+en la cual puede completar el contenido de su nueva página.

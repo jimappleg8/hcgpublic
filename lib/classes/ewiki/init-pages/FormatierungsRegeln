@@ -1,0 +1,60 @@
+Jede Seite innerhalb eines WikiWikiWeb soll schnell und einfach zu ändern
+sein, daher gibt es auch nur einige wenige Regeln, wie der Text eingegeben
+werden sollte (nicht so umständlich wie [HTML|HyperTextMarkupLanguage]).
+
+Drücke bitte auf den [DieseSeiteÄndern]Verweis unten
+auf der Seite, denn sonst werden die folgenden Erklärungen nicht
+viel Sinn ergeben.
+
+! Absätze
+
+* Absätze werden durch Leerzeilen voneinander abgegrenzt
+* mit drei Prozentzeichen %%''''% kannst du einen Zeilenumbruch erzwingen
+* um deinen Text einzurücken füge einige Leerzeichen (oder Tabulatoren) an den Anfang der Zeile ein
+
+! !! Überschriften
+
+* Mit einem Ausführungszeichen ! am Beginn einer Zeile erzeugst du eine kleine Überschrift
+* mit zwei !! eine mittelgroße
+* und mit drei !!! wird aus dem dahinterstehenden Text eine richtig große Überschrift
+
+! Textstil
+
+* wenn du ''text betonen'' möchtest, schließe ihn in zwei einfache Anführungszeichen ein '' (wird meistens kursiv angezeigt)
+* __Text wird fett__ mit zwei Unterstrichen __ (oder wenn er in zwei Sternchen ** eingeschlossen wird)
+* um ##großen Text## zu bekommen verwende zwei Raute-zeichen ##
+* µµkleiner Textµµ wird einfach in zwei Mikro-zeichen µµ eingeschlossen
+* eine ==Schreibmaschinen-ähliche Schrift== erhält Text, der von zwei Gleicheitszeichen == eingeschlossen wird
+
+! Listen
+
+* beginne eine Zeile mit einem Sternchen * um eine Liste zu beginnen
+* nimm stattdessen ein Raute-zeichen für # nummerierte Listen
+*# du kannst auch untergeordnete Listen erzeugen
+*# Unterlisten sollten aber mit dem selben Mix von * und # beginnen
+
+! !HyperLinks (Verweise)
+
+* gib einfach ein WikiWort im Text ein um einen neuen [Verweis|HyperLink] zu erzeugen
+* oder umschließe [Wörter mit eckigen Klammern] um einen Verweis innerhalb des WikiWikiWeb zu erzeugen, der kein echtes WikiWord ist
+* jede gültige Internetadresse (beginnend mit [http://]) wie z.B. http://www.example.com/ wird automagisch anklickbar gemacht (ebenso EMail-Adressen)
+* schließe eine WWW-Adresse in eckige Klammern ein [[freshmeat project page | http://www.freshmeat.net/projects/ewiki]] um ihr dann links von einem | Zeichen einen Titel zu geben
+* wenn ein !WikiWort oder eine !http://www-Adresse (oder ![irgendetwas] innerhalb von eckigen Klammern) kein Verweis/!HyperLink werden soll, dann schreibe einfach ein Ausrufezeichen oder ein Schlängelchen direkt davor
+** z.B. !!KeinHyperLink, ![DiesIstAuchKeinLink]
+** oder ~http://www.nolink.org/
+
+! Tabellen mit |
+
+| einfach Text | mit dem Längsstrich | einschließen |
+| für eine einfache | Tabellenstruktur  |
+| die Browser | lassen leere Felder | meistens weg |
+
+! Bilder
+
+* um eine Graphik in eine Seite einzufügen, schreibe einfach ihre absolute www-Adresse in eckige Klammern, wie ![http://www.example.com/pics/image.png]
+* oder verwende stattdessen die einfache [BildHochladen|ImageUploading] Funktion, siehe auch DieseSeiteÄndern
+* um ein Bild auszurichten (zu bestimmen wie der Text herumfließt) füge in den eckigen Klammern zwei Leerzeichen vor und/oder nach der !http://-Adresse ein
+
+! Mehr Funktionen
+
+Weitere Möglichkeiten sind auf der Seite ExtendedWikiMarkup (in Englisch) beschrieben.

@@ -1,0 +1,102 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>reset()</title>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.61.3">
+<link rel="home" href="index.html" title="Formsess">
+<link rel="up" href="formsess_reference.html" title="Chapter 7. Method reference">
+<link rel="previous" href="formsess_performCheck.html" title="performCheck()">
+<link rel="next" href="formsess_save.html" title="save()">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr><th colspan="3" align="center">reset()</th></tr>
+<tr>
+<td width="20%" align="left">
+<a accesskey="p" href="formsess_performCheck.html">Prev</a> </td>
+<th width="60%" align="center">Chapter 7. Method reference</th>
+<td width="20%" align="right"> <a accesskey="n" href="formsess_save.html">Next</a>
+</td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div><div><h2 class="title" style="clear: both">
+<a name="formsess_reset"></a>reset()</h2></div></div>
+<div></div>
+</div>
+<div class="funcsynopsis"><p>
+<code class="funcdef">void <b class="fsfunc">reset</b>(</code><var class="pdparam">$target</var><code>)</code>;<br>string <code>$target</code>;</p></div>
+<p>
+        Very important function.
+        Since data is stored by formsess using the session, their lifetime depends on the session lifetime.
+        Then it is quite likely that you will end up with useless data, and you might even get them in a place
+        where you didn't expect them.
+        reset is there to avoid these problems.
+      </p>
+<p>
+        Just call reset when you need to clear up the data you no longer need.
+        By instance, before performing the validation on a form, it is quite likely
+        that you want to clear the errors that occured during the last run.
+        Then just call formsess::reset('errors').
+        If you have data saved in a form and no longer need it _ by instance after an insert in a database _
+        just call reset without any parameter to clear any information related to that form.
+      </p>
+<p>
+        During the developement, you are probably gonna change your forms several times: add or remove fields,
+        add or remove validation steps... formsess is not aware of what you are changing. If you add a validation
+        step in your template, it will be stored in the session data space, and will be executed the next time 
+        you call <a href="formsess_performCheck.html" title="performCheck()">performCheck</a>, EVEN if the
+        <a href="fs_reference_validate.html" title="&lt;fs:validate /&gt;">&lt;fs:validate /&gt;</a> tag was removed. To clear up the session space,
+        you have to use reset. Just add it once and remove it from your PHP code, and you're done.
+        </p>
+<pre class="programlisting">
+
+&lt;?php
+$fs = new formsess('foo');
+$fs-&gt;reset();
+?&gt;
+
+        </pre>
+<p>
+        So if you feel like you're getting a very very strange behaviour from your form, it is quite likely
+        that a little reset is needed.
+      </p>
+<p>
+        The following values are valid for <i class="parameter"><tt>$target</tt></i>:
+        </p>
+<div class="itemizedlist"><ul type="disc">
+<li>values</li>
+<li>errors</li>
+<li>types</li>
+<li>all (default)</li>
+</ul></div>
+<p>
+      </p>
+<p>
+        See also <a href="formsess_destroy.html" title="destroy()"><tt class="function">destroy</tt></a>
+      </p>
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left">
+<a accesskey="p" href="formsess_performCheck.html">Prev</a> </td>
+<td width="20%" align="center"><a accesskey="u" href="formsess_reference.html">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="formsess_save.html">Next</a>
+</td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">performCheck() </td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top"> save()</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

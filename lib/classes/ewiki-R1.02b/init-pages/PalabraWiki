@@ -1,0 +1,23 @@
+Una !PalabraWiki consta de varias palabras juntas, cada una comenzando con letra
+ mayúscual.  Como por ejemplo:
+
+* MuchasPalabrasQueComienzanConLetraMayúscula
+* EditarEstaPágina
+* EstaTambiénEsPalabraWiki
+
+aunque estas no lo son:
+
+* IBM
+* muchaspalabrassinletrasmayúsculas
+* 123456789
+
+Uno también puede crear [HyperLink]s en un WikiWikiWeb, que no son
+~PalabrasWiki válidas, empleando paréntesis cuadrados:
+
+* [[Esta es una Oración en paréntesis cuadrdos, que será un enlace]]
+* [[También soy un enlace]]
+
+En ocasiones se debe ser algo creativo, para encontrar ~PalabrasWiki buenas y di
+cientes, aunque eso también puede ser divertido.
+Lea también la página sobre ReglasDeMarcadoWiki y sobre
+[ComoSePuedenCrearPáginas|CrearPáginas].

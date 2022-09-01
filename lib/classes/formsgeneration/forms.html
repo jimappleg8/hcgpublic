@@ -1,0 +1,1355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Forms class documentation</title>
+</head>
+<body>
+<center><h1>Forms class documentation</h1></center>
+<hr />
+<ul>
+<p><b>Author:</b> Manuel Lemos (<a href="mailto:mlemos-at-acm.org">mlemos-at-acm.org</a>)</p>
+<p><b>Version control:</b> <tt>@(#) $Id: forms.documentation,v 1.46 2004/07/14 08:34:24 mlemos Exp $</tt></p>
+<h2>Contents</h2>
+<ul>
+<li><a href="#2.1.1">Summary</a></li>
+<li><a href="#3.1.2">Methods</a></li>
+<ul>
+<li><a href="#4.2.0">AddInput</a></li>
+<ul>
+<li><a href="#5.3.0">Arguments</a></li>
+<ul>
+<li><a href="#6.4.1">TYPE</a></li>
+<li><a href="#6.4.2">NAME</a></li>
+<li><a href="#6.4.3">ID</a></li>
+<li><a href="#6.4.4">VALUE</a></li>
+<li><a href="#6.4.5">ACCEPT</a></li>
+<li><a href="#6.4.6">ACCESSKEY</a></li>
+<li><a href="#6.4.7">ALT</a></li>
+<li><a href="#6.4.8">BORDER</a></li>
+<li><a href="#6.4.9">CHECKED</a></li>
+<li><a href="#6.4.10">CLASS</a></li>
+<li><a href="#6.4.11">COLS</a></li>
+<li><a href="#6.4.12">LABEL</a></li>
+<li><a href="#6.4.13">MAXLENGTH</a></li>
+<li><a href="#6.4.14">MULTIPLE</a></li>
+<li><a href="#6.4.15">ONCHANGE</a></li>
+<li><a href="#6.4.16">ONCLICK</a></li>
+<li><a href="#6.4.17">OPTIONS</a></li>
+<li><a href="#6.4.18">ROWS</a></li>
+<li><a href="#6.4.19">SELECTED</a></li>
+<li><a href="#6.4.20">SIZE</a></li>
+<li><a href="#6.4.21">SRC</a></li>
+<li><a href="#6.4.22">STYLE</a></li>
+<li><a href="#6.4.23">TABINDEX</a></li>
+<li><a href="#6.4.24">Accessible</a></li>
+<li><a href="#6.4.25">Capitalization</a></li>
+<li><a href="#6.4.26">ClientScript</a></li>
+<li><a href="#6.4.27">CustomClass</a></li>
+<li><a href="#6.4.28">DiscardInvalidValues</a></li>
+<li><a href="#6.4.29">Encoding</a></li>
+<li><a href="#6.4.30">EncodedField</a></li>
+<li><a href="#6.4.31">EncodingFunctionVerification</a></li>
+<li><a href="#6.4.32">EncodingFunctionScriptFile</a></li>
+<li><a href="#6.4.33">ExtraAttributes</a></li>
+<li><a href="#6.4.34">ReadOnlyMark</a></li>
+<li><a href="#6.4.35">ReplaceExpressions</a></li>
+<li><a href="#6.4.36">SubForm</a></li>
+<li><a href="#6.4.37">ValidateErrorMessage</a></li>
+<li><a href="#6.4.38">ValidateAsEmail</a></li>
+<li><a href="#6.4.39">ValidateAsEmailErrorMessage</a></li>
+<li><a href="#6.4.40">ValidateAsCreditCard</a></li>
+<li><a href="#6.4.41">ValidationCreditCardTypeField</a></li>
+<li><a href="#6.4.42">ValidateAsCreditCardErrorMessage</a></li>
+<li><a href="#6.4.43">ValidateRegularExpression</a></li>
+<li><a href="#6.4.44">ValidateRegularExpressionErrorMessage</a></li>
+<li><a href="#6.4.45">ValidateAsNotEmpty</a></li>
+<li><a href="#6.4.46">ValidateAsNotEmptyErrorMessage</a></li>
+<li><a href="#6.4.47">ValidateMinimumLength</a></li>
+<li><a href="#6.4.48">ValidateMinimumLengthErrorMessage</a></li>
+<li><a href="#6.4.49">ValidateAsEqualTo</a></li>
+<li><a href="#6.4.50">ValidateAsEqualToErrorMessage</a></li>
+<li><a href="#6.4.51">ValidateAsDifferentFrom</a></li>
+<li><a href="#6.4.52">ValidateAsDifferentFromErrorMessage</a></li>
+<li><a href="#6.4.53">ValidateAsSet</a></li>
+<li><a href="#6.4.54">ValidateAsSetErrorMessage</a></li>
+<li><a href="#6.4.55">ValidateAsInteger</a></li>
+<li><a href="#6.4.56">ValidateAsIntegerErrorMessage</a></li>
+<li><a href="#6.4.57">ValidateAsFloat</a></li>
+<li><a href="#6.4.58">ValidateAsFloatErrorMessage</a></li>
+<li><a href="#6.4.59">ValidateOnlyOnClientSide</a></li>
+<li><a href="#6.4.60">ValidateOnlyOnServerSide</a></li>
+<li><a href="#6.4.61">ValidateOptionalValue</a></li>
+<li><a href="#6.4.62">ValidationLowerLimit</a></li>
+<li><a href="#6.4.63">ValidationUpperLimit</a></li>
+<li><a href="#6.4.64">ValidationDecimalPlaces</a></li>
+<li><a href="#6.4.65">ValidationClientFunction</a></li>
+<li><a href="#6.4.66">ValidationClientFunctionErrorMessage</a></li>
+<li><a href="#6.4.67">ValidationServerFunction</a></li>
+<li><a href="#6.4.68">ValidationServerFunctionErrorMessage</a></li>
+</ul>
+</ul>
+<li><a href="#6.2.0">AddHiddenInputs</a></li>
+<li><a href="#7.2.0">AddDataPart</a></li>
+<li><a href="#8.2.0">AddInputPart</a></li>
+<li><a href="#9.2.0">AddHiddenInputsParts</a></li>
+<li><a href="#10.2.0">AddInputHiddenPart</a></li>
+<li><a href="#11.2.0">AddLabelPart</a></li>
+<ul>
+<li><a href="#12.3.0">Arguments</a></li>
+<ul>
+<li><a href="#13.4.1">LABEL</a></li>
+<li><a href="#13.4.2">FOR</a></li>
+<li><a href="#13.4.3">ACCESSKEY</a></li>
+</ul>
+</ul>
+<li><a href="#13.2.0">AddFunction</a></li>
+<ul>
+<li><a href="#14.3.0">Arguments</a></li>
+<ul>
+<li><a href="#15.4.1">Function</a></li>
+<li><a href="#15.4.2">Type</a></li>
+<li><a href="#15.4.3">Element</a></li>
+</ul>
+</ul>
+<li><a href="#15.2.0">RemoveFunction</a></li>
+<li><a href="#16.2.0">StartLayoutCapture</a></li>
+<li><a href="#17.2.0">EndLayoutCapture</a></li>
+<li><a href="#18.2.0">Output</a></li>
+<ul>
+<li><a href="#19.3.0">Arguments</a></li>
+<ul>
+<li><a href="#20.4.1">Function</a></li>
+<li><a href="#20.4.2">EndOfLine</a></li>
+</ul>
+</ul>
+<li><a href="#20.2.0">FetchOutput</a></li>
+<li><a href="#21.2.0">DisplayOutput</a></li>
+<li><a href="#22.2.0">Validate</a></li>
+<li><a href="#23.2.0">WasSubmitted</a></li>
+<li><a href="#24.2.0">LoadInputValues</a></li>
+<li><a href="#25.2.0">SetInputProperty</a></li>
+<li><a href="#27.2.0">SetInputValue</a></li>
+<li><a href="#28.2.0">GetInputValue</a></li>
+<li><a href="#29.2.0">GetFileValues</a></li>
+<li><a href="#31.2.0">SetCheckedState</a></li>
+<li><a href="#32.2.0">GetCheckedState</a></li>
+<li><a href="#33.2.0">GetCheckedRadio</a></li>
+<li><a href="#34.2.0">GetCheckedRadioValue</a></li>
+<li><a href="#35.2.0">ResetFormParts</a></li>
+<li><a href="#36.2.0">GetJavascriptInputObject</a></li>
+<li><a href="#37.2.0">GetJavascriptInputValue</a></li>
+</ul>
+<li><a href="#38.1.3">Properties</a></li>
+<ul>
+<li><a href="#39.2.0">NAME</a></li>
+<li><a href="#39.2.0.0">METHOD</a></li>
+<li><a href="#39.2.0.1">ACTION</a></li>
+<li><a href="#39.2.0.2">TARGET</a></li>
+<li><a href="#39.2.0.3">ONSUBMIT</a></li>
+<li><a href="#39.2.0.4">ONSUBMITTING</a></li>
+<li><a href="#39.2.0.5">ONRESET</a></li>
+<li><a href="#39.2.0.6">ENCTYPE</a></li>
+<li><a href="#39.2.0.7">ExtraAttributes</a></li>
+<li><a href="#39.2.0.8">Changes</a></li>
+<li><a href="#39.2.0.9">OptionsSeparator</a></li>
+<li><a href="#39.2.0.10">OutputPasswordValues</a></li>
+<li><a href="#39.2.0.11">ReadOnly</a></li>
+<li><a href="#39.2.0.12">ResubmitConfirmMessage</a></li>
+<li><a href="#39.2.0.13">error</a></li>
+</ul>
+<li><a href="#39.1.4">Options</a></li>
+<ul>
+<li><a href="#40.2.0">ValidationFunctionName</a></li>
+<li><a href="#40.2.0.0">ValidateAsEmail</a></li>
+<li><a href="#40.2.0.1">ValidateAsCreditCard</a></li>
+<li><a href="#40.2.0.2">sub_form_variable_name</a></li>
+<li><a href="#40.2.0.3">email_regular_expression</a></li>
+<li><a href="#40.2.0.4">accessibility_tab_index</a></li>
+<li><a href="#40.2.0.5">debug</a></li>
+<li><a href="#40.2.0.6">end_of_line</a></li>
+<li><a href="#40.2.0.7">toupper_function</a></li>
+<li><a href="#40.2.0.8">tolower_function</a></li>
+<li><a href="#40.2.0.9">form_submitted_variable_name</a></li>
+<li><a href="#40.2.0.10">form_submitted_test_variable_name</a></li>
+<li><a href="#40.2.0.11">encoding</a></li>
+</ul>
+<li><a href="#40.1.5">Functions</a></li>
+<ul>
+<li><a href="#41.2.0">FormCaptureOutput</a></li>
+</ul>
+<li><a href="#42.1.6">Template processing</a></li>
+<ul>
+<li><a href="#43.2.1">Separating presentation from logic</a></li>
+<li><a href="#43.2.2">Plain HTML template files with embedded PHP code</a></li>
+<li><a href="#43.2.3">Smarty template engine</a></li>
+<li><a href="#43.2.4">Smarty plug-in filter for form composition</a></li>
+</ul>
+<li><a href="#43.1.7">Enhancing forms with custom input type plug-ins</a></li>
+<ul>
+<li><a href="#44.2.1">Custom input classes</a></li>
+<ul>
+<li><a href="#45.3.1">Basic steps for developing new custom input classes</a></li>
+<li><a href="#46.3.2">Class variables</a></li>
+<ul>
+<li><a href="#47.4.1">children</a></li>
+<li><a href="#47.4.2">format</a></li>
+<li><a href="#47.4.3">focus_input</a></li>
+<li><a href="#48.4.4">input</a></li>
+<li><a href="#48.4.5">mark_start</a></li>
+<li><a href="#48.4.6">mark_end</a></li>
+<li><a href="#48.4.7">valid_marks</a></li>
+</ul>
+<li><a href="#48.3.3">Class functions</a></li>
+<ul>
+<li><a href="#49.4.0">AddChild</a></li>
+<li><a href="#50.4.0">AddFunction</a></li>
+<li><a href="#51.4.0">AddInput</a></li>
+<li><a href="#52.4.0">AddInputHiddenPart</a></li>
+<li><a href="#53.4.0">AddInputPart</a></li>
+<li><a href="#54.4.0">AddLabelPart</a></li>
+<li><a href="#55.4.0">DefaultSetInputProperty</a></li>
+<li><a href="#57.4.0">GenerateInputID</a></li>
+<li><a href="#58.4.0">GetInputValue</a></li>
+<li><a href="#59.4.0">GetJavascriptInputValue</a></li>
+<li><a href="#60.4.0">GetJavascriptValidations</a></li>
+<li><a href="#62.4.0">LoadInputValues</a></li>
+<li><a href="#63.4.0">ParseNewInputFormat</a></li>
+<li><a href="#64.4.0">SetInputProperty</a></li>
+<li><a href="#65.4.0">ValidateInput</a></li>
+</ul>
+</ul>
+<li><a href="#66.2.2">Available custom input plug-ins classes</a></li>
+<ul>
+<li><a href="#67.3.1">form_date_class</a></li>
+</ul>
+</ul>
+</ul>
+</ul>
+<hr />
+<ul>
+<h2><li><a name="2.1.1">Summary</a></li></h2>
+<ul>
+<h3>Name</h3>
+<p>Forms class</p>
+<h3>Purpose</h3>
+<p>Class for generation and validation of HTML Forms.</p>
+<h3>Author</h3>
+<p>Manuel Lemos (<a href="mailto:mlemos-at-acm.org">mlemos-at-acm.org</a>)</p>
+<h3>Files</h3>
+<p><tt>forms.php</tt></p>
+</ul>
+<h2><li><a name="3.1.2">Methods</a></li></h2>
+<ul>
+<h3><a name="AddInput"></a><a name="4.2.0">AddInput</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;AddInput($arguments)</tt></p>
+<h4>Purpose</h4>
+<p>Add an input field to the form definition.</p>
+<h4>Usage</h4>
+<p>The <tt>$arguments</tt> argument is an associative array that takes pairs of tag names and values that define the properties of the input field to be added to the form definition.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+<h4><a name="5.3.0">Arguments</a></h4>
+<ul>
+<p><tt><li><a name="6.4.1">TYPE</a></li></tt> (required)</p>
+<p>Type of the field as defined for the <tt>TYPE</tt> attribute of the <tt>&lt;INPUT&gt;</tt> HTML tag.  Supported input types are:  <tt>textarea</tt>, <tt>select</tt>, <tt>text</tt>, <tt>file</tt>, <tt>password</tt>, <tt>checkbox</tt>, <tt>radio</tt>, <tt>submit</tt>, <tt>reset</tt>, <tt>button</tt> and <tt>hidden</tt>.</p>
+<p>Additionally, there is a special type named <tt>custom</tt> that should be specified to add custom inputs defined by separate plug-in classes.</p>
+<p><tt><li><a name="6.4.2">NAME</a></li></tt></p>
+<p>Name of the field as defined for the <tt>NAME</tt> attribute of the <tt>&lt;INPUT&gt;</tt> HTML tag.  This attribute is optional if the ID attribute is specified.  The <tt>NAME</tt> is used as unique reference to the input fields in the class if the <tt>ID</tt> is missing.</p>
+<p><tt><li><a name="6.4.3">ID</a></li></tt></p>
+<p>Identifier of the field as defined for the <tt>ID</tt> attribute of the <tt>&lt;INPUT&gt;</tt> HTML tag.  This attribute is required if the <tt>NAME</tt> attribute is missing.  The <tt>ID</tt> is used as unique reference to the input fields in the class if the <tt>NAME</tt> is missing.</p>
+<p><tt><li><a name="6.4.4">VALUE</a></li></tt></p>
+<p>Default value of a field as defined for the <tt>VALUE</tt> attribute of the <tt>&lt;INPUT&gt;</tt> HTML tag.  This property is required for <tt>select</tt> type fields and it must have a value that is the index of an entry of the <tt>OPTIONS</tt> property associative array.</p>
+<p><tt><li><a name="6.4.5">ACCEPT</a></li></tt></p>
+<p>MIME file types to be accepted by the <tt>file</tt> fields as defined for the <tt>ACCEPT</tt> attribute of the <tt>&lt;INPUT&gt;</tt> HTML tag.</p>
+<p><tt><li><a name="6.4.6">ACCESSKEY</a></li></tt></p>
+<p>Key to be associated as shortcut to activate the given input field for keyboard control. The shortcut key may also be defined with the function <a href="#AddLabelPart">AddLabelPart</a> but for input fields without a label the shortcut key has to be defined with <a href="#AddInput">AddInput</a> function.</p>
+<p><tt><li><a name="6.4.7">ALT</a></li></tt></p>
+<p>Alternative text argument for <tt>image</tt> fields as defined for the <tt>ALT</tt> attribute of the <tt>&lt;INPUT&gt;</tt> HTML tag.</p>
+<p><tt><li><a name="6.4.8">BORDER</a></li></tt></p>
+<p>Width of the border to be drawn around the input fields, usually of the <tt>image</tt> type.</p>
+<p><tt><li><a name="6.4.9">CHECKED</a></li></tt></p>
+<p>Flag argument for <tt>radio</tt> and <tt>checkbox</tt> fields as defined for the <tt>CHECKED</tt> attribute of the <tt>&lt;INPUT&gt;</tt> HTML tag.</p>
+<p><tt><li><a name="6.4.10">CLASS</a></li></tt></p>
+<p>Name of the presentation style class with which the input field should be rendered. Using this attribute implies that you have defined the specified style class in the appropriate places of the HTML page.</p>
+<p><tt><li><a name="6.4.11">COLS</a></li></tt></p>
+<p>Number of columns of a <tt>textarea</tt> field as defined for the <tt>COLS</tt> attribute of the <tt>&lt;INPUT&gt;</tt> HTML tag.</p>
+<p><tt><li><a name="6.4.12">LABEL</a></li></tt></p>
+<p>Default data value that is outputted as the definition of the input label. See the function <a href="#AddLabelPart">AddLabelPart</a> for more information.</p>
+<p><tt><li><a name="6.4.13">MAXLENGTH</a></li></tt></p>
+<p>Maximum number of characters that a <tt>text</tt>, <tt>password</tt> or <tt>file</tt> field may contain as defined for the <tt>MAXLENGTH</tt> attribute of the <tt>&lt;INPUT&gt;</tt> HTML tag.  The <tt>LoadInputValues</tt> class function enforces this limit on the server side.</p>
+<p><tt><li><a name="6.4.14">MULTIPLE</a></li></tt></p>
+<p>Flag argument for <tt>select</tt> and <tt>checkbox</tt> fields. The meaning of this argument is the same for <tt>select</tt> as defined for the <tt>MULTIPLE</tt> attribute of the <tt>&lt;SELECT&gt;</tt> HTML tag. For <tt>checkbox</tt> fields, the use of this argument indicates that that the field belongs to a group of <tt>checkbox</tt> fields with the same <tt>NAME</tt> attribute value that should be validated together.</p>
+<p><tt><li><a name="6.4.15">ONCHANGE</a></li></tt></p>
+<p>Client side script commands to execute when the field value changes as defined for the <tt>ONCHANGE</tt> attribute of the <tt>&lt;INPUT&gt;</tt> HTML tag.</p>
+<p><tt><li><a name="6.4.16">ONCLICK</a></li></tt></p>
+<p>Client side script commands to execute when the user clicks on the field as defined for the <tt>ONCLICK</tt> attribute of the <tt>&lt;INPUT&gt;</tt> HTML tag.</p>
+<p><tt><li><a name="6.4.17">OPTIONS</a></li></tt></p>
+<p>Associative array that defines the values and text of a select field as defined for the <tt>OPTION</tt> HTML tag.</p>
+<p><tt><li><a name="6.4.18">ROWS</a></li></tt></p>
+<p>Number of rows of a <tt>textarea</tt> field as defined for the <tt>COLS</tt> attribute of the <tt>&lt;INPUT&gt;</tt> HTML tag.</p>
+<p><tt><li><a name="6.4.19">SELECTED</a></li></tt></p>
+<p>Flag argument for <tt>select</tt> fields that indicates the value of an option is to appear selected as defined for the <tt>SELECTED</tt> attribute of the <tt>&lt;OPTION&gt;</tt> HTML tag. If the <tt>select</tt> field is of type <tt>MULTIPLE</tt>, the <tt>SELECTED</tt> argument should be an array with the values of the options that should be pre-selected.</p>
+<p><tt><li><a name="6.4.20">SIZE</a></li></tt></p>
+<p>Number of characters that a <tt>text</tt> field displays at once as defined for the <tt>SIZE</tt> attribute of the <tt>&lt;INPUT&gt;</tt> HTML tag.</p>
+<p><tt><li><a name="6.4.21">SRC</a></li></tt></p>
+<p>URL argument for <tt>image</tt> fields as defined for the <tt>SRC</tt> attribute of the <tt>&lt;INPUT&gt;</tt> HTML tag.</p>
+<p><tt><li><a name="6.4.22">STYLE</a></li></tt></p>
+<p>Definition of the presentation style class attributes with which the input field should be rendered.</p>
+<p><tt><li><a name="6.4.23">TABINDEX</a></li></tt></p>
+<p>Number that defines the order position of the field in the sequence of fields that are activated when the <tt>TAB</tt> key is used as defined for the <tt>TABINDEX</tt> attribute of the <tt>&lt;INPUT&gt;</tt> HTML tag.</p>
+<p><tt><li><a name="6.4.24">Accessible</a></li></tt></p>
+<p>Boolean flag that determines whether the field should outputted as an accessible input when it is added to the form output definition with the <tt>AddInputPart</tt> function.</p>
+<p>If this flag is set to <tt>0</tt>, the field is outputted as text that represents its current state or value.  If this flag is set to <tt>1</tt>, the field is outputted as an usual accessible input, regardless of the value of the form <tt>ReadOnly</tt> flag.  If the field <tt>Accessible</tt> property is not specified, the form <tt>ReadOnly</tt> flag value is considered to determine how the field is outputted.</p>
+<p><tt><li><a name="6.4.25">Capitalization</a></li></tt></p>
+<p>Type of case conversion that is meant to be done on the field text value.  If the argument value is <tt>lowercase</tt> the text is converted to lower case.  If the argument value is <tt>uppercase</tt> the text is converted to upper case.  If the argument value is <tt>words</tt> the first letter of each word is converted to upper case and the other letters are converted to lower case.</p>
+<p><tt><li><a name="6.4.26">ClientScript</a></li></tt></p>
+<p>Javascript code to be inserted when the field is added to the form output.  The argument should be a string that may have line breaking or other types of white space characters. It may be used to define functions to perform custom validation or event handling.</p>
+<p><tt><li><a name="6.4.27">CustomClass</a></li></tt></p>
+<p>Name of a class that implements the behavior of a custom input implemented as a separate plug-in.</p>
+<p><tt><li><a name="6.4.28">DiscardInvalidValues</a></li></tt></p>
+<p>Flag argument that indicates whether invalid values should be discarded when the function <tt>LoadInputValues</tt> is called.</p>
+<p>This is meant to help preventing security exploits performed by attackers that may spoof values passed in fields that usually are not editable by real users, like for instance context values passed in hidden fields.</p>
+<p><tt><li><a name="6.4.29">Encoding</a></li></tt></p>
+<p>Name of the Javascript function to be called to encode a password field when a form is submitted.</p>
+<p><tt><li><a name="6.4.30">EncodedField</a></li></tt></p>
+<p>Identifier of the field that will hold the result of the encoding of the value of a <tt>password</tt> field.  If this argument is specified the password field value is cleared after storing the encoded value in the given field.  Usually, this field is of type <tt>hidden</tt>.</p>
+<p><tt><li><a name="6.4.31">EncodingFunctionVerification</a></li></tt></p>
+<p>A Javascript expression (function call or variable) that should be used if function defined by the <tt>Encoding</tt> argument is available.  This argument may be used in the case that the <tt>Encoding</tt> function is meant to be loaded from an external Javascript file and that file may only be loaded in some browser versions.</p>
+<p><tt><li><a name="6.4.32">EncodingFunctionScriptFile</a></li></tt></p>
+<p>URL of an external Javascript file that needs to be loaded from within the form HTML output to include the definition of the <tt>Encoding</tt> function.</p>
+<p><tt><li><a name="6.4.33">ExtraAttributes</a></li></tt></p>
+<p>List of extra attributes that should be added to the field's HTML tag when the form output is generated.  These extra attributes are ignored if the field is added to the form output as a hidden input part with the <tt>AddInputHiddenPart</tt> class function.</p>
+<p>The list should be defined as an associative array with the attribute names as array entry indexes and the attribute values as array entry values.</p>
+<p><tt><li><a name="6.4.34">ReadOnlyMark</a></li></tt></p>
+<p>Mark that should be outputted in the place of the field when the form is displayed as read-only or when the field is set as not accessible. If this argument is not specified, it is displayed the current field value.</p>
+<p>The read-only mark is outputted without being encoded, so it can include actual HTML markup to display images or other types of marks instead of the submitted field values.</p>
+<p>This is useful for instance to mask password values or display nice alternate images for read-only radio buttons or checkboxes.</p>
+<p><tt><li><a name="6.4.35">ReplaceExpressions</a></li></tt></p>
+<p>List of transformations that may be applied to a text input value when it is changed by the user. The transformations are defined in the form of regular expressions that define the form of the text that should be searched and the correspondent replacement expressions.</p>
+<p>The transformations may occur on the server side when the class function <tt>LoadInputValues</tt> is called. The transformations may also occur on the client side if the user browser has enabled Javascript with regular expression based text replacement support. The generated form Javascript code automatically detects whether client side transformations can be applied.</p>
+<p>The transformations list should be defined as an associative array with the search regular expressions as array entry indexes and the replacement text as array entry values.</p>
+<p>It is beyond the scope of this document to give a full explanation of how regular expressions work and their syntax. You may want to study the PHP function <tt><a href="http://www.php.net/ereg_replace">ereg_replace</a></tt> to learn the syntax of search and replacement regular expressions.</p>
+<p>In general terms you should know that the parts of the text input value that match the search regular expression are substituted by the replacement expression.</p>
+<p>The replacement expression may contain place holders that will be substituted by matching parts of the original value. Place holders are specified by a backslash character \ followed by the number of the part of the original value. A matching part is denoted in the search regular expression by enclosing its definition within brackets ( ) .</p>
+<p>Given this, \1 in the replacement expression represents the first search match text, \2 the second, \3 the third and so on up to \9.</p>
+<p>Here follows the definition of a few examples of useful replacement expressions:</p>
+<pre style="background-color: #ddddcc; ">
+
+ &quot;ReplaceExpressions&quot;=&gt;array(
+
+   /*
+    * trim whitespace at the beginning of the text value
+    */
+   &quot;^\\s+&quot;=&gt;&quot;&quot;,
+
+   /*
+    * trim whitespace at the end of the text value
+    */
+   &quot;\\s+\$&quot;=&gt;&quot;&quot;,
+
+   /*
+    * Prepend the text http:// in values that start with www.
+    */
+   &quot;^([wW]{3}.)&quot;=&gt;&quot;http://\\1&quot;
+
+ )
+
+</pre>
+<p><tt><li><a name="6.4.36">SubForm</a></li></tt></p>
+<p>Name of the sub-form within which the field is contained. When the user presses a <tt>submit</tt> button that is contained in a given sub-form, only the values of the fields that belong to that sub-form are subject of validation.</p>
+<p>If the <tt>submit</tt> button that is pressed is not contained in any sub-form or the form is submitted in any way other than using a <tt>submit</tt> button, the values of all the fields in the form are subject of validation.</p>
+<p><tt><li><a name="6.4.37">ValidateErrorMessage</a></li></tt></p>
+<p>Default error message to be used when no validation type specific message is defined.</p>
+<p><tt><li><a name="6.4.38">ValidateAsEmail</a></li></tt></p>
+<p>Flag argument that indicates that the field value should be validated as an e-mail address.</p>
+<p><tt><li><a name="6.4.39">ValidateAsEmailErrorMessage</a></li></tt></p>
+<p>Error message to be used when the field value is meant to contain an e-mail address but it is invalid.</p>
+<p><tt><li><a name="6.4.40">ValidateAsCreditCard</a></li></tt></p>
+<p>Type argument that indicates that the field value should be validated as a credit card number.  Supported types are: <tt>amex</tt>, <tt>carteblanche</tt>, <tt>dinersclub</tt>, <tt>discover</tt>, <tt>enroute</tt>, <tt>jcb</tt>, <tt>mastercard</tt> and <tt>visa</tt>.</p>
+<p>If the argument is set to <tt>unknown</tt>, the class will just validate the number by verifying the digit checksum using the MOD10 algorithm and will not perform any extra card type specific verifications.  Any spaces, dashes ('-') or dots ('.') within the number digits are ignored.</p>
+<p>If the argument is set to <tt>field</tt>, the class will determine the card type verification to perform according to the value of a given <tt>select</tt> type field defined by the <tt>ValidationCreditCardTypeField</tt> argument.</p>
+<p><tt><li><a name="6.4.41">ValidationCreditCardTypeField</a></li></tt></p>
+<p>Name of the <tt>select</tt> type field that defines the credit card type to be assumed when the <tt>ValidationAsCreditCard</tt> argument is set to <tt>field</tt>.</p>
+<p><tt><li><a name="6.4.42">ValidateAsCreditCardErrorMessage</a></li></tt></p>
+<p>Error message to be used when the field value is meant to contain a credit card number but it is invalid.</p>
+<p><tt><li><a name="6.4.43">ValidateRegularExpression</a></li></tt></p>
+<p>Text argument that indicates that the field value should be validated to match the given regular expression.</p>
+<p><tt><li><a name="6.4.44">ValidateRegularExpressionErrorMessage</a></li></tt></p>
+<p>Error message to be used when the field value is meant to match a given regular expression but it is does not.</p>
+<p><tt><li><a name="6.4.45">ValidateAsNotEmpty</a></li></tt></p>
+<p>Flag argument that indicates that the field value should not be empty. For file fields, the class also verifies that a valid file was uploaded.</p>
+<p><tt><li><a name="6.4.46">ValidateAsNotEmptyErrorMessage</a></li></tt></p>
+<p>Error message to be used when the field value is meant to not be empty but it is not.</p>
+<p><tt><li><a name="6.4.47">ValidateMinimumLength</a></li></tt></p>
+<p>Integer argument that indicates the minimum length of the field value in number of characters.</p>
+<p><tt><li><a name="6.4.48">ValidateMinimumLengthErrorMessage</a></li></tt></p>
+<p>Error message to be used when the field value length is less than the specified by the <tt>ValidateMinimumLength</tt> option.</p>
+<p><tt><li><a name="6.4.49">ValidateAsEqualTo</a></li></tt></p>
+<p>Name of another field that the field value should be equal to.  This type of validation is useful for <tt>password</tt> confirmation fields.</p>
+<p><tt><li><a name="6.4.50">ValidateAsEqualToErrorMessage</a></li></tt></p>
+<p>Error message to be used when the field value is meant to be equal to another given field value but it is not.</p>
+<p><tt><li><a name="6.4.51">ValidateAsDifferentFrom</a></li></tt></p>
+<p>Name of another field that the field value should be different.  This type of validation is useful for <tt>password</tt> reminder fields where the reminder text should not be the same as the password value.</p>
+<p><tt><li><a name="6.4.52">ValidateAsDifferentFromErrorMessage</a></li></tt></p>
+<p>Error message to be used when the field value is meant to be different from another given field value but it is not.</p>
+<p><tt><li><a name="6.4.53">ValidateAsSet</a></li></tt></p>
+<p>Flag argument that indicates that at least one option of a <tt>multiple</tt> <tt>select</tt> type field, or one of a <tt>radio</tt> type field of the same group of the field being defined, or a <tt>checkbox</tt> should be set.</p>
+<p><tt>radio</tt> and <tt>checkbox</tt> fields should be set to the same <tt>NAME</tt> attribute value to be considered of the same group, but should have different <tt>ID</tt> attribute values.</p>
+<p><tt>checkbox</tt> fields of the same group should also be defined setting <tt>MULTIPLE</tt> attribute to indicate that they belong to a group and at least one of the group fields should be checked.</p>
+<p><tt><li><a name="6.4.54">ValidateAsSetErrorMessage</a></li></tt></p>
+<p>Error message to be used when on <tt>select</tt> option or a <tt>radio</tt> or <tt>checkbox</tt> field value is meant to be set but it is not.</p>
+<p><tt><li><a name="6.4.55">ValidateAsInteger</a></li></tt></p>
+<p>Flag argument that indicates that the field value should be validated to verify that it contains a valid integer number.</p>
+<p><tt><li><a name="6.4.56">ValidateAsIntegerErrorMessage</a></li></tt></p>
+<p>Error message to be used when the field value is meant to be a valid integer number but it is not.</p>
+<p><tt><li><a name="6.4.57">ValidateAsFloat</a></li></tt></p>
+<p>Flag argument that indicates that the field value should be validated to verify that it contains a valid floating point number.</p>
+<p><tt><li><a name="6.4.58">ValidateAsFloatErrorMessage</a></li></tt></p>
+<p>Error message to be used when the field value is meant to be a valid floating point number but it is not.</p>
+<p><tt><li><a name="6.4.59">ValidateOnlyOnClientSide</a></li></tt></p>
+<p>When this option is specified the validation checks that would be done by the <tt>Validate</tt> function for this input are not performed.</p>
+<p><tt><li><a name="6.4.60">ValidateOnlyOnServerSide</a></li></tt></p>
+<p>When this option is specified the validation checks that would be done on the client side by the Javascript code are not performed and the validation code is not generated by the <tt>Output</tt> function.</p>
+<p><tt><li><a name="6.4.61">ValidateOptionalValue</a></li></tt></p>
+<p>When this option is specified, it indicates a field value that is accepted without further validation.  This option is useful to specify a value that is meant to be always accepted as default even if it does not satisfy any validation conditions.</p>
+<p><tt><li><a name="6.4.62">ValidationLowerLimit</a></li></tt></p>
+<p>Lower limit value to be accepted when the field is meant to be validated as integer or floating point number.  If this argument is not specified, no lower limit checking is done.</p>
+<p><tt><li><a name="6.4.63">ValidationUpperLimit</a></li></tt></p>
+<p>Upper limit value to be accepted when the field is meant to be validated as integer or floating point number.  If this argument is not specified, no upper limit checking is done.</p>
+<p><tt><li><a name="6.4.64">ValidationDecimalPlaces</a></li></tt></p>
+<p>Maximum number of decimal places to the right of the decimal point that a field validated as floating point may have.  If this argument is specified, floating point values with exponents represented in the scientific notation (e.g. 10.3E+11) are no longer accepted as valid.</p>
+<p><tt><li><a name="6.4.65">ValidationClientFunction</a></li></tt></p>
+<p>Name of a programmer defined Javascript function to be called to validate the field value on the client side.  The form field object is passed as argument to that function.  It should return <tt>true</tt> if the field value is valid.</p>
+<p><tt><li><a name="6.4.66">ValidationClientFunctionErrorMessage</a></li></tt></p>
+<p>Error message to be used when the client side validation function returns false.</p>
+<p><tt><li><a name="6.4.67">ValidationServerFunction</a></li></tt></p>
+<p>Name of a programmer defined PHP function to be called to validate the field value on the server side.  The field value is passed as argument to that function.  It should return <tt>true</tt> if the field value is valid.</p>
+<p><tt><li><a name="6.4.68">ValidationServerFunctionErrorMessage</a></li></tt></p>
+<p>Error message to be used when the server side validation function returns false.</p>
+</ul>
+</ul>
+<h3><a name="6.2.0">AddHiddenInputs</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;AddHiddenInputs($inputs)</tt></p>
+<h4>Purpose</h4>
+<p>Add a set of hidden input fields to the form definition.</p>
+<h4>Usage</h4>
+<p>The <tt>$inputs</tt> argument is an associative array that enumerates a set of input fields that are meant to be added to the form definition as hidden fields.  The index of each entry of the <tt>$inputs</tt> array indicates the name of the input field.  The respective array entry value indicates the initial value of the input field.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+</ul>
+<h3><a name="7.2.0">AddDataPart</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;AddDataPart($data)</tt></p>
+<h4>Purpose</h4>
+<p>Add arbitrary data to the output that is generated for the form with the <tt>Output</tt> method.  Usually this method is used to add the HTML code that will define the layout of the form, but it could be anything else as programmer defined Javascript code.</p>
+<h4>Usage</h4>
+<p>The <tt>$data</tt> argument is a text string that contains the data to be added to the form output.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+</ul>
+<h3><a name="8.2.0">AddInputPart</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;AddInputPart($input)</tt></p>
+<h4>Purpose</h4>
+<p>Add an input field to the output that is generated for the form with the <tt>Output</tt> method.</p>
+<h4>Usage</h4>
+<p>The <tt>$input</tt> argument is the identifier of the field to be added to the form output.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+</ul>
+<h3><a name="9.2.0">AddHiddenInputsParts</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;AddHiddenInputs($inputs)</tt></p>
+<h4>Purpose</h4>
+<p>Add a set of hidden input fields to the output that is generated for the form with the <tt>Output</tt> method.</p>
+<h4>Usage</h4>
+<p>The <tt>$inputs</tt> argument is an associative array that enumerates a set of input fields that are meant to be added to the form output.  The index of each entry of the <tt>$inputs</tt> array indicates the name of the input field. The respective array entry value indicates a value that the field will be set to, thus overriding its initial value.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+</ul>
+<h3><a name="10.2.0">AddInputHiddenPart</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;AddInputHiddenPart($input)</tt></p>
+<h4>Purpose</h4>
+<p>Add a field input to the output that is generated for the form with the <tt>Output</tt> method as if it was a <tt>hidden</tt> field.</p>
+<h4>Usage</h4>
+<p>The <tt>$input</tt> argument is the identifier of the field to be added to the form output.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+</ul>
+<h3><a name="AddLabelPart"></a><a name="11.2.0">AddLabelPart</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;AddLabelPart($arguments)</tt></p>
+<h4>Purpose</h4>
+<p>Add a label for an input field to the output that is generated for the form with the <tt>Output</tt> method.</p>
+<h4>Usage</h4>
+<p>The <tt>$arguments</tt> argument is an associative array that takes pairs of tag names and values that define the properties of the label to be added to the form output.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+<h4><a name="12.3.0">Arguments</a></h4>
+<ul>
+<p><tt><li><a name="13.4.1">LABEL</a></li></tt></p>
+<p>Data that is outputted as the definition of the label. Usually it is some text eventually with character style HTML markup that is used to denote the access key that is associated with the given input field. This argument may be omitted as long as it was specified when it is defined the input field with the <a href="#AddInput">AddInput</a> function.</p>
+<p><tt><li><a name="13.4.2">FOR</a></li></tt></p>
+<p>Identifier of the input field to which the label is meant to be associated as defined by the <tt>ID</tt> argument passed when calling the <tt>AddInput</tt>.  That input field has to be added to the form output by calling the <tt>AddInputPart</tt> either before or after calling this method but always before calling the <tt>Output</tt> method.</p>
+<p><tt><li><a name="13.4.3">ACCESSKEY</a></li></tt></p>
+<p>Key to be associated as shortcut to activate the given input field for keyboard control as defined for the <tt>ACCESSKEY</tt> attribute of the <tt>&lt;LABEL&gt;</tt> HTML 4 tag.  Keyboard activation only happens on browsers that fully support the HTML 4 standard.  On some platforms the user has to hold the <tt>Alt</tt> key when the activation key is pressed. This argument may be omitted as long as it was specified when it is defined the input field with the <a href="#AddInput">AddInput</a> function.</p>
+</ul>
+</ul>
+<h3><a name="13.2.0">AddFunction</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;AddFunction($arguments)</tt></p>
+<h4>Purpose</h4>
+<p>Add the definition of a Javascript function that is meant to be generated as part of the output of the form with the <tt>Output</tt> method.  The function to be generated is meant to execute actions related with the elements of the form.</p>
+<p>The function may be called from an event handler associated with any element of the page.  For instance, the function may be called from the page <tt>&lt;BODY&gt;</tt> <tt>ONLOAD</tt> event handler to activate a give input field when the page is loaded.</p>
+<h4>Usage</h4>
+<p>The <tt>$arguments</tt> argument is an associative array that takes pairs of tag names and values that define the properties of the function to be added to the form output.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+<h4><a name="14.3.0">Arguments</a></h4>
+<ul>
+<p><tt><li><a name="15.4.1">Function</a></li></tt> (required)</p>
+<p>Name of the function to be added.</p>
+<p><tt><li><a name="15.4.2">Type</a></li></tt> (required)</p>
+<p>Type of the action that the function is meant to perform when executed.  Not all types of actions supported by the class are supported by all browsers.  However, this class generates conditional code in such way, that if the specified action is not supported by a browser, no Javascript errors will occur as the code is not run.</p>
+<p>Supported function types are:  <tt>focus</tt> to activate the input of the given field, <tt>select</tt> to select all the text in a <tt>text</tt> input field, <tt>select_focus</tt> to activate and select the text of the field, <tt>disable</tt> to prevent the field to receive user input and <tt>enable</tt> to let the field receive user input.</p>
+<p><tt><li><a name="15.4.3">Element</a></li></tt> (required)</p>
+<p>Identifier of the input field to be associated with the function.  The field must have been previously added to the form output with the <tt>AddInputPart</tt> method.</p>
+</ul>
+</ul>
+<h3><a name="15.2.0">RemoveFunction</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;RemoveFunction($name)</tt></p>
+<h4>Purpose</h4>
+<p>Remove a previously added function from the form output to be generated by the <tt>Output</tt> method.</p>
+<h4>Usage</h4>
+<p>The <tt>$name</tt> argument is the name of the function to be removed from the form output.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+</ul>
+<h3><a name="16.2.0">StartLayoutCapture</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;StartLayoutCapture()</tt></p>
+<h4>Purpose</h4>
+<p>Start capturing the current script output to compose the form layout.</p>
+<h4>Usage</h4>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+</ul>
+<h3><a name="17.2.0">EndLayoutCapture</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;EndLayoutCapture()</tt></p>
+<h4>Purpose</h4>
+<p>Stop capturing the current script output to compose the form layout.</p>
+<h4>Usage</h4>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+</ul>
+<h3><a name="18.2.0">Output</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;Output($arguments)</tt></p>
+<h4>Purpose</h4>
+<p>Generate the output of the form.</p>
+<h4>Usage</h4>
+<p>The <tt>$arguments</tt> argument is an associative array that takes pairs of tag names and values that define options that control the way the form output is generated.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+<h4><a name="19.3.0">Arguments</a></h4>
+<ul>
+<p><tt><li><a name="20.4.1">Function</a></li></tt> (required)</p>
+<p>Name of the function to be called to output the form data that is generated.  The function is usually called multiple times to output the HTML code that defined the form output. The function takes only an argument that is a text string with HTML code.</p>
+<p><tt><li><a name="20.4.2">EndOfLine</a></li></tt></p>
+<p>Text data that defines the character sequence that should be used to break the output lines.  If this argument is not specified the text lines of the output will not be broken, except for eventual Javascript code that may be generated and the text lines needs to be broken at least with a line feed.  A line feed (\n) or character sequence with a carriage return followed by a line feed (\r\n) are usual line breaking sequences in most platforms.</p>
+</ul>
+</ul>
+<h3><a name="20.2.0">FetchOutput</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$output=$my_form_object-&gt;FetchOutput()</tt></p>
+<h4>Purpose</h4>
+<p>Fetch the generated form output into a string.</p>
+<h4>Usage</h4>
+<p>The <tt>$output</tt> return value contains a string that contains the generated form output. If there was an error, an empty string is returned.</p>
+</ul>
+<h3><a name="21.2.0">DisplayOutput</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;DisplayOutput()</tt></p>
+<h4>Purpose</h4>
+<p>Output the HTML generate for the form.</p>
+<h4>Usage</h4>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+</ul>
+<h3><a name="22.2.0">Validate</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error_message=$my_form_object-&gt;Validate($verify,$sub_form)</tt></p>
+<h4>Purpose</h4>
+<p>Determine if the values set in the form input fields are valid.</p>
+<h4>Usage</h4>
+<p>The <tt>$verify</tt> argument is an associative array that should be passed by reference to return the identifiers of the fields that are set with invalid values.  The index of each entry in the array is the respective invalid field identifier. The value of each entry is set with the field sub-form name.</p>
+<p>The <tt>$sub_form</tt> argument is the name of the sub-form to which the validation should be restricted.  If this argument is an empty string, all fields in the form are validated. Otherwise, only the fields with the same sub-form name are validated.</p>
+<p>The <tt>$error_message</tt> return value contains the error message defined for the first invalid field that was found.  If all fields are set with valid values, the function returns an empty string.</p>
+</ul>
+<h3><a name="23.2.0">WasSubmitted</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$submitted_input=$my_form_object-&gt;WasSubmitted($input)</tt></p>
+<h4>Purpose</h4>
+<p>Determine if a form was submitted by a given input field.</p>
+<h4>Usage</h4>
+<p>The <tt>$input</tt> argument specifies the identifier of the input field that this method should verify whether it was used to submit the form.</p>
+<p>The <tt>$submitted_input</tt> return value contains the identifier of the field that was used to submit the form.  If the <tt>$input</tt> argument is not an empty string and the field was not used to submit the form, the method returns an empty string.</p>
+<p>Usually the specified input is of type <tt>submit</tt> or <tt>image</tt>, but if it is specified a field of another type the method just verifies if the respective input value was passed when the form was submitted.  So, it is ok to specify for instance a dummy <tt>hidden</tt> that will only act as a flag to determine if the form was submitted or is meant to be displayed for the first time.</p>
+<p>If the <tt>$input</tt> argument is an empty string the method tries to find whether any <tt>submit</tt> or <tt>image</tt> field was used to submit the form and returns its name.  If no field was found, the method returns an empty string.</p>
+<p>Whenever possible it is recommended to specify the name of an actual field because it takes less time to verify only one field than traversing the whole list of fields of the form.</p>
+</ul>
+<h3><a name="24.2.0">LoadInputValues</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;LoadInputValues($submitted)</tt></p>
+<h4>Purpose</h4>
+<p>Set the form fields with values passed to the script by the Web server.</p>
+<h4>Usage</h4>
+<p>The <tt>$submitted</tt> argument lets this method know if the script was called to handle a form submitted by the user or the form is just being loaded by the first time, eventually with some initial values defined in the page URL.  This argument only affects the interpretation of the values to be loaded in <tt>checkbox</tt> and <tt>multiple select</tt> fields.</p>
+<p>Note:  Currently this method is implemented by loading the field values from the global variables <tt>$HTTP_POST_VARS</tt>, or from <tt>$HTTP_GET_VARS</tt> or from the global variables with the same names of the input fields. If you relied on changing the global variables to change the field values that are used by this method, that may not work. Instead, use the <tt>SetInputValue</tt> method after you call <tt>LoadInputValues</tt>.</p>
+<p>Also, if your PHP configuration has the option <tt>magic_quotes_gpc</tt> set to <tt>On</tt>, the <tt>LoadInputValues</tt> method also tries to strip any <tt>'</tt> or <tt>\</tt> characters that are added by PHP. This way, the original values submitted with the form are restored. However, that will not fix those values in <tt>$HTTP_POST_VARS</tt>, <tt>$HTTP_GET_VARS</tt> or global variables from where the input values are loaded. Use the function <tt>GetInputValue</tt> to retrieve the fixed values.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+</ul>
+<h3><a name="25.2.0">SetInputProperty</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;SetInputProperty($input, $property, $value)</tt></p>
+<h4>Purpose</h4>
+<p>Redefine the current value of an input field property.</p>
+<h4>Usage</h4>
+<p>The <tt>$input</tt> argument defines the identifier of the field to be set.</p>
+<p>The <tt>$property</tt> argument defines the name of the property of the field to be redefined.  Currently supported properties are:</p>
+<ul>
+<p><li><tt>ACCEPT</tt></li></p>
+<p><li><tt>ALT</tt></li></p>
+<p><li><tt>BORDER</tt></li></p>
+<p><li><tt>COLS</tt></li></p>
+<p><li><tt>MAXLENGTH</tt></li></p>
+<p><li><tt>ONCHANGE</tt></li></p>
+<p><li><tt>ONCLICK</tt></li></p>
+<p><li><tt>ROWS</tt></li></p>
+<p><li><tt>SIZE</tt></li></p>
+<p><li><tt>SRC</tt></li></p>
+<p><li><tt>TABINDEX</tt></li></p>
+<p><li><tt>Accessible</tt></li></p>
+<p><li><tt>Capitalization</tt></li></p>
+<p><li><tt>ClientScript</tt></li></p>
+<p><li><tt>SubForm</tt></li></p>
+<p><li><tt>VALUE</tt></li></p>
+<p><li><tt>STYLE</tt></li></p>
+<p><li><tt>CLASS</tt></li></p>
+</ul>
+<p>The <tt>$value</tt> argument defines the value to be assigned to the given field property.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+</ul>
+<h3><a name="27.2.0">SetInputValue</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;SetInputValue($input,$value)</tt></p>
+<h4>Purpose</h4>
+<p>Redefine the current value of an input field.</p>
+<h4>Usage</h4>
+<p>The <tt>$input</tt> argument defines the identifier of the field to be set.</p>
+<p>The <tt>$value</tt> argument defines the value to be assigned to the given field.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+</ul>
+<h3><a name="28.2.0">GetInputValue</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$value=$my_form_object-&gt;GetInputValue($input)</tt></p>
+<h4>Purpose</h4>
+<p>Retrieve the current value that is set to the given field.</p>
+<h4>Usage</h4>
+<p>The <tt>$input</tt> argument defines the identifier of the field from which the value is to be retrieved.</p>
+<p>The return <tt>$value</tt> contains the current value of the given field.  If the specified input does not exist, the return value is an error string.</p>
+</ul>
+<h3><a name="29.2.0">GetFileValues</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$name=$my_form_object-&gt;GetFileValues($input,$values)</tt></p>
+<h4>Purpose</h4>
+<p>Retrieve the values that identify a file uploaded when the form is submitted.</p>
+<h4>Usage</h4>
+<p>The <tt>$input</tt> argument defines the identifier of the file field from which the values are meant to be retrieved.</p>
+<p>The <tt>$values</tt> argument is a reference to an associative array variable that will hold the values that identify the uploaded file. If the file was uploaded successfully, this associative array contains the following entries:</p>
+<ul>
+<li><tt>name    </tt> - name of the file</li><li><tt>tmp_name</tt> - path of a temporary file that holds the file contents.</li><li><tt>type    </tt> - MIME content type of the file</li><li><tt>size    </tt> - size of the file</li></ul>
+<p>The return value <tt>$name</tt> contains the name of the file. If the specified input does not exist or if it was not uploaded a valid file, the return value is an empty string.</p>
+</ul>
+<h3><a name="31.2.0">SetCheckedState</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$error=$my_form_object-&gt;SetCheckedState($input,$checked)</tt></p>
+<h4>Purpose</h4>
+<p>Set the current checked state of a radio or checkbox input.</p>
+<h4>Usage</h4>
+<p>The <tt>$input</tt> argument defines the identifier of the input to be set.</p>
+<p>The <tt>$checked</tt> argument is a boolean value that specifies whether the given input is going to be checked or unchecked.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+</ul>
+<h3><a name="32.2.0">GetCheckedState</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$checked=$my_form_object-&gt;GetCheckedState($input)</tt></p>
+<h4>Purpose</h4>
+<p>Retrieve the current checked state of a radio or checkbox input.</p>
+<h4>Usage</h4>
+<p>The <tt>$input</tt> argument defines the identifier of the input to determine its checked state.</p>
+<p>The return <tt>$checked</tt> value is a boolean value that indicates the checked state of the given field.  If the specified input does not exist or it is not a radio or a checkbox, the return value is an error string.</p>
+</ul>
+<h3><a name="33.2.0">GetCheckedRadio</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$input=$my_form_object-&gt;GetCheckedRadio($name)</tt></p>
+<h4>Purpose</h4>
+<p>Retrieve the form radio input of a given name that is currently checked.</p>
+<h4>Usage</h4>
+<p>The <tt>$name</tt> argument defines the name of the radio inputs that should be looked up to see which one is checked.</p>
+<p>The return <tt>$input</tt> value is a string value that indicates the identifier of the radio input field of the given name that is currently checked.  If the specified name does not correspond to an existing field or it is not a radio field or it is but it is not checked, the return value is an empty string.</p>
+</ul>
+<h3><a name="34.2.0">GetCheckedRadioValue</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$value=$my_form_object-&gt;GetCheckedRadio($name,$default)</tt></p>
+<h4>Purpose</h4>
+<p>Retrieve the value of the form radio input of a given name that is currently checked.</p>
+<h4>Usage</h4>
+<p>The <tt>$name</tt> argument defines the name of the radio inputs that should be looked up to see which one is checked.</p>
+<p>The <tt>$default</tt> argument defines the value that should be returned if there is no radio field with the given name that is checked. If this argument is not specified the default value is an empty string.</p>
+<p>The return <tt>$value</tt> value is a string that indicates the value assigned to the radio input field of the given name that is currently checked.  If the specified name does not correspond to an existing field or it is not a radio field or it is but it is not checked, the return value is the value passed by to the <tt>$default</tt> argument.</p>
+</ul>
+<h3><a name="35.2.0">ResetFormParts</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$my_form_object-&gt;ResetFormParts()</tt></p>
+<h4>Purpose</h4>
+<p>Reset the definition of the form output as it is initially when the form object is created.</p>
+</ul>
+<h3><a name="36.2.0">GetJavascriptInputObject</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$javascript_object=$my_form_object-&gt;GetJavascriptInputObject($form_object, $input)</tt></p>
+<h4>Purpose</h4>
+<p>Generate a Javascript expression that represents a given input field as an object to be used to access its variables and functions on client side scripts in Javascript.</p>
+<h4>Usage</h4>
+<p>The <tt>$form_object</tt> argument is a string that represents the Javascript object of the form to which the given input belongs.</p>
+<p>The <tt>$input</tt> argument is a string that specifies the identifier of the given input field.</p>
+<p>The <tt>$javascript_object</tt> return value is a string that represents the given input field Javascript object.</p>
+</ul>
+<h3><a name="37.2.0">GetJavascriptInputValue</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$javascript_value=$my_form_object-&gt;GetJavascriptInputValue($form_object, $input)</tt></p>
+<h4>Purpose</h4>
+<p>Generate a Javascript expression that represents the value of a given input field to be used to on client side scripts in Javascript.</p>
+<h4>Usage</h4>
+<p>The <tt>$form_object</tt> argument is a string that represents the Javascript object of the form to which the given input belongs.</p>
+<p>The <tt>$input</tt> argument is a string that specifies the identifier of the given input field.</p>
+<p>The <tt>$javascript_value</tt> return value is a string that represents the given input field value in Javascript.</p>
+</ul>
+</ul>
+<h2><li><a name="38.1.3">Properties</a></li></h2>
+<ul>
+<h3><a name="39.2.0">NAME</a></h3>
+<p>Name of the form as defined for the <tt>NAME</tt> attribute of the <tt>&lt;FORM&gt;</tt> HTML tag.  This property must be set to non-empty string if the <tt>Output</tt> method needs to generate Javascript code for the fields added to the form output. This is the case when a field requires client side validation or a function is added to execute an action associated to a given input field.</p>
+<p><b>Default value:</b> <tt>&quot;&quot;</tt></p>
+<h3><a name="39.2.0.0">METHOD</a></h3>
+<p>Method that is used to submit the form as defined for the <tt>METHOD</tt> attribute of the <tt>&lt;FORM&gt;</tt> HTML tag.</p>
+<p>The method that is recommended to be used is <tt>POST</tt>, but if the amount of information to be submitted to the server between form field names and values is very small (less than 255 characters) the method <tt>GET</tt> may be used.</p>
+<p><b>Default value:</b> <tt>&quot;&quot;</tt></p>
+<h3><a name="39.2.0.1">ACTION</a></h3>
+<p>URL of the resource (Web page script) that is meant to handle the form submission as defined for the <tt>ACTION</tt> attribute of the <tt>&lt;FORM&gt;</tt> HTML tag.</p>
+<p>Usually, Web developers define a form in with page script and process it with another.  However, since you always have to create the same object to output the HTML code to display the form and validate it, it is convenient to use the same script handle both circumstances.  Doing this is also convenient to handle the situation where you need to redisplay the form because some fields where submitted with invalid values.</p>
+<p>One simple way to define the <tt>ACTION</tt> property to make the form be handled by the same script is to set it with the value of the PHP global variable <tt>$PHP_SELF</tt>.</p>
+<p><b>Default value:</b> <tt>&quot;&quot;</tt></p>
+<h3><a name="39.2.0.2">TARGET</a></h3>
+<p>Name of the Web browser frame on which the results of the form submission are meant to be displayed as defined for the <tt>ACTION</tt> attribute of the <tt>&lt;FORM&gt;</tt> HTML tag.</p>
+<p>If this property is set to an empty string, the results of the form submission are displayed in the same browser frame as the one on which the form is displayed.</p>
+<p><b>Default value:</b> <tt>&quot;&quot;</tt></p>
+<h3><a name="39.2.0.3">ONSUBMIT</a></h3>
+<p>Client side script commands to execute when the form is submitted as defined for the <tt>ONSUBMIT</tt> attribute of the <tt>&lt;FORM&gt;</tt> HTML tag.</p>
+<p>Any commands specified by this property are executed before executing the client side validation code generated by the class <tt>Output</tt> method.</p>
+<p><b>Default value:</b> <tt>&quot;&quot;</tt></p>
+<h3><a name="39.2.0.4">ONSUBMITTING</a></h3>
+<p>Client side script commands to execute when the form is submitted as defined for the <tt>ONSUBMIT</tt> attribute of the <tt>&lt;FORM&gt;</tt> HTML tag.</p>
+<p>Any commands specified by this property are executed after executing the client side validation code generated by the class <tt>Output</tt> method.  If there are any fields with invalid values, the commands specified by this property are not executed.</p>
+<p><b>Default value:</b> <tt>&quot;&quot;</tt></p>
+<h3><a name="39.2.0.5">ONRESET</a></h3>
+<p>Client side script commands to execute when the form is reseted as defined for the <tt>ONRESET</tt> attribute of the <tt>&lt;FORM&gt;</tt> HTML tag.</p>
+<p>Any commands specified by this property are executed before executing the client side validation code generated by the class <tt>Output</tt> method.</p>
+<p><b>Default value:</b> <tt>&quot;&quot;</tt></p>
+<h3><a name="39.2.0.6">ENCTYPE</a></h3>
+<p>MIME Content type of the data that is sent when the form is submitted as defined for the <tt>ENCTYPE</tt> attribute of the <tt>&lt;FORM&gt;</tt> HTML tag.</p>
+<p>This property only applies when the data is submitted using the <tt>POST</tt> method.  If no encoding type is specified, the browsers use the MIME type <tt>application/x-form-urlencoded</tt>.  If the form includes <tt>file</tt> input fields, the MIME type <tt>multipart/form-data</tt> should be used.</p>
+<p><b>Default value:</b> <tt>&quot;&quot;</tt></p>
+<h3><a name="39.2.0.7">ExtraAttributes</a></h3>
+<p>List of extra attributes that should be added to the form's HTML tag when the form output is generated. The list should be defined as an associative array with the attribute names as array entry indexes and the attribute values as array entry values.</p>
+<p><b>Default value:</b> <tt>array()</tt></p>
+<h3><a name="39.2.0.8">Changes</a></h3>
+<p>Associative array that enumerates the form fields that had their values changed after calling the function <tt>LoadInputValues</tt>.  This variable may be used to determine which fields the user has changed before submitting the form. The loaded values are compared against the initial values of the fields as they were set with <tt>AddInput</tt> and <tt>SetInputValue</tt> functions.</p>
+<p>The indexes of the entries of the array are set to the identifier names of the changed fields.  The entries values are set to the values that the respective fields had before calling the <tt>LoadInputValues</tt> function.</p>
+<p>Entries for <tt>radio</tt> and <tt>checkbox</tt> are set to an empty string if their prior state was not <tt>CHECKED</tt>. Entries for <tt>MULTIPLE</tt> <tt>select</tt> fields are set to an associative array that enumerates the values that changed in the selection list.  The respective values are set to <tt>0</tt> for entries that were deselected and 1 for entries that were selected.</p>
+<p><b>Default value:</b> empty array</p>
+<h3><a name="39.2.0.9">OptionsSeparator</a></h3>
+<p>String that is used to separate the values of <tt>MULTIPLE</tt> select fields when the form is outputted in <tt>ReadOnly</tt> mode.</p>
+<p><b>Default value:</b> <tt>\n</tt></p>
+<h3><a name="39.2.0.10">OutputPasswordValues</a></h3>
+<p>Boolean flag that determines if the form password fields values should be outputted with the respective field <tt>&lt;input&gt;</tt> tags.</p>
+<p>For security reasons it is recommended to keep this flag set to <tt>0</tt>. If a page with a form with a password field set to some value is cached when this flag is set to <tt>1</tt>, somebody with access to the machine of the user browser may recover the password from the page cache file.</p>
+<p>If you absolutely need to set this flag to <tt>1</tt>, make sure you use the appropriate page headers to tell the user browsers to not cache the pages.</p>
+<p><b>Default value:</b> <tt>0</tt></p>
+<h3><a name="39.2.0.11">ReadOnly</a></h3>
+<p>Boolean flag that determines if the form should be outputted as if the fields were set to a read-only mode.  If this flag is set to <tt>1</tt> fields are outputted as text that represents their current state and values.</p>
+<p>This flag must be set before starting defining the form output adding input parts.  The read-only mode may be overridden individually for each input field using the <tt>Accessible</tt> property.  Form output field parts added as hidden parts with the <tt>AddHiddenInputsParts</tt> function are always outputted as hidden input fields regardless of the value of the form <tt>ReadOnly</tt> flag and the input <tt>Accessible</tt> property.</p>
+<p><b>Default value:</b> <tt>0</tt></p>
+<h3><a name="39.2.0.12">ResubmitConfirmMessage</a></h3>
+<p>Message to display when the user attempts to submit the same form more than once without waiting for the submission results to be displayed.  This property may be used to prevent users from submitting the form multiple times inadvertently.</p>
+<p>When the user attempts to submit the form again a confirmation requester is shown displaying the message defined by this property if it is set to a non-empty string.  If this property is not set, the user is not stopped from submitting the form multiple times.</p>
+<p><b>Default value:</b> <tt>&quot;&quot;</tt></p>
+<h3><a name="39.2.0.13">error</a></h3>
+<p>Some functions return an error message when they fail.  This message is also stored in the <tt>error</tt> property so it can be checked later.  This avoids the need to check those functions return value immediately after they are called to determine if they succeeded.</p>
+<p>The class functions never reset the value of this property. Therefore its value is overwritten by the last function call that fails.</p>
+<p><b>Default value:</b> <tt>&quot;&quot;</tt></p>
+</ul>
+<h2><li><a name="39.1.4">Options</a></li></h2>
+<ul>
+<p>Options are special properties that only need to be changed in particular circumstances.  Their default values are appropriate for normal operation.</p>
+<h3><a name="40.2.0">ValidationFunctionName</a></h3>
+<p>Name of the client side validation function that the <tt>Output</tt> method generates.  This function is called when the form is submitted.  Change this option only when you need to output more than one form with fields that require client side validation to avoid function name collision.</p>
+<p><b>Default value:</b> <tt>&quot;ValidateForm&quot;</tt></p>
+<h3><a name="40.2.0.0">ValidateAsEmail</a></h3>
+<p>Name of the client side e-mail address validation function that the <tt>Output</tt> method generates.  Change this option only when you need to output more than one form with fields that require e-mail address validation to avoid function name collision.</p>
+<p><b>Default value:</b> <tt>&quot;ValidateEmail&quot;</tt></p>
+<h3><a name="40.2.0.1">ValidateAsCreditCard</a></h3>
+<p>Name of the client side credit card number validation function that the <tt>Output</tt> method generates.  Change this option only when you need to output more than one form with fields that require credit card number validation to avoid function name collision.</p>
+<p><b>Default value:</b> <tt>&quot;ValidateCreditCard&quot;</tt></p>
+<h3><a name="40.2.0.2">sub_form_variable_name</a></h3>
+<p>Name of the client side global variable that it is used to store the sub-form name correspondent to the <tt>submit</tt> button that was used to submit the form.  Change this option if the default value defines a name that collides with global variables unrelated with the client side code generated by this class.</p>
+<p><b>Default value:</b> <tt>&quot;sub_form&quot;</tt></p>
+<h3><a name="40.2.0.3">email_regular_expression</a></h3>
+<p>Regular expression that is used to validate an e-mail address text field.</p>
+<p><b>Default value:</b> <tt>&quot;^([a-z0-9_]|\\-|\\.)+@(([a-z0-9_]|\\-)+\\.)+[a-z]{2,4}$&quot;</tt></p>
+<h3><a name="40.2.0.4">accessibility_tab_index</a></h3>
+<p>Name of the global function that is called to determine the number that should be assigned to the <tt>TABINDEX</tt> attribute the correspondent form field <tt>&lt;INPUT&gt;</tt> HTML tag. If the field does not have the <tt>TABINDEX</tt> attribute set and this option is set to a non-empty string the specified function is called passing the identifier of each input field as argument.  The return value is assigned to the respective <tt>TABINDEX</tt> attribute.</p>
+<p><b>Default value:</b> <tt>&quot;&quot;</tt></p>
+<h3><a name="40.2.0.5">debug</a></h3>
+<p>Name of the global function that is called when one of the methods of the class fails due to invalid arguments.  The error message is passed to the debug function right before returning from the failing method call.  Change this option when you need to debug the code that uses the class to determine if is there any method call that is failing.</p>
+<p><b>Default value:</b> <tt>&quot;&quot;</tt></p>
+<h3><a name="40.2.0.6">end_of_line</a></h3>
+<p>Sequence of characters that will be used to break the lines of the generated Javascript code.</p>
+<p><b>Default value:</b> <tt>\n</tt></p>
+<h3><a name="40.2.0.7">toupper_function</a></h3>
+<p>Name of the function to be called to convert a text string to upper case.  This function is used when the <tt>Capitalization</tt> attribute of a <tt>text</tt> field is set to <tt>uppercase</tt>.  Change this option when you can not guarantee that the system locale support is able to do case conversion of non-ASCII characters like those with accents and cedillas.</p>
+<p><b>Default value:</b> <tt>&quot;strtoupper&quot;</tt></p>
+<h3><a name="40.2.0.8">tolower_function</a></h3>
+<p>Name of the function to be called to convert a text string to lower case.  This function is used when the <tt>Capitalization</tt> attribute of a <tt>text</tt> field is set to <tt>lowercase</tt>.  Change this option when you can not guarantee that the system locale support is able to do case conversion of non-ASCII characters like those with accents and cedillas.</p>
+<p><b>Default value:</b> <tt>&quot;strtolower&quot;</tt></p>
+<h3><a name="40.2.0.9">form_submitted_variable_name</a></h3>
+<p>Name of the client side global variable that it is used to store the information of whether the form was already submitted by the user.  Change this option if the default value defines a name that collides with global variables unrelated with the client side code generated by this class.</p>
+<p><b>Default value:</b> <tt>&quot;form_submitted&quot;</tt></p>
+<h3><a name="40.2.0.10">form_submitted_test_variable_name</a></h3>
+<p>Name of the client side global variable that it is used to store temporary information of whether there was a previous attempt to submit a form by the time the form is being submitted.  Change this option if the default value defines a name that collides with global variables unrelated with the client side code generated by this class.</p>
+<p><b>Default value:</b> <tt>&quot;form_submitted_test&quot;</tt></p>
+<h3><a name="40.2.0.11">encoding</a></h3>
+<p>Type of encoding that is used in the HTML document within which the form is integrated. This option determines how 8 bit characters are encoded. Currently, only <tt>iso-8859-1</tt> (ISO Latin 1) encoding is supported. Change this option if your HTML document uses any other type of encoding. If you specify a different encoding, only <tt>&lt;</tt>, <tt>&gt;</tt> and <tt>&quot;</tt> characters are encoded.</p>
+<p><b>Default value:</b> <tt>&quot;iso-8859-1&quot;</tt></p>
+</ul>
+<h2><li><a name="40.1.5">Functions</a></li></h2>
+<ul>
+<h3><a name="41.2.0">FormCaptureOutput</a></h3>
+<ul>
+<h4>Synopsis</h4>
+<p><tt>$output=FormCaptureOutput($form,$arguments)</tt></p>
+<h4>Purpose</h4>
+<p>Capture the output of a form object in a result text string.</p>
+<h4>Usage</h4>
+<p>The <tt>$form</tt> argument is a reference to an object created by this class.  Make sure you pass the form object argument by reference to prevent inadvertent object replication when passing by value.</p>
+<p>The <tt>$arguments</tt> argument is an associative array that takes pairs of tag names and values as defined for the class <tt>Output</tt> method.  The <tt>Function</tt> argument is overridden by a custom global function that does the output capture.</p>
+<p>The <tt>$output</tt> return value contains the form HTML output if the function call succeed.  Otherwise it contains an empty string.</p>
+</ul>
+</ul>
+<h2><li><a name="42.1.6">Template processing</a></li></h2>
+<ul>
+<h3><li><a name="43.2.1">Separating presentation from logic</a></li></h3>
+<p>To compose the layout of a form, the class needs to be called alternating HTML data definitions using <tt>AddInputPart</tt> calls and input field or label placements. However, this does not help the work of Web developers and designers because HTML code produced by the Web designer needs to be mixed with the programming of the developers, making the work of both harder to conceal and maintain.</p>
+<p>To help solving this problem, a template engine could be used to separate the presentation work files from the programming logic work files. Currently there are two supported solutions to use templates to compose the output of forms: using plain HTML template files with embedded PHP commands to place the form inputs and labels, or using the Smarty template engine with a special plug-in to capture the template processing.</p>
+<h3><li><a name="43.2.2">Plain HTML template files with embedded PHP code</a></li></h3>
+<p>PHP itself is already a template language. Since this form class needs to know in advance all the HTML data that will make part of the output and where the form inputs are located, the form layout HTML data needs to be added with the <tt>AddDataPart</tt> function before generating the whole form output.</p>
+<p>An alternative way of defining the layout HTML data for the form output composition is to use PHP script output capturing support available since version 4.</p>
+<p>This class is capable of capturing the current PHP script output by calling the function <tt>StartLayoutCapture</tt>. After calling this function and until the <tt>EndLayoutCapture</tt> function is called, all the script output is captured to compose the form output.</p>
+<p>Plain HTML template files can be used to define the form layout by using the PHP <tt>include</tt> command. Just place PHP code sections in the points of the HTML template where the inputs and their labels will appear, using the class functions like <tt>AddInputPart</tt> and <tt>AddLabelPart</tt>. Here follows an example:</p>
+<p>File: <tt>my_form_script.php</tt></p>
+<pre style="background-color: #ddddcc; ">
+
+ &lt;?php
+
+   $form=new form_class;
+
+   $form-&gt;AddInput(array(
+     &quot;NAME&quot;=&gt;&quot;user_name&quot;,
+     &quot;TYPE&quot;=&gt;&quot;text&quot;,
+     &quot;ValidateAsNotEmpty&quot;=&gt;1,
+     &quot;ValidationErrorMessage&quot;=&gt;&quot;You have not specified the user name&quot;
+   ));
+
+   $form-&gt;AddInput(array(
+     &quot;NAME&quot;=&gt;&quot;password&quot;,
+     &quot;TYPE&quot;=&gt;&quot;text&quot;,
+     &quot;ValidateAsNotEmpty&quot;=&gt;1,
+     &quot;ValidationErrorMessage&quot;=&gt;&quot;You have not specified the password&quot;
+   ));
+
+   $form-&gt;AddInput(array(
+     &quot;ID&quot;=&gt;&quot;submit&quot;,
+     &quot;TYPE&quot;=&gt;&quot;submit&quot;
+   ));
+
+   $form-&gt;StartLayoutCapture();
+   include(&quot;my_form_template.html.php&quot;);
+   $form-&gt;EndLayoutCapture();
+
+   $form-&gt;DisplayOutput();
+?&gt;
+
+</pre>
+<p>File: <tt>my_form_template.html.php</tt></p>
+<pre style="background-color: #ddddcc; ">
+
+ &lt;table&gt;
+
+ &lt;tr&gt;
+ &lt;th&gt;&lt;?php
+   $form-&gt;AddLabelPart(array(
+     &quot;FOR&quot;=&gt;&quot;user_name&quot;,
+     &quot;LABEL&quot;=&gt;&quot;&lt;u&gt;U&lt;/u&gt;ser name&quot;,
+     &quot;ACCESSKEY&quot;=&gt;&quot;U&quot;
+   ));
+ ?&gt;:&lt;/th&gt;
+ &lt;td&gt;&lt;?php $form-&gt;AddInputPart(&quot;user_name&quot;); ?&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+
+ &lt;tr&gt;
+ &lt;th&gt;&lt;?php
+   $form-&gt;AddLabelPart(array(
+     &quot;FOR&quot;=&gt;&quot;password&quot;,
+     &quot;LABEL&quot;=&gt;&quot;&lt;u&gt;P&lt;/u&gt;assword&quot;,
+     &quot;ACCESSKEY&quot;=&gt;&quot;P&quot;
+   ));
+ ?&gt;:&lt;/th&gt;
+ &lt;td&gt;&lt;?php $form-&gt;AddInputPart(&quot;password&quot;); ?&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+
+ &lt;tr&gt;
+ &lt;td colspan=&quot;2&quot;&gt;&lt;?php $form-&gt;AddInputPart(&quot;submit&quot;); ?&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+
+ &lt;/table&gt;
+
+</pre>
+<h3><li><a name="43.2.3">Smarty template engine</a></li></h3>
+<p>One of the most popular template engines for PHP is <a href="http://smarty.php.net/">Smarty</a>. It generates PHP scripts that merge the HTML data from templates with the commands of code that execute actions and produce dynamically generated data. Once these scripts are generated, they do not need to be updated as long as the template files are not changed.</p>
+<p>Given that even with the generation of processed templates in the form of PHP scripts that are cache, this solution is usually faster than most alternative template engines. However, keep in mind in the end you still need to load a large class that is the Smarty execution engine besides the compiled template script. So, the consumption of CPU and memory resources often is not negligible.</p>
+<h3><li><a name="43.2.4">Smarty plug-in filter for form composition</a></li></h3>
+<p>Since the flexibility that is earned by separating presentation from logic motivates many developers to use Smarty. So, along with this forms class it is provided a plug-in pre-filter function that can be used along with the Smarty engine to compose the forms presentation using templates.</p>
+<p>The plug-in function is provided in a PHP include file named <tt>prefilter.form.php</tt>. There is also an example form handling script named <tt>test_smarty_form.php</tt> that uses Smarty with this plug-in function. This script uses a template file named <tt>form.tpl</tt> that contains the layout of the form defined in HTML.</p>
+<p>Besides the HTML markup and the Smarty commands, the form template files may have with some special place holder marks that define where the form fields will be placed. Currently only three types of marks are supported: <tt>{input name=&quot;input&quot;}</tt>, <tt>{hiddeninput name=&quot;input&quot;}</tt> and <tt>{label for=&quot;input&quot;}</tt>.</p>
+<p>The <tt>{input}</tt> mark specifies an input to be added to the form as it would be added with the <tt>AddInputPart</tt>. The <tt>{hiddeninput}</tt> mark specifies an input to be added to the form as a hidden input as it would be added with the <tt>AddInputHiddenPart</tt>. The <tt>{label}</tt> mark specifies where a label of a specified input to be added to the form as it would be added with the <tt>AddLabelPart</tt>.</p>
+<p>The current version of this plug-in makes Smarty generate processed template scripts that refer to the object of the forms class referring to a global variable named <tt>$form</tt>. Make sure your forms class object is assigned to this global variable.</p>
+</ul>
+<h2><li><a name="43.1.7">Enhancing forms with custom input type plug-ins</a></li></h2>
+<p>The forms class provides support for using custom form input types that can implement enhanced functionality over the basic HTML form input types.</p>
+<p>The custom input types can provide support for sophisticated form handling features, like for instance, managing complex inputs made of several tightly coupled inputs, or providing enhanced usability by the means of special Javascript event handlers that can make the forms more interactive, thus avoiding long delays that make the user wait for needless Web server access round trips to perform special types of manipulation of the input values.</p>
+<p>New custom form input types can be implemented by the means of separate plug-in classes, that can provide new form input functionality without requiring the developers to change the code of the main forms class.</p>
+<p>Any developer can create new custom form input plug-in classes. Such classes may be distributed with their own license. Since the license of the main forms class is <a href="http://www.opensource.org/licenses/bsd-license.php">BSD</a> like, it allows unrestricted distribution including of dependent components. So, the license of a plug-in class may be proprietary and it may even be distributed in a closed source format as a commercial product.</p>
+<ul>
+<h3><li><a name="44.2.1">Custom input classes</a></li></h3>
+<p>A form input of a custom type is used very much like the regular types of input. It should be defined also using the forms class function <tt>AddInput</tt>. The main difference is that you need to specify the name of the class of the custom input using the <tt>CustomClass</tt> parameter of the <tt>AddInput</tt> function.</p>
+<p>All custom input classes have a common API that is used by the main forms class to provide the custom behavior. New custom input classes should extend the <tt>form_custom_class</tt>. This class is defined in the <tt>forms.php</tt> file right before the main forms class.</p>
+<p>The <tt>form_custom_class</tt> base class provides default behavior for all custom input classes by the means of several functions and variables. Some of those functions and variables have necessarily to be reimplemented in the custom input classes. The other functions and variables may be redefined only when necessary.</p>
+<ul>
+<h4><li><a name="45.3.1">Basic steps for developing new custom input classes</a></li></h4>
+<p>If you are interested in developing a new custom input class, here follows a list of common steps that you should take:</p>
+<ul>
+<p><li>Create a new custom input class extending the <tt>form_custom_class</tt> base class.</li></p>
+<p><li>Implement the <tt>AddInput</tt> function.</li></p>
+<p>It should check the parameter arguments passed to the function and initialize the class variables according to the needs.</p>
+<p>If the new custom input is intended to manage a set of one or more new inputs, the <tt>AddInput</tt> function is the place where such inputs should be defined by using the main forms class <tt>AddInput</tt> function. Use the <tt>GenerateInputID</tt> function to create unique identifiers for those new inputs.</p>
+<p>If the class is supposed to benefit from the automatic support for rendering from format templates, it should initialize the <tt>format</tt> and <tt>valid_marks</tt> class variables using the <tt>ParseNewInputFormat</tt> function.</p>
+<p>This will let the class benefit from inheriting several functions from the base class without having to reimplement them like <tt>AddInputPart</tt>, <tt>AddHiddenInputPart</tt>, <tt>AddLabelPart</tt> and <tt>AddFunction</tt>.</p>
+<p><li>If the new custom input will have an associated input value that can be set or changed by the user, implement the <tt>GetInputValue</tt> function to provide a means for the applications that use the new form custom input to retrieve its current value.</li></p>
+<p><li>If there are any properties that can be changed by the applications after the custom input is added to the form, implement the <tt>SetInputProperty</tt> function to handle property change requests, including for the main input <tt>VALUE</tt> property if supported.</li></p>
+<p><li>If the custom input value has to be validated according to specific rules, implement the <tt>ValidateInput</tt> function to enforce such rules. Make sure it is possible to configure details of such validation rules with either the <tt>AddInput</tt> or <tt>SetInputProperty</tt> functions, including the text to present to the user every time a rule is not satisfied.</li></p>
+<p>If possible implement the <tt>GetJavascriptValidations</tt> function to specify the Javascript code and other details that will be used to enforce some or all of the types of validation rules on the client side. This helps improving the usability of the forms that use the new custom input.</p>
+<p>If the custom input is expected to be managed by another custom input, implement <tt>GetJavascriptInputValue</tt> function to make possible for the manager input to retrieve the custom input value on the client side with Javascript and perform any special type of validation or manipulation.</p>
+<p><li>If the custom input class needs to perform some special action like updating its internal state values when the form values are loaded, implement the <tt>LoadInputValues</tt> function to define how to execute such special action.</li></p>
+</ul>
+<p>The following sections provide detailed information on all the custom input public class functions and variables that are inherited from the custom input base class and can be reimplemented in new custom input classes.</p>
+<h4><li><a name="46.3.2">Class variables</a></li></h4>
+<ul>
+<h5><li><a name="47.4.1"><tt>children</tt></a></li></h5>
+<p>Array that stores the names of all the children inputs that have has parent the current custom input.</p>
+<p>This variable is updated by the <tt>AddChild</tt> function and should not be redefined by the custom input class.</p>
+<p><b>Default value:</b> <tt>array()</tt></p>
+<h5><li><a name="47.4.2"><tt>format</tt></a></li></h5>
+<p>Format of an HTML template that defines how the custom input will be rendered. This format template is used by the <tt>AddInputPart</tt> function of the custom input base class to implement the default rendering method.</p>
+<p>The syntax of the template consists of arbitrary HTML with special marks that define the position of place holder marks. These marks can appear in any position the format template value.</p>
+<p>The special marks start and end with characters defined by the <tt>mark_start</tt> and <tt>mark_end</tt> respectively. The text value between the start and end marks defines the mark name.</p>
+<p>The meaning of the mark name is defined by the <tt>valid_marks</tt> variable. Usually it specifies that the mark corresponds to one of several input fields that are managed by the custom input.</p>
+<p>This variable should be redefined by the custom input class if it is intended to use the default rendering method provided by the custom input base class.</p>
+<p><b>Default value:</b> <tt>&quot;&quot;</tt></p>
+<p><b>Example value:</b> <tt>&quot;{day}/{month}/{year}&quot;</tt></p>
+<h5><li><a name="47.4.3"><tt>focus_input</tt></a></li></h5>
+<p>Identifier of the default input that is meant to get the input focus. That input may get the focus when:</p>
+<ul>
+<p><li>A function of type <tt>focus</tt> or <tt>select_focus</tt> defined with <tt>AddFunction</tt> function is called.</li></p>
+<p><li>The user clicks on the label associated with the input field using the <tt>AddLabelPart</tt> function.</li></p>
+<p><li>The input has an invalid value when the user submits the form.</li></p>
+</ul>
+<p>If this variable is set to an empty string, no input will get the focus.</p>
+<p>This variable should be redefined by the custom input class if it is intended to use the automatic focus input association by the custom input base class.</p>
+<p><b>Default value:</b> <tt>&quot;&quot;</tt></p>
+<p><b>Example value:</b> <tt>&quot;date_day&quot;</tt></p>
+<h5><li><a name="48.4.4"><tt>input</tt></a></li></h5>
+<p>Identifier name of the current custom input. This is set by the main forms class when the custom input object is created.</p>
+<p>It is assigned to the <tt>ID</tt> or <tt>NAME</tt> value specified by the current script as parameter of the <tt>AddInput</tt> function of the main forms class to add the custom input to the form definition.</p>
+<p>It is meant to be used by any functions of the custom input class that need to know what is the name by which the main forms class registers the current custom input.</p>
+<p><b>Default value:</b> set by the main forms class</p>
+<h5><li><a name="48.4.5"><tt>mark_start</tt></a></li></h5>
+<p>Text that identifies the beginning of a place holder mark in format templates.</p>
+<p>Usually this variable does not need to be redefined by the custom input class.</p>
+<p><b>Default value:</b> <tt>&quot;{&quot;</tt></p>
+<h5><li><a name="48.4.6"><tt>mark_end</tt></a></li></h5>
+<p>Text that identifies the end of a place holder mark in format templates.</p>
+<p>Usually this variable does not need to be redefined by the custom input class.</p>
+<p><b>Default value:</b> <tt>&quot;}&quot;</tt></p>
+<h5><li><a name="48.4.7"><tt>valid_marks</tt></a></li></h5>
+<p>Associative array that specifies the meaning of names used in place holder marks used in the format template specified by the <tt>format</tt> variable.</p>
+<p>This array has as entry indexes the types of elements to which each place holder is mapped when it is rendered by the custom input base class implementation of the <tt>AddInputPart</tt> function. Currently only the element type <tt>input</tt> is supported.</p>
+<p>The array values should be also associative arrays that map place holder mark names to the names of the elements that they will represent when the custom input is rendered.</p>
+<p>This variable should be redefined by the custom input class if it is intended to use the default rendering method provided by the custom input base class.</p>
+<p><b>Default value:</b> <tt>array()</tt></p>
+<p><b>Example value:</b></p>
+<pre style="background-color: #ddddcc; ">
+
+ array(
+   &quot;input&quot;=&gt;array(
+     &quot;year&quot;=&gt;&quot;date_year&quot;,
+     &quot;month&quot;=&gt;&quot;date_month&quot;,
+     &quot;day&quot;=&gt;&quot;date_day&quot;
+ )
+
+</pre>
+</ul>
+<h4><li><a name="48.3.3">Class functions</a></li></h4>
+<ul>
+<h5><a name="49.4.0">AddChild</a></h5>
+<ul>
+<h6>Synopsis</h6>
+<p><tt>$error=$input_object-&gt;AddChild($form, $name)</tt></p>
+<h6>Purpose</h6>
+<p>Add the information of the name of a successfully added child input of a custom input.</p>
+<p>This function is called when the <tt>AddInput</tt> function of the main forms class is called by the custom input class to add a child input.</p>
+<p>This function should not need to be reimplemented in the actual custom input classes. The default implementation of the custom input base class stores the name of the child input in the <tt>children</tt> array class variable, so it may be used whenever the class needs to iterate over the children inputs.</p>
+<h6>Usage</h6>
+<p>The <tt>$form</tt> argument is a reference to the forms class object on which this custom input is being used.</p>
+<p>The <tt>$name</tt> argument is the identifier name of the just added child input.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.</p>
+</ul>
+<h5><a name="50.4.0">AddFunction</a></h5>
+<ul>
+<h6>Synopsis</h6>
+<p><tt>$error=$input_object-&gt;AddFunction($form, $arguments)</tt></p>
+<h6>Purpose</h6>
+<p>Add the definition of a Javascript function that is meant to be generated as part of the output of the form.  The function to be generated is meant to execute actions related with the elements of the form.</p>
+<p>This function is called when the <tt>AddFunction</tt> function of the main forms class is called to add a function on a custom input element.</p>
+<p>Usually this function does not need to be reimplemented in the actual custom input classes. The default implementation of the custom input base class calls the main forms class <tt>AddFunction</tt> on the input specified by the <tt>focus_input</tt> variable of the custom input object.</p>
+<h6>Usage</h6>
+<p>The <tt>$form</tt> argument is a reference to the forms class object on which this custom input is being used. If you reimplement this function in custom input class, make sure you declare the <tt>$form</tt> argument to be passed by reference.</p>
+<p>The <tt>$arguments</tt> argument is the array passed to the main forms class <tt>AddFunction</tt> function.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.</p>
+</ul>
+<h5><a name="51.4.0">AddInput</a></h5>
+<ul>
+<h6>Synopsis</h6>
+<p><tt>$error=$input_object-&gt;AddInput($form, $arguments)</tt></p>
+<h6>Purpose</h6>
+<p>Initialize the custom input object with parameters that are meant to configure details of its behavior.</p>
+<p>Usually it is used the create any basic inputs to be managed by the object of the custom input class, processing the format template and any other parameters specified by the input definition arguments.</p>
+<p>This function is called when the <tt>AddInput</tt> function of the main forms class is called to add a custom input to the form.</p>
+<p>This function needs to be reimplemented in the actual custom input classes.</p>
+<h6>Usage</h6>
+<p>The <tt>$form</tt> argument is a reference to the forms class object on which this custom input is being used. Make sure you declare the <tt>$form</tt> argument to be passed by reference.</p>
+<p>The <tt>$arguments</tt> argument is the array passed to the main forms class <tt>AddInput</tt> function.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.</p>
+</ul>
+<h5><a name="52.4.0">AddInputHiddenPart</a></h5>
+<ul>
+<h6>Synopsis</h6>
+<p><tt>$error=$input_object-&gt;AddInputHiddenPart($form)</tt></p>
+<h6>Purpose</h6>
+<p>Add the input to the output that is generated for the form as if it was a <tt>hidden</tt> field.</p>
+<p>Usually this function does not need to be reimplemented in the actual custom input classes if a format template and the list of valid marks is specified in the <tt>format</tt> and <tt>valid_marks</tt> custom input object variables.</p>
+<h6>Usage</h6>
+<p>The <tt>$form</tt> argument is a reference to the forms class object on which this custom input is being used. If you reimplement this function in custom input class, make sure you declare the <tt>$form</tt> argument to be passed by reference.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.</p>
+</ul>
+<h5><a name="53.4.0">AddInputPart</a></h5>
+<ul>
+<h6>Synopsis</h6>
+<p><tt>$error=$input_object-&gt;AddInputPart($form)</tt></p>
+<h6>Purpose</h6>
+<p>Add the input to the output that is generated for the form.</p>
+<p>Usually this function does not need to be reimplemented in the actual custom input classes if a format template and the list of valid marks is specified in the <tt>format</tt> and <tt>valid_marks</tt> custom input object variables.</p>
+<h6>Usage</h6>
+<p>The <tt>$form</tt> argument is a reference to the forms class object on which this custom input is being used. If you reimplement this function in custom input class, make sure you declare the <tt>$form</tt> argument to be passed by reference.</p>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.</p>
+</ul>
+<h5><a name="54.4.0">AddLabelPart</a></h5>
+<ul>
+<h6>Synopsis</h6>
+<p><tt>$=$input_object-&gt;AddLabelPart(&amp;$form, $arguments)</tt></p>
+<h6>Purpose</h6>
+<p></p>
+<p>Usually this function does not need to be reimplemented in the actual custom input classes.</p>
+<h6>Usage</h6>
+<p>The <tt>$form</tt> argument is a reference to the forms class object on which this custom input is being used. If you reimplement this function in custom input class, make sure you declare the <tt>$form</tt> argument to be passed by reference.</p>
+<p></p>
+<p></p>
+<p>The <tt>$</tt> return value is .</p>
+</ul>
+<h5><a name="55.4.0">DefaultSetInputProperty</a></h5>
+<ul>
+<h6>Synopsis</h6>
+<p><tt>$error=$input_object-&gt;DefaultetInputProperty($form, $property, $value)</tt></p>
+<h6>Purpose</h6>
+<p>Provide a default implementation for the <tt>SetInputProperty</tt> function.</p>
+<p>This function is not meant to be reimplemented in the actual custom input classes. It is meant to be called by the <tt>SetInputProperty</tt> function to support properties that are not directly implemented by the custom input class. Currently, it only implements the following properties:</p>
+<ul>
+<li><tt>Accessible</tt></li><li><tt>Format</tt></li><li><tt>SubForm</tt></li></ul>
+<h6>Usage</h6>
+<p>The <tt>$form</tt> argument is a reference to the forms class object on which this custom input is being used.</p>
+<p>The <tt>$property</tt> argument is the name of the property to be changed.</p>
+<p>The <tt>$value</tt> argument is the new value of the property.</p>
+<p>The <tt>$error</tt> return value contains an error message if the specified property is not supported, or cannot be changed after the input has been created, or for some other reason the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+</ul>
+<h5><a name="57.4.0">GenerateInputID</a></h5>
+<ul>
+<h6>Synopsis</h6>
+<p><tt>$id=$input_object-&gt;GenerateInputID($form, $input, $kind)</tt></p>
+<h6>Purpose</h6>
+<p>Helper function to generate input identifier names. It is meant to create names for basic inputs that make part of composite complex custom inputs.</p>
+<p>For instance, a custom date input may be made of three basic inputs for the year, month and day. This function can be used to generate their names based on the identifier name of the custom input.</p>
+<p>Usually this function does not need to be reimplemented in the actual custom input classes.</p>
+<h6>Usage</h6>
+<p>The <tt>$form</tt> argument is a reference to the forms class object on which this custom input is being used. If you reimplement this function in custom input class, make sure you declare the <tt>$form</tt> argument to be passed by reference.</p>
+<p>The <tt>$input</tt> argument is the base name of the input identifier to be generated. Usually it is the identifier name of the current custom input.</p>
+<p>The <tt>$kind</tt> argument is a unique name of the kind input to which the resulting identifier will be assigned.</p>
+<p>The <tt>$id</tt> return value is the generated input identifier.</p>
+</ul>
+<h5><a name="58.4.0">GetInputValue</a></h5>
+<ul>
+<h6>Synopsis</h6>
+<p><tt>$value=$input_object-&gt;GetInputValue($form)</tt></p>
+<h6>Purpose</h6>
+<p>Retrieve the current value of the custom input, eventually combining the current values of any of the inputs that compose the custom input.</p>
+<p>This function is called when the main forms class <tt>GetInputValue</tt> is called specifying the current custom input identifier as argument.</p>
+<p>This function needs to be reimplemented in the actual custom input classes if the input is supposed to carry a value.</p>
+<h6>Usage</h6>
+<p>The <tt>$form</tt> argument is a reference to the forms class object on which this custom input is being used. If you reimplement this function in custom input class, make sure you declare the <tt>$form</tt> argument to be passed by reference.</p>
+<p>The <tt>$value</tt> return value is the current input value. It usually is a string but special types of inputs may return input values of other types. The custom input base class always returns an empty string.</p>
+</ul>
+<h5><a name="59.4.0">GetJavascriptInputValue</a></h5>
+<ul>
+<h6>Synopsis</h6>
+<p><tt>$javascript_value=$input_object-&gt;GetJavascriptInputValue($form, $form_object)</tt></p>
+<h6>Purpose</h6>
+<p>Generate a Javascript expression that represents the value of the custom input field expression that be used to on client side scripts in Javascript to retrieve the input value.</p>
+<p>This function is called when the main forms class <tt>GetJavascriptInputValue</tt> is called specifying the current custom input identifier as argument.</p>
+<p>This function needs to be reimplemented in the actual custom input classes if the input is supposed to carry a value.</p>
+<h6>Usage</h6>
+<p>The <tt>$form</tt> argument is a reference to the forms class object on which this custom input is being used. If you reimplement this function in custom input class, make sure you declare the <tt>$form</tt> argument to be passed by reference.</p>
+<p>The <tt>$form_object</tt> argument is a string that represents the Javascript object of the form to which the custom input belongs.</p>
+<p>The <tt>$javascript_value</tt> return value is a string that represents the custom input field value in Javascript.</p>
+</ul>
+<h5><a name="60.4.0">GetJavascriptValidations</a></h5>
+<ul>
+<h6>Synopsis</h6>
+<p><tt>$error=$input_object-&gt;GetJavascriptValidations($form, $form_object, $validations)</tt></p>
+<h6>Purpose</h6>
+<p>Retrieve a list of validation tests that are meant to be performed on the client side using Javascript.</p>
+<p>This function is called by the main forms class to generate the part of the form output that has the Javascript code that is going to be used to perform the client side validation tests.</p>
+<p>The custom input tests are performed after all other input values are validated on the client side. So it is safe to assume that when the custom input tests are executed, all other input fields that are validated on the client side contain valid values.</p>
+<p>This function needs to be reimplemented in the actual custom input classes if there are special types of validation tests that can be performed on the client side, besides other tests that are eventually performed on individual inputs that make part of a composite custom input.</p>
+<h6>Usage</h6>
+<p>The <tt>$form</tt> argument is a reference to the forms class object on which this custom input is being used. If you reimplement this function in custom input class, make sure you declare the <tt>$form</tt> argument to be passed by reference.</p>
+<p>The <tt>$form_object</tt> argument is a string that represents the Javascript object of the form to which the custom input belongs.</p>
+<p>The <tt>$validations</tt> argument is a reference to an array that will be initialized with entries that define details of each client side validation test.</p>
+<p>Each entry of the <tt>$validations</tt> array is set to an associative array that specifies parameters of an individual test. Here follows the list of currently supported parameters:</p>
+<ul>
+<p><li><tt>Commands</tt></li></p>
+<p>Array that defines a list of arbitrary Javascript commands to be executed right before evaluating the actual validation test condition. These commands can be used to compute the expressions that will be used in the test condition.</p>
+<p><li><tt>Condition</tt></li></p>
+<p>String that specifies a Javascript boolean expression that is evaluated to determine whether the input is valid. If the expression value is true, the field is invalid and no other validation tests are performed.</p>
+<p><li><tt>ErrorMessage</tt></li></p>
+<p>String that specifies the error message that is displayed to let the user know why the input value is not valid.</p>
+<p><li><tt>Focus</tt></li></p>
+<p>String the specifies the identifier of the input that may get the input focus. Giving the focus to an input helps the user start correcting the input value right away.</p>
+<p>This parameter is optional. If it is missing, the custom input class variable <tt>focus_input</tt> determines which input will get the focus. If this parameter is set to an empty string, no input will get the focus regardless of the value of the <tt>focus_input</tt> variable.</p>
+</ul>
+<p>If you reimplement this function in custom input class, make sure you declare the <tt>$validations</tt> argument to be passed by reference.</p>
+<p>Here follows an example of defined a special validation test that checks whether the day of a given month and year is valid:</p>
+<pre style="background-color: #ddddcc; ">
+
+ $day=$form-&gt;GetJavascriptInputValue($form_object,$this-&gt;day);
+
+ $month=$form-&gt;GetJavascriptInputValue($form_object,$this-&gt;month);
+
+ $year=$form-&gt;GetJavascriptInputValue($form_object,$this-&gt;year);
+
+ $validations=array(
+   array(
+     &quot;Commands&quot;=&gt;array(
+       &quot;month=&quot;.$month,
+       &quot;if(month=='04'&quot;,
+       &quot;|| month=='06'&quot;,
+       &quot;|| month=='09'&quot;,
+       &quot;|| month=='11')&quot;,
+       &quot;  month_days=30&quot;,
+       &quot;else&quot;,
+       &quot;{&quot;,
+       &quot;  if(month=='02')&quot;,
+       &quot;  {&quot;,
+       &quot;    year=parseInt(&quot;.$year.&quot;)&quot;,
+       &quot;    if((year % 4)==0&quot;,
+       &quot;    &amp;&amp; ((year % 100)!=0&quot;,
+       &quot;    || (year % 400)==0))&quot;,
+       &quot;      month_days=29&quot;,
+       &quot;    else&quot;,
+       &quot;      month_days=28&quot;,
+       &quot;  }&quot;,
+       &quot;  else&quot;,
+       &quot;    month_days=31&quot;,
+       &quot;}&quot;,
+       &quot;date_day=&quot;.$day
+     ),
+     &quot;Condition&quot;=&gt;&quot;month_days&lt;parseInt(date_day)&quot;,
+     &quot;ErrorMessage&quot;=&gt;$this-&gt;invalid_day_error_message,
+     &quot;Focus&quot;=&gt;$this-&gt;day
+   )
+ );
+
+</pre>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.</p>
+</ul>
+<h5><a name="62.4.0">LoadInputValues</a></h5>
+<ul>
+<h6>Synopsis</h6>
+<p><tt>$input_object-&gt;LoadInputValues($form, $submitted)</tt></p>
+<h6>Purpose</h6>
+<p>Perform any special actions that may need to take place when the main forms class retrieves the values of the inputs passed to the current script, eventually after the user has submitted the form.</p>
+<p>This function is called for all custom inputs from the main forms class <tt>LoadInputValues</tt> function after the values of all basic inputs were loaded. So, it is safe for the custom class input function to retrieve the just loaded basic input values using the function <tt>GetInputValue</tt>.</p>
+<p>Usually this function does not need to be reimplemented in the actual custom input classes.</p>
+<h6>Usage</h6>
+<p>The <tt>$form</tt> argument is a reference to the forms class object on which this custom input is being used. If you reimplement this function in custom input class, make sure you declare the <tt>$form</tt> argument to be passed by reference.</p>
+<p>The <tt>$submitted</tt> argument has the same value that is passed to the main forms class <tt>LoadInputValues</tt>.</p>
+</ul>
+<h5><a name="63.4.0">ParseNewInputFormat</a></h5>
+<ul>
+<h6>Synopsis</h6>
+<p><tt>$error=$input_object-&gt;ParseNewInputFormat()</tt></p>
+<h6>Purpose</h6>
+<p>Validate and process the current input display format template.</p>
+<p>It parses the format template defined by the <tt>format</tt> variable and validates it to verify whether it complies with definition of place holders specified by the <tt>valid_marks</tt> variable.</p>
+<p>This function is used by the custom input base class when it renders the input with the <tt>AddInputPart</tt> function. It may also be used to validate a new format template defined from the parameters of the <tt>AddInput</tt> or <tt>SetInputProperty</tt> functions.</p>
+<p>Usually this function should not be reimplemented in the actual custom input classes.</p>
+<h6>Usage</h6>
+<p>The <tt>$error</tt> return value contains an error message if the method call did not succeed.  Otherwise it contains an empty string.</p>
+</ul>
+<h5><a name="64.4.0">SetInputProperty</a></h5>
+<ul>
+<h6>Synopsis</h6>
+<p><tt>$error=$input_object-&gt;SetInputProperty($form, $property, $value)</tt></p>
+<h6>Purpose</h6>
+<p>Change the value of a specific property of the custom input.</p>
+<p>This function needs to be reimplemented in the actual custom input classes to support setting properties that can be changed after the creation of the custom input with the <tt>AddInput</tt> function.</p>
+<h6>Usage</h6>
+<p>The <tt>$form</tt> argument is a reference to the forms class object on which this custom input is being used. If you reimplement this function in custom input class, make sure you declare the <tt>$form</tt> argument to be passed by reference.</p>
+<p>The <tt>$property</tt> argument is the name of the property to be changed.</p>
+<p>The <tt>$value</tt> argument is the new value of the property.</p>
+<p>The <tt>$error</tt> return value contains an error message if the specified property is not supported, or cannot be changed after the input has been created, or for some other reason the method call did not succeed.  Otherwise it contains an empty string.  This return value may be safely ignored if the method call arguments are correctly defined.</p>
+</ul>
+<h5><a name="65.4.0">ValidateInput</a></h5>
+<ul>
+<h6>Synopsis</h6>
+<p><tt>$error_message=$input_object-&gt;ValidateInput($form)</tt></p>
+<h6>Purpose</h6>
+<p>Validate the current value of the custom input.</p>
+<p>This function is called by the main forms class <tt>Validate</tt> function after it has successfully validated all the basic type inputs. So, it is safe to retrieve from the <tt>ValidateInput</tt> function valid values of any basic inputs managed by a custom input class.</p>
+<p>This function needs to be reimplemented in the actual custom input classes if they need to perform special types of validation besides the validations that are already performed on the basic inputs managed by custom input classes.</p>
+<h6>Usage</h6>
+<p>The <tt>$form</tt> argument is a reference to the forms class object on which this custom input is being used. If you reimplement this function in custom input class, make sure you declare the <tt>$form</tt> argument to be passed by reference.</p>
+<p>The <tt>$error_message</tt> return value is a message suitable to present to the user that explains why the current input value is invalid. If the input value is valid, this return value should be an empty string.</p>
+</ul>
+</ul>
+</ul>
+<h3><li><a name="66.2.2">Available custom input plug-ins classes</a></li></h3>
+<p>The forms class distribution comes with separate custom input plug-in classes that are ready to implement Web forms based user interfaces with sophisticated controls that provide complex functionality and enhanced usuability.</p>
+<p>Here follows the list of available custom input classes. More will be made available later.</p>
+<ul>
+<h4><li><a name="67.3.1"><tt>form_date_class</tt></a></li></h4>
+<ul>
+<h5>Purpose</h5>
+<p>Let the user specify a date of the calendar with year, month and day.</p>
+<h5>Features</h5>
+<ul>
+<p><li>It generates select inputs for the day and month and a text input for the year.</li></p>
+<p><li>It can validate any date between the years 1 and 9999 AC. The validation can be performed either on the client side and server side. It supports restricting the accepted period between given start and end dates.</li></p>
+<p><li>The submitted date value is returned in the ISO 9601 format (YYYY-MM-DD) but the date can be presented in any other format definable in the application that creates the form. The text that is displayed for the months may also be redefined.</li></p>
+</ul>
+<h5>Properties</h5>
+<ul>
+<p><li><tt>Accessible</tt></li></p>
+<p>The same as the <tt>Accessible</tt> property for basic inputs.</p>
+<p><b>Default value:</b> not set</p>
+<p><li><tt>Format</tt> (changeable)</li></p>
+<p>Format of the template that defines how the date will be presented. There are three supported place holders for defining how the the year, month and day fields will be presented: <tt>year</tt>, <tt>month</tt> and <tt>day</tt>.</p>
+<p><b>Default value:</b> <tt>&quot;{year}-{month}-{day}&quot;</tt></p>
+<p><li><tt>Months</tt></li></p>
+<p>Associative array that defines the text for each of the 12 months of the year. The array entry indexes go from <tt>&quot;01&quot;</tt> to <tt>&quot;12&quot;</tt>.</p>
+<p><b>Default value:</b> array with all entry values set to the entry indexes</p>
+<p><li><tt>VALUE</tt> (changeable)</li></p>
+<p>Current value of the date. An empty string means, date not set.</p>
+<p><b>Default value:</b> <tt>&quot;&quot;</tt></p>
+<p><li><tt>ValidationErrorMessage</tt></li></p>
+<p>Default validation error message.</p>
+<p><b>Default value:</b> not set</p>
+<p><li><tt>ValidationEndDate</tt></li></p>
+<p>Day of the end of the range of allowed dates</p>
+<p><b>Default value:</b> <tt>&quot;9999-12-31&quot;</tt></p>
+<p><li><tt>ValidationEndDateErrorMessage</tt></li></p>
+<p>Validation error message to present when the current date is set to a day after the end date.</p>
+<p><b>Default value:</b> default validation error message</p>
+<p><li><tt>ValidationStartDate</tt></li></p>
+<p>Day of the start of the range of allowed dates</p>
+<p><b>Default value:</b> <tt>&quot;0001-01-01&quot;</tt></p>
+<p><li><tt>ValidationStartDateErrorMessage</tt></li></p>
+<p>Validation error message to present when the current date is set to a day before the start date.</p>
+<p><b>Default value:</b> default validation error message</p>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+
+<hr />
+<address>Manuel Lemos (<a href="mailto:mlemos-at-acm.org">mlemos-at-acm.org</a>)</address>
+</body>
+</html>
